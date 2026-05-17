@@ -474,18 +474,18 @@ ParadoxoRelatividade/
 
 ## 9. Roadmap de Desenvolvimento
 
-### Semana 1 — Fundação ✅ (em execução)
+### Semana 1 — Fundação ✅ Concluída
 
 **Objetivos**:
 - [x] Setup do projeto Godot 4
-- [x] Configuração de Input Map (15 ações)
+- [x] Configuração de Input Map (17 ações)
 - [x] Estrutura de pastas
 - [x] Git inicializado com `.gitignore`
-- [ ] Autoloads (`InputBus`, `GameState`) funcionando
-- [ ] Cena `player.tscn` com câmera FPS funcional
-- [ ] Cena `galpao.tscn` com primitivos
-- [ ] Cena `main.tscn` rodando
-- [ ] Caminhar pelo galpão com Xbox
+- [x] Autoloads (`InputBus`, `GameState`) funcionando
+- [x] Cena `player.tscn` com câmera FPS funcional
+- [x] Cena `galpao.tscn` com primitivos
+- [x] Cena `main.tscn` rodando
+- [x] Caminhar pelo galpão com Xbox
 
 **Marco**: Caminhar pelo galpão vazio em primeira pessoa.
 
@@ -734,12 +734,13 @@ Preferir sinais em vez de referências diretas entre sistemas independentes. O a
 
 ### Estado Atual do Projeto
 
-**Fase**: Semana 1 — Fundação
+**Fase**: Semana 2 — Mundo Galileano
 **Próximos passos imediatos**:
-1. Validar `player.gd` funcionando com gamepad
-2. Garantir que ambos autoloads estão registrados
-3. Cena `galpao.tscn` com primitivos
-4. Primeira screenshot do galpão sendo navegado
+1. Importar assets GLB do Hyper3D (galpão, esteira, tora, guilhotinas)
+2. Esteira animada com velocidade ajustável (D-Pad ↑↓)
+3. Tora se movendo ao longo da esteira
+4. Guilhotinas descendo ao apertar RT
+5. HUD básica: velocímetro pixel art
 
 ---
 
