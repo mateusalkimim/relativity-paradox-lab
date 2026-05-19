@@ -9,7 +9,7 @@ const BELT_BETA_STEP: float = 0.1
 const BELT_BETA_MAX: float = 0.99
 const BELT_BETA_MIN: float = 0.0
 
-var current_frame = Frame.ALICE
+var current_frame: Frame = Frame.ALICE
 var belt_beta: float = 0.05
 var is_transitioning: bool = false
 var slow_motion_active: bool = false

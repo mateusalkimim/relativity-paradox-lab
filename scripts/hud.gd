@@ -42,7 +42,7 @@ func _update() -> void:
 	_label_beta.text = "β  %.3f c" % beta
 	_label_gamma.text = "γ  %.3f" % gamma
 	_bar.value = beta
-	var is_alice := GameState.current_frame == GameState.Frame.ALICE
+	var is_alice: bool = GameState.current_frame == GameState.Frame.ALICE
 	_label_frame.text = "ALICE" if is_alice else "BOB"
 	var frame_color := Color(0.4, 0.9, 0.5) if is_alice else Color(0.9, 0.6, 0.2)
 	_label_frame.add_theme_color_override("font_color", frame_color)
