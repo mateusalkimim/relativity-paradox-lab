@@ -291,6 +291,7 @@ ParadoxoRelatividade/
 │   ├── lorentz_transform.gd        # Cálculos relativísticos
 │   ├── conveyor_belt.gd            # Esteira + tora
 │   ├── guillotine.gd               # Comportamento das guilhotinas
+│   ├── hud.gd                      # HUD: velocímetro, indicador de γ e referencial
 │   ├── simultaneity_lines.gd       # Overlay de linhas de simultaneidade
 │   └── scissors.gd                 # Lógica das tesouras (Ato 4)
 │
@@ -489,17 +490,17 @@ ParadoxoRelatividade/
 
 **Marco**: Caminhar pelo galpão vazio em primeira pessoa.
 
-### Semana 2 — Mundo Galileano
+### Semana 2 — Mundo Galileano ✅ Concluída
 
 **Objetivos**:
-- Importar assets do Hyper3D
-- Esteira animada com velocidade ajustável
-- Tora se movendo ao longo da esteira
-- Duas guilhotinas descendo ao apertar RT
-- Caso galileano trivial (v baixa) funcionando
-- HUD básica: velocímetro pixel art
+- [ ] Importar assets do Hyper3D
+- [x] Esteira animada com velocidade ajustável (D-Pad ↑↓) — `conveyor_belt.gd`
+- [x] Tora se movendo ao longo da esteira — `conveyor_belt.gd`
+- [x] Duas guilhotinas descendo ao apertar RT — `guillotine.gd`
+- [x] Caso galileano trivial (v baixa) funcionando
+- [x] HUD básica: velocímetro texto (β, γ, barra, referencial) — `hud.gd`; sprite pixel art pendente
 
-**Marco**: Apresentar Atos 0 e início do Ato 1.
+**Marco**: Apresentar Atos 0 e início do Ato 1. ✅ Atingido (sem assets Hyper3D).
 
 ### Semana 3 — Coração: Troca de Referencial
 
@@ -734,13 +735,12 @@ Preferir sinais em vez de referências diretas entre sistemas independentes. O a
 
 ### Estado Atual do Projeto
 
-**Fase**: Semana 2 — Mundo Galileano
+**Fase**: Semana 3 — Coração: Troca de Referencial
 **Próximos passos imediatos**:
-1. Importar assets GLB do Hyper3D (galpão, esteira, tora, guilhotinas)
-2. Esteira animada com velocidade ajustável (D-Pad ↑↓)
-3. Tora se movendo ao longo da esteira
-4. Guilhotinas descendo ao apertar RT
-5. HUD básica: velocímetro pixel art
+1. `frame_controller.gd`: switch ALICE↔BOB com escala anisotrópica (1/γ)
+2. Transição animada de 1.5–2s com Tween (easing cúbico)
+3. Bloqueio de inputs durante transição
+4. Efeito visual sutil na transição (vinheta / distorção cromática)
 
 ---
 
