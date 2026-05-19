@@ -3,14 +3,12 @@ extends Node3D
 const GALPAO_LENGTH: float = 20.0
 const GALPAO_WIDTH: float = 8.0
 const GALPAO_HEIGHT: float = 5.0
-const LOG_PROPER_LENGTH: float = 4.0
 const GUILLOTINE_SEPARATION: float = 4.0
 
 func _ready() -> void:
 	_build_structure()
-	_build_conveyor_placeholder()
+	_build_conveyor_belt()
 	_build_guillotine_placeholders()
-	_build_log_placeholder()
 	_setup_lighting()
 
 func _build_structure() -> void:
@@ -20,10 +18,10 @@ func _build_structure() -> void:
 	_add_static_box("WallRight",Vector3( GALPAO_LENGTH * 0.5, GALPAO_HEIGHT * 0.5, 0), Vector3(0.2, GALPAO_HEIGHT, GALPAO_WIDTH), Color(0.545, 0.494, 0.431))
 	_add_static_box("WallBack", Vector3(0, GALPAO_HEIGHT * 0.5, -GALPAO_WIDTH * 0.5),  Vector3(GALPAO_LENGTH, GALPAO_HEIGHT, 0.2), Color(0.545, 0.494, 0.431))
 
-func _build_conveyor_placeholder() -> void:
-	_add_box("ConveyorBelt",         Vector3(0, 0.55, 0),   Vector3(14.0, 0.1,  1.4), Color(0.18, 0.18, 0.18))
-	_add_box("ConveyorSupportLeft",  Vector3(-7.0, 0.3, 0), Vector3(0.15, 0.5,  1.4), Color(0.35, 0.35, 0.38))
-	_add_box("ConveyorSupportRight", Vector3( 7.0, 0.3, 0), Vector3(0.15, 0.5,  1.4), Color(0.35, 0.35, 0.38))
+func _build_conveyor_belt() -> void:
+	var belt := ConveyorBelt.new()
+	belt.name = "ConveyorBeltNode"
+	add_child(belt)
 
 func _build_guillotine_placeholders() -> void:
 	var half_sep := GUILLOTINE_SEPARATION * 0.5
@@ -32,9 +30,6 @@ func _build_guillotine_placeholders() -> void:
 		var suffix := "Left" if side == -1 else "Right"
 		_add_box("GuillotineFrame" + suffix, Vector3(x, GALPAO_HEIGHT * 0.5, 0),         Vector3(0.3, GALPAO_HEIGHT, 2.2), Color(0.5,  0.42, 0.32))
 		_add_box("GuillotineBlade" + suffix, Vector3(x, GALPAO_HEIGHT * 0.5 + 1.5, 0),  Vector3(0.15, 0.3, 1.8),          Color(0.29, 0.33, 0.38))
-
-func _build_log_placeholder() -> void:
-	_add_box("Log", Vector3(-6.0, 0.8, 0), Vector3(LOG_PROPER_LENGTH, 0.5, 0.5), Color(0.545, 0.357, 0.169))
 
 func _setup_lighting() -> void:
 	var sun := DirectionalLight3D.new()
