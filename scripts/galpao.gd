@@ -5,11 +5,19 @@ const GALPAO_WIDTH: float = 8.0
 const GALPAO_HEIGHT: float = 5.0
 const GUILLOTINE_SEPARATION: float = 4.0
 
+var _guillotine_left: Guillotine
+var _guillotine_right: Guillotine
+
 func _ready() -> void:
 	_build_structure()
 	_build_conveyor_belt()
-	_build_guillotine_placeholders()
+	_build_guillotines()
 	_setup_lighting()
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("action_primary"):
+		_guillotine_left.drop()
+		_guillotine_right.drop()
 
 func _build_structure() -> void:
 	_add_static_box("Floor",    Vector3(0, 0, 0),                                   Vector3(GALPAO_LENGTH, 0.2,  GALPAO_WIDTH), Color(0.612, 0.455, 0.259))
@@ -23,13 +31,18 @@ func _build_conveyor_belt() -> void:
 	belt.name = "ConveyorBeltNode"
 	add_child(belt)
 
-func _build_guillotine_placeholders() -> void:
+func _build_guillotines() -> void:
 	var half_sep := GUILLOTINE_SEPARATION * 0.5
-	for side: int in [-1, 1]:
-		var x := side * half_sep
-		var suffix := "Left" if side == -1 else "Right"
-		_add_box("GuillotineFrame" + suffix, Vector3(x, GALPAO_HEIGHT * 0.5, 0),         Vector3(0.3, GALPAO_HEIGHT, 2.2), Color(0.5,  0.42, 0.32))
-		_add_box("GuillotineBlade" + suffix, Vector3(x, GALPAO_HEIGHT * 0.5 + 1.5, 0),  Vector3(0.15, 0.3, 1.8),          Color(0.29, 0.33, 0.38))
+
+	_guillotine_left = Guillotine.new()
+	_guillotine_left.name = "GuillotineLeft"
+	_guillotine_left.position.x = -half_sep
+	add_child(_guillotine_left)
+
+	_guillotine_right = Guillotine.new()
+	_guillotine_right.name = "GuillotineRight"
+	_guillotine_right.position.x = half_sep
+	add_child(_guillotine_right)
 
 func _setup_lighting() -> void:
 	var sun := DirectionalLight3D.new()
@@ -71,16 +84,3 @@ func _add_static_box(node_name: String, pos: Vector3, size: Vector3, color: Colo
 	body.add_child(col)
 
 	add_child(body)
-
-func _add_box(node_name: String, pos: Vector3, size: Vector3, color: Color) -> void:
-	var mi := MeshInstance3D.new()
-	mi.name = node_name
-	mi.position = pos
-	var mesh := BoxMesh.new()
-	mesh.size = size
-	var mat := StandardMaterial3D.new()
-	mat.albedo_color = color
-	mat.roughness = 0.9
-	mi.mesh = mesh
-	mi.set_surface_override_material(0, mat)
-	add_child(mi)
