@@ -52,7 +52,7 @@ func _build_frame() -> void:
 	_add_mesh("Frame", Vector3(0.0, FRAME_HEIGHT * 0.5, 0.0), Vector3(0.3, FRAME_HEIGHT, 2.2), Color(0.5, 0.42, 0.32))
 
 func _build_blade() -> void:
-	_blade = _add_mesh("Blade", Vector3(0.0, BLADE_RAISED_Y, 0.0), Vector3(0.15, 0.3, 1.8), Color(0.29, 0.33, 0.38))
+	_blade = _add_mesh("Blade", Vector3(0.0, BLADE_RAISED_Y, 0.0), Vector3(0.5, 0.4, 2.5), Color(0.29, 0.33, 0.38))
 
 func _add_mesh(node_name: String, pos: Vector3, size: Vector3, color: Color) -> MeshInstance3D:
 	var mi := MeshInstance3D.new()
