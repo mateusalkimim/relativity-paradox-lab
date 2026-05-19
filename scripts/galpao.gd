@@ -13,6 +13,7 @@ func _ready() -> void:
 	_build_conveyor_belt()
 	_build_guillotines()
 	_setup_lighting()
+	_build_hud()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("action_primary"):
@@ -25,6 +26,11 @@ func _build_structure() -> void:
 	_add_static_box("WallLeft", Vector3(-GALPAO_LENGTH * 0.5, GALPAO_HEIGHT * 0.5, 0), Vector3(0.2, GALPAO_HEIGHT, GALPAO_WIDTH), Color(0.545, 0.494, 0.431))
 	_add_static_box("WallRight",Vector3( GALPAO_LENGTH * 0.5, GALPAO_HEIGHT * 0.5, 0), Vector3(0.2, GALPAO_HEIGHT, GALPAO_WIDTH), Color(0.545, 0.494, 0.431))
 	_add_static_box("WallBack", Vector3(0, GALPAO_HEIGHT * 0.5, -GALPAO_WIDTH * 0.5),  Vector3(GALPAO_LENGTH, GALPAO_HEIGHT, 0.2), Color(0.545, 0.494, 0.431))
+
+func _build_hud() -> void:
+	var hud := HUD.new()
+	hud.name = "HUD"
+	add_child(hud)
 
 func _build_conveyor_belt() -> void:
 	var belt := ConveyorBelt.new()
