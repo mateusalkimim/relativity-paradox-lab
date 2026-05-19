@@ -736,6 +736,8 @@ Preferir sinais em vez de referências diretas entre sistemas independentes. O a
 ### Estado Atual do Projeto
 
 **Fase**: Semana 3 — Coração: Troca de Referencial
+**Pendência da Semana 2**:
+- Importar assets GLB do Hyper3D (galpão, esteira, tora, guilhotinas)
 **Próximos passos imediatos**:
 1. `frame_controller.gd`: switch ALICE↔BOB com escala anisotrópica (1/γ)
 2. Transição animada de 1.5–2s com Tween (easing cúbico)
