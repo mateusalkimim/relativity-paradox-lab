@@ -242,7 +242,8 @@ Visualmente espetacular (rotação relativística), mas exige tempo de setup con
 
 - **Engine**: Godot 4.x
 - **Linguagem**: GDScript
-- **Sistema operacional de desenvolvimento**: Windows
+- **Plataformas-alvo**: Windows e Linux (executável standalone nas duas)
+- **Ambiente de desenvolvimento**: AlmaLinux 9.8 (GNOME X11) — desenvolvimento primário
 - **Controle**: Gamepad Xbox (testado nativamente no Godot 4)
 - **Versionamento**: Git
 - **Geração de assets 3D**: Hyper3D.ai (Rodin) — exportação em GLB
@@ -265,6 +266,30 @@ Visualmente espetacular (rotação relativística), mas exige tempo de setup con
 - Distância entre guilhotinas: 4 unidades (comprimento próprio L₀)
 - Velocidade máxima visualmente utilizada: 0.99c
 
+### 5.3 Compatibilidade Cross-Platform (Restrição Rígida)
+
+O executável final deve rodar em **Windows e Linux** sem modificações. Apresentações acontecem em escolas (tipicamente Windows); desenvolvimento ocorre em AlmaLinux 9.8.
+
+**Regras que se aplicam ao código:**
+- **Caminhos de arquivo**: usar exclusivamente `res://`, `user://` e APIs do Godot (`OS.get_user_data_dir()`, `ProjectSettings.globalize_path()`). Nunca caminhos absolutos do sistema operacional.
+- **Nomes de asset**: apenas caracteres ASCII sem acentos ou espaços — sistemas Windows são case-insensitive e têm restrições de caracteres que o Linux não tem.
+- **Chamadas de sistema** (`OS.execute`, `OS.shell_open`): só usar se testado nas duas plataformas.
+- **Export templates**: ao chegar na Semana 5, gerar templates para `Windows Desktop` (.exe) e `Linux/X11` (.x86_64) a partir do mesmo projeto.
+- **Gamepad Xbox**: funciona nativamente via XInput (Windows) e SDL/xpad (Linux) — sem código condicional de plataforma necessário.
+
+### 5.4 Ambiente de Desenvolvimento
+
+| Ferramenta | Versão | Instalação |
+|---|---|---|
+| Godot 4 | 4.6.3 stable | Flatpak (usuário) — `godot4` |
+| VS Code | 1.122.0 | Flatpak (usuário) — `code` |
+| godot-tools | 2.6.1 | Extensão VS Code |
+| Claude Code | — | `~/.local/bin/claude` |
+
+**Launcher**: `~/Área de trabalho/Lab Relatividade.desktop` — abre Godot → aguarda LSP (porta 6005) → VS Code → terminal com Claude Code, tudo no diretório do projeto.
+
+**Nota Flatpak**: VS Code e Godot rodam em sandboxes separadas. A comunicação entre eles (abrir arquivo no editor externo) usa o wrapper `~/.local/bin/godot4-vscode` via `flatpak-spawn --host`. O Language Server conecta normalmente via localhost:6005.
+
 ---
 
 ## 6. Estrutura do Projeto
@@ -279,6 +304,8 @@ ParadoxoRelatividade/
 │   ├── main.tscn                   # Cena raiz, entrada do jogo
 │   ├── world/
 │   │   ├── galpao.tscn             # Cenário da madeireira (Atos 0-3)
+│   │   ├── esteira.tscn            # Esteira transportadora (Esteira class, UV scroll)
+│   │   ├── tora.tscn               # Tora reutilizável (CylinderMesh procedural, L₀=4u)
 │   │   └── observatorio.tscn       # Cenário das tesouras (Ato 4)
 │   └── player/
 │       └── player.tscn             # Câmera primeira pessoa + movimento
@@ -288,8 +315,10 @@ ParadoxoRelatividade/
 │   ├── game_state.gd               # Autoload: estado global
 │   ├── player.gd                   # Movimento + câmera
 │   ├── frame_controller.gd         # Lógica de troca de referencial
-│   ├── lorentz_transform.gd        # Cálculos relativísticos
-│   ├── conveyor_belt.gd            # Esteira + tora
+│   ├── lorentz_transform.gd        # Cálculos relativísticos (γ, contração, offset temporal)
+│   ├── esteira.gd                  # Esteira transportadora (UV scroll, instancia tora.tscn)
+│   ├── conveyor_belt.gd            # Legado — substituído por esteira.gd/esteira.tscn
+│   ├── tora.gd                     # Tora: @export L₀, diâmetro; set_lorentz_scale() pronto
 │   ├── guillotine.gd               # Comportamento das guilhotinas
 │   ├── hud.gd                      # HUD: velocímetro, indicador de γ e referencial
 │   ├── simultaneity_lines.gd       # Overlay de linhas de simultaneidade
@@ -297,12 +326,13 @@ ParadoxoRelatividade/
 │
 ├── assets/
 │   ├── models/                     # .glb gerados no Hyper3D
-│   │   ├── galpao_estrutura.glb
-│   │   ├── esteira.glb
-│   │   ├── tora.glb
-│   │   ├── guilhotina.glb
-│   │   └── observatorio.glb
+│   │   ├── galpao_estrutura.glb    # ✅ integrado com colisão trimesh
+│   │   ├── tora.glb                # presente; tora usa cena procedural (tora.tscn)
+│   │   ├── esteira.glb             # pendente
+│   │   ├── guilhotina.glb          # pendente
+│   │   └── observatorio.glb        # pendente
 │   ├── textures/                   # Texturas auxiliares
+│   │   └── hdri_galpao.hdr         # HDRI equiretangular para skydome do galpão
 │   ├── sprites/                    # Pixel art (PixelLab)
 │   │   ├── hud_velocimetro.png
 │   │   ├── linha_simultaneidade.png
@@ -383,9 +413,10 @@ ParadoxoRelatividade/
 
 ### 7.5 Sistema de Esteira e Guilhotinas
 
-**Esteira (`conveyor_belt.gd`)**:
-- Velocidade ajustável de 0 a 0.99c
-- Move a tora ao longo do eixo X
+**Esteira (`esteira.gd` + `esteira.tscn`)**:
+- Velocidade ajustável de 0 a 0.99c (D-Pad ↑↓)
+- Movimento visual via UV scroll na textura da correia (sem translação de geometria — estável para contração de Lorentz)
+- Instancia `tora.tscn` e a move ao longo do eixo X
 - Em `Frame.BOB`, a tora fica parada e o galpão se move
 
 **Guilhotinas (`guillotine.gd`)**:
@@ -493,12 +524,15 @@ ParadoxoRelatividade/
 ### Semana 2 — Mundo Galileano ✅ Concluída
 
 **Objetivos**:
-- [ ] Importar assets do Hyper3D
-- [x] Esteira animada com velocidade ajustável (D-Pad ↑↓) — `conveyor_belt.gd`
-- [x] Tora se movendo ao longo da esteira — `conveyor_belt.gd`
+- [x] Importar assets do Hyper3D (parcial: `galpao_estrutura.glb` integrado com colisão trimesh; `esteira.glb`, `guilhotina.glb` pendentes)
+- [x] Esteira animada com velocidade ajustável (D-Pad ↑↓) — `esteira.gd` + `esteira.tscn` (UV scroll; substitui `conveyor_belt.gd`)
+- [x] Tora se movendo ao longo da esteira — instanciada via `esteira.gd`
+- [x] `tora.tscn` criada como cena reutilizável — `tora.gd` (CylinderMesh procedural, L₀=4u, diâmetro=0.5; `set_lorentz_scale()` preparado para Semana 3)
+- [x] Skydome com HDRI adicionado ao galpão — `galpao.gd`
 - [x] Duas guilhotinas descendo ao apertar RT — `guillotine.gd`
 - [x] Caso galileano trivial (v baixa) funcionando
 - [x] HUD básica: velocímetro texto (β, γ, barra, referencial) — `hud.gd`; sprite pixel art pendente
+- [x] Bugfix: `lorentz_transform.gd` — inferência de tipo em `clamp()` tratada como erro (`var b: float`)
 
 **Marco**: Apresentar Atos 0 e início do Ato 1. ✅ Atingido (sem assets Hyper3D).
 
@@ -733,18 +767,24 @@ Preferir sinais em vez de referências diretas entre sistemas independentes. O a
 
 8. **Em caso de dúvida sobre arquitetura, escolher a opção mais simples que funciona**. Refatorar é fácil depois que algo está rodando.
 
+9. **Compatibilidade Windows ↔ Linux é restrição rígida** (ver Seção 5.3). Nunca usar caminhos absolutos, nomes de arquivo com acentos nos assets, ou chamadas de sistema sem teste cross-platform. Desenvolvimento ocorre em AlmaLinux 9.8; apresentações em Windows.
+
 ### Estado Atual do Projeto
 
 **Fase**: Semana 3 — Coração: Troca de Referencial
+**Ambiente de desenvolvimento**: AlmaLinux 9.8 + Godot 4.6.3 + VS Code 1.122.0 (ambos via Flatpak) — configurado e funcional.
 **Pendência da Semana 2**:
-- Importar assets GLB do Hyper3D (galpão, esteira, tora, guilhotinas)
+- `esteira.glb`, `guilhotina.glb` do Hyper3D ainda pendentes (galpão integrado; esteira usa UV scroll procedural; tora usa cena procedural)
+**Ganchos já implementados para Semana 3**:
+- `tora.gd`: `set_lorentz_scale(gamma)` e `reset_lorentz_scale()` prontos — `frame_controller.gd` só precisa chamá-los
+- `lorentz_transform.gd`: `gamma()`, `contracted_length()`, `simultaneity_offset()` implementados e funcionando
 **Próximos passos imediatos**:
-1. `frame_controller.gd`: switch ALICE↔BOB com escala anisotrópica (1/γ)
+1. `frame_controller.gd`: switch ALICE↔BOB com escala anisotrópica (1/γ) usando os ganchos acima
 2. Transição animada de 1.5–2s com Tween (easing cúbico)
 3. Bloqueio de inputs durante transição
 4. Efeito visual sutil na transição (vinheta / distorção cromática)
 
 ---
 
-*Última atualização: maio de 2026*
+*Última atualização: 30 de maio de 2026*
 *Projeto desenvolvido como instrumento de ensino de Relatividade Especial para o ensino médio brasileiro.*
