@@ -1,4 +1,5 @@
-# scripts/esteira.gd
+# SPDX-License-Identifier: GPL-3.0-or-later
+# Copyright (C) 2026 Mateus Alkimim
 extends Node3D
 class_name Esteira
 

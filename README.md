@@ -788,3 +788,18 @@ Preferir sinais em vez de referências diretas entre sistemas independentes. O a
 
 *Última atualização: 30 de maio de 2026*
 *Projeto desenvolvido como instrumento de ensino de Relatividade Especial para o ensino médio brasileiro.*
+
+---
+
+## 14. Licença
+
+Este projeto usa uma **licença dupla**:
+
+| Componente | Licença | Arquivo |
+|---|---|---|
+| Código-fonte (`scripts/`, `scenes/`, `project.godot`) | [GNU GPL v3](https://www.gnu.org/licenses/gpl-3.0.html) | `LICENSE` |
+| Assets e documentação (`assets/`, `docs/`, `README.md`) | [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) | `LICENSE-ASSETS` |
+
+**Em resumo:** você pode usar, estudar e modificar este projeto para fins educacionais e não-comerciais, desde que mantenha a atribuição ao autor original e distribua derivados sob as mesmas licenças.
+
+Copyright (C) 2026 Mateus Alkimim

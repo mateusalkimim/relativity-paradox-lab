@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+# Copyright (C) 2026 Mateus Alkimim
 class_name LorentzTransform
 
 const C: float = 1.0

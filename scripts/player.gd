@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+# Copyright (C) 2026 Mateus Alkimim
 extends CharacterBody3D
 
 const WALK_SPEED: float = 5.0

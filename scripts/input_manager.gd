@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+# Copyright (C) 2026 Mateus Alkimim
 extends Node
 
 signal look_input_changed(delta: Vector2)
