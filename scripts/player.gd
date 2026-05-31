@@ -10,10 +10,15 @@ const PITCH_CLAMP: float = PI / 2.0 - 0.05
 @onready var camera: Camera3D = $CameraPivot/Camera3D
 
 var _pitch: float = 0.0
+var _mouse_settle: int = 0
 
 func _ready() -> void:
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	_capture_mouse()
 	InputBus.look_input_changed.connect(_on_look_mouse)
+
+func _capture_mouse() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	_mouse_settle = 3
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -36,10 +41,15 @@ func _physics_process(delta: float) -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
-		var captured := Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE if captured else Input.MOUSE_MODE_CAPTURED)
+		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		else:
+			_capture_mouse()
 
 func _on_look_mouse(delta: Vector2) -> void:
+	if _mouse_settle > 0:
+		_mouse_settle -= 1
+		return
 	_apply_look(delta)
 
 func _apply_look(look_delta: Vector2) -> void:
