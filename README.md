@@ -287,7 +287,7 @@ O executável final deve rodar em **Windows e Linux** sem modificações. Aprese
 | Claude Code | — | `~/.local/bin/claude` |
 | Driver xone (dongle Xbox) | DKMS | `sudo bash setup-xbox-linux.sh` (deps: dkms, kernel-devel, git, cabextract) |
 
-**Launcher**: `~/Área de trabalho/Lab Relatividade.desktop` — abre Godot → aguarda LSP (porta 6005) → VS Code → terminal com Claude Code, tudo no diretório do projeto.
+**Launcher**: `~/Área de trabalho/Lab Relatividade.desktop` — abre Godot → aguarda LSP (porta 6005) → VS Code → terminal com Claude Code, tudo no diretório do projeto. Se o terminal com Claude já estiver aberto, foca a janela existente em vez de abrir uma nova.
 
 **Nota Flatpak**: VS Code e Godot rodam em sandboxes separadas. A comunicação entre eles (abrir arquivo no editor externo) usa o wrapper `~/.local/bin/godot4-vscode` via `flatpak-spawn --host`. O Language Server conecta normalmente via localhost:6005.
 
@@ -410,7 +410,11 @@ ParadoxoRelatividade/
 - Yaw aplicado ao `CharacterBody3D` (rotaciona corpo)
 - Pitch aplicado ao `CameraPivot` (apenas câmera)
 - Sensibilidade configurável (gamepad e mouse separados)
-- Clamp de pitch entre -π/2 + 0.1 e π/2 - 0.1
+- Clamp de pitch entre -π/2 + 0.05 e π/2 - 0.05
+- Input de gamepad ignorado quando nenhum joystick está conectado (evita drift do dongle Xbox sem controle na mão)
+- Eventos de mouse descartados por 100 ms após captura e quando delta > 0.5 rad (artefato de warp X11)
+
+**Limitação conhecida**: mouse via AnyDesk não movimenta a câmera — o AnyDesk injeta eventos sintéticos (XTest) que não passam pelo pointer grab do Godot em `MOUSE_MODE_CAPTURED`. Touchpad e mouse USB físicos funcionam normalmente.
 
 ### 7.5 Sistema de Esteira e Guilhotinas
 
@@ -787,7 +791,7 @@ Preferir sinais em vez de referências diretas entre sistemas independentes. O a
 
 ---
 
-*Última atualização: 30 de maio de 2026*
+*Última atualização: 31 de maio de 2026*
 *Projeto desenvolvido como instrumento de ensino de Relatividade Especial para o ensino médio brasileiro.*
 
 ---
