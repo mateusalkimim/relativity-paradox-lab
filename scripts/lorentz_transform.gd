@@ -4,7 +4,7 @@ const C: float = 1.0
 const BETA_MAX: float = 0.99
 
 static func gamma(beta: float) -> float:
-	var b := clamp(beta, 0.0, BETA_MAX)
+	var b: float = clamp(beta, 0.0, BETA_MAX)
 	return 1.0 / sqrt(1.0 - b * b)
 
 static func contracted_length(proper_length: float, beta: float) -> float:

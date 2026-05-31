@@ -15,7 +15,7 @@ const LOG_Y: float = 0.85
 
 const STRIPE_COUNT: int = 5
 
-var _log: MeshInstance3D
+var _log: Node3D
 var _stripes: Array[MeshInstance3D] = []
 
 func _ready() -> void:
@@ -54,7 +54,11 @@ func _build_stripes() -> void:
 		_stripes.append(stripe)
 
 func _build_log() -> void:
-	_log = _add_mesh("Log", Vector3(LOG_RESET_X, LOG_Y, 0.0), Vector3(LOG_PROPER_LENGTH, 0.5, 0.5), Color(0.545, 0.357, 0.169))
+	var packed: PackedScene = load("res://scenes/world/tora.tscn")
+	_log = packed.instantiate()
+	_log.name = "Tora"
+	_log.position = Vector3(LOG_RESET_X, LOG_Y, 0.0)
+	add_child(_log)
 
 func _add_mesh(node_name: String, pos: Vector3, size: Vector3, color: Color) -> MeshInstance3D:
 	var mi := MeshInstance3D.new()

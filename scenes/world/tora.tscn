@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/tora.gd" id="1"]
+
+; Corpo da tora — madeira clara (#8B7355), shading per-vertex para look flat/low-poly
+[sub_resource type="StandardMaterial3D" id="2"]
+shading_mode = 2
+albedo_color = Color(0.545, 0.357, 0.169, 1)
+roughness = 0.9
+
+; Tampas circulares — madeira escura (#6B4423), sugerindo anéis de crescimento
+[sub_resource type="StandardMaterial3D" id="3"]
+shading_mode = 2
+albedo_color = Color(0.420, 0.267, 0.137, 1)
+roughness = 0.9
+
+; Cilindro principal: diâmetro 0.5 (raio 0.25) para sentar em LOG_Y=0.85 sobre a esteira.
+; cap_top/bottom desativados para evitar z-fighting com as tampas explícitas.
+; 8 lados radiais + 1 anel = geometria mínima. height = L₀ = 4 unidades.
+[sub_resource type="CylinderMesh" id="4"]
+top_radius = 0.25
+bottom_radius = 0.25
+height = 4.0
+radial_segments = 8
+rings = 1
+cap_top = false
+cap_bottom = false
+
+; Disco de tampa: mesmo raio do corpo para silhueta contínua
+[sub_resource type="CylinderMesh" id="5"]
+top_radius = 0.25
+bottom_radius = 0.25
+height = 0.05
+radial_segments = 8
+rings = 1
+
+; Root com pivot no centro geométrico — scale.x = 1/γ contrai simetricamente
+[node name="Tora" type="Node3D"]
+script = ExtResource("1")
+
+; Rotação -90° em Z: eixo local Y (height do cilindro) alinha com mundo X (direção do movimento)
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(0, -1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("4")
+surface_material_override/0 = SubResource("2")
+
+; Tampa esquerda: x=-2 (metade de L₀=4)
+[node name="CapLeft" type="MeshInstance3D" parent="."]
+transform = Transform3D(0, -1, 0, 1, 0, 0, 0, 0, 1, -2, 0, 0)
+mesh = SubResource("5")
+surface_material_override/0 = SubResource("3")
+
+; Tampa direita: x=+2
+[node name="CapRight" type="MeshInstance3D" parent="."]
+transform = Transform3D(0, -1, 0, 1, 0, 0, 0, 0, 1, 2, 0, 0)
+mesh = SubResource("5")
+surface_material_override/0 = SubResource("3")
