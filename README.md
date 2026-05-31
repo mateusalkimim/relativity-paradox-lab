@@ -275,7 +275,7 @@ O executável final deve rodar em **Windows e Linux** sem modificações. Aprese
 - **Nomes de asset**: apenas caracteres ASCII sem acentos ou espaços — sistemas Windows são case-insensitive e têm restrições de caracteres que o Linux não tem.
 - **Chamadas de sistema** (`OS.execute`, `OS.shell_open`): só usar se testado nas duas plataformas.
 - **Export templates**: ao chegar na Semana 5, gerar templates para `Windows Desktop` (.exe) e `Linux/X11` (.x86_64) a partir do mesmo projeto.
-- **Gamepad Xbox**: funciona nativamente via XInput (Windows) e SDL/xpad (Linux) — sem código condicional de plataforma necessário.
+- **Gamepad Xbox**: funciona nativamente via XInput (Windows). No Linux, controle **com fio** funciona via SDL/xpad sem configuração; receptor **USB sem fio (dongle)** requer o driver `xone` (DKMS) — instalar com `sudo bash setup-xbox-linux.sh` (AlmaLinux 9 / RHEL). Sem código condicional de plataforma no Godot.
 
 ### 5.4 Ambiente de Desenvolvimento
 
@@ -285,6 +285,7 @@ O executável final deve rodar em **Windows e Linux** sem modificações. Aprese
 | VS Code | 1.122.0 | Flatpak (usuário) — `code` |
 | godot-tools | 2.6.1 | Extensão VS Code |
 | Claude Code | — | `~/.local/bin/claude` |
+| Driver xone (dongle Xbox) | DKMS | `sudo bash setup-xbox-linux.sh` (deps: dkms, kernel-devel, git, cabextract) |
 
 **Launcher**: `~/Área de trabalho/Lab Relatividade.desktop` — abre Godot → aguarda LSP (porta 6005) → VS Code → terminal com Claude Code, tudo no diretório do projeto.
 
