@@ -93,5 +93,6 @@ func _build_vignette() -> void:
 	_vignette = ColorRect.new()
 	_vignette.color = Color(0.05, 0.02, 0.15, 1.0)
 	_vignette.modulate.a = 0.0
+	_vignette.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_vignette.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	canvas.add_child(_vignette)
