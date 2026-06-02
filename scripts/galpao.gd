@@ -18,9 +18,10 @@ func _ready() -> void:
 	_build_guillotines()
 	_setup_lighting()
 	_build_hud()
+	_build_frame_controller()
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("action_primary"):
+	if event.is_action_pressed("action_primary") and not GameState.is_transitioning:
 		_guillotine_left.drop()
 		_guillotine_right.drop()
 
@@ -78,6 +79,12 @@ func _build_hud() -> void:
 	var hud := HUD.new()
 	hud.name = "HUD"
 	add_child(hud)
+
+func _build_frame_controller() -> void:
+	var fc := FrameController.new()
+	fc.name = "FrameController"
+	add_child(fc)
+	fc.init(_esteira, _guillotine_left, _guillotine_right)
 
 func _build_esteira() -> void:
 	_esteira = load("res://scenes/world/esteira.tscn").instantiate() as Esteira

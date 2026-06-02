@@ -55,6 +55,8 @@ func _process(delta: float) -> void:
 	_move_tora(delta)
 
 func _unhandled_input(event: InputEvent) -> void:
+	if GameState.is_transitioning:
+		return
 	if event.is_action_pressed("speed_up"):
 		GameState.increase_speed()
 	elif event.is_action_pressed("speed_down"):
@@ -103,6 +105,9 @@ func _create_stripe_texture() -> ImageTexture:
 
 func _move_tora(delta: float) -> void:
 	if _tora == null:
+		return
+	# No referencial de Bob a tora está em repouso; só o mundo se move
+	if GameState.current_frame == GameState.Frame.BOB:
 		return
 	_tora.position.x += GameState.belt_beta * VISUAL_C * delta
 	if _tora.position.x > LOG_EXIT_X:
