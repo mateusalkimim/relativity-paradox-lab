@@ -57,11 +57,6 @@ var _lifecycle_tween: Tween
 var _world_speed_scale: float = 1.0
 var _bob_pass_done: bool = false
 var _bob_stop_tween: Tween
-# Ponto de corte marcado no ACIONAMENTO, em coordenada local da tora
-# (ponto material: viaja com a madeira e sobrevive a escala/snap) — sem isso
-# a tora anda durante a queda da lâmina e o corte cai longe da mira.
-# Chave: Guillotine → float local_x
-var _pending_cuts: Dictionary = {}
 
 # 7. Funções built-in
 
@@ -122,46 +117,35 @@ func _drop_guillotines() -> void:
 		return
 	if GameState.current_frame == GameState.Frame.ALICE:
 		# Referencial da esteira: descida simultânea por definição
-		_mark_and_drop(_guillotine_left)
-		_mark_and_drop(_guillotine_right)
+		_guillotine_left.drop()
+		_guillotine_right.drop()
 		return
 	# Referencial de Bob: a simultaneidade se desfaz. A guilhotina da frente
 	# (direita, no sentido do movimento) desce primeiro; a esquerda desce
 	# Δt' = γ·L₀·v/c² depois (Alencar et al. 2023, §III.A).
 	# VISUAL_C converte tempo físico (c=1) para a escala visual do show.
-	# Cada lâmina marca a madeira quando ELA dispara — o mundo desliza no
-	# intervalo, então as marcas caem em pontos materiais diferentes.
-	_mark_and_drop(_guillotine_right)
+	_guillotine_right.drop()
 	var separation := _guillotine_right.position.x - _guillotine_left.position.x
 	var offset := LorentzTransform.simultaneity_offset(separation, GameState.belt_beta) \
 		/ Esteira.VISUAL_C
-	get_tree().create_timer(offset).timeout.connect(_mark_and_drop.bind(_guillotine_left))
+	get_tree().create_timer(offset).timeout.connect(_guillotine_left.drop)
 
-# Marca o ponto de corte no instante do disparo — gatilho = intenção do
-# operador — e solta a lâmina. to_local absorve posição/escala da tora
-# (a coordenada local é em unidades de L₀, como cut_at espera).
-func _mark_and_drop(guillotine: Guillotine) -> void:
-	var blade_x := guillotine.global_position.x
-	var local_x := _tora.to_local(Vector3(blade_x, _tora.global_position.y,
-			_tora.global_position.z)).x
-	if absf(local_x) < _tora.rest_length * 0.5:
-		_pending_cuts[guillotine] = local_x
-	else:
-		# Sem madeira sob a lâmina no disparo: remove marca antiga que
-		# sobrou de uma queda anterior interrompida pelo corte da outra lâmina
-		_pending_cuts.erase(guillotine)
-	guillotine.drop()
-
-# A lâmina cruzou o topo da tora: executa o corte na marca feita no disparo.
+# A lâmina cruzou o topo da tora: corta se houver madeira sob ela.
+# A queda quase instantânea (Guillotine.FALL_SPEED) garante que o corte sai
+# onde o operador mirou; a tora anda < 0.1u entre o gatilho e o cruzamento.
+# global_position absorve a escala/posição do MovingWorld automaticamente.
 func _check_cut(guillotine: Guillotine) -> void:
-	if _tora.is_cut or not _pending_cuts.has(guillotine):
+	if _tora.is_cut:
 		return
-	_tora.cut_at(_pending_cuts[guillotine])
-	_pending_cuts.erase(guillotine)
+	var blade_x := guillotine.global_position.x
+	var tora_x := _tora.global_position.x
+	# Meia-extensão no espaço global: L₀/2 × escala efetiva da tora (1/γ em ALICE)
+	var half_extent := _tora.rest_length * 0.5 * _tora.global_transform.basis.x.length()
+	if absf(blade_x - tora_x) < half_extent:
+		var local_x := _tora.to_local(Vector3(blade_x, _tora.global_position.y, _tora.global_position.z)).x
+		_tora.cut_at(local_x)
 
 func _restore_tora() -> void:
-	# Tora nova em cena: marcas da anterior não valem para esta madeira
-	_pending_cuts.clear()
 	if _tora.is_cut:
 		_tora.restore()
 		GameState.set_tora_cut(false)

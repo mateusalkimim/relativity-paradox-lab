@@ -9,11 +9,12 @@ enum State { READY, FALLING, DOWN, RETRACTING }
 # tora (CUT_PLANE_Y). O FrameController decide se há madeira sob a lâmina.
 signal blade_crossed_cut_plane
 
-# 14: queda pesada porém rápida (~0.21s até o plano de corte) — a mira não
-# depende dela (o ponto é marcado no disparo), mas a resposta fica imediata
-const FALL_SPEED: float = 14.0
-const RETRACT_SPEED: float = 3.0
-const DOWN_DURATION: float = 1.5
+# Queda no limite da percepção (~0.06s, 3-4 frames até o plano de corte):
+# rápida o bastante para o corte sair onde o operador mirou (a tora anda
+# < 0.1u nesse tempo mesmo a 0.99c), lenta o bastante para não teleportar.
+const FALL_SPEED: float = 50.0
+const RETRACT_SPEED: float = 15.0
+const DOWN_DURATION: float = 0.25
 
 const FRAME_HEIGHT: float = 5.0
 const BLADE_RAISED_Y: float = 4.0
@@ -94,9 +95,24 @@ func _build_blade() -> void:
 	_blade_assembly.position.y = BLADE_RAISED_Y
 	add_child(_blade_assembly)
 
-	# Corpo da lâmina — face cortante prateada, desliza entre as guias
+	# Corpo da lâmina — chapa prateada que desliza entre as guias
 	_mesh(_blade_assembly, "BladeBody",
-			Vector3(0.0, 0.0, 0.0), Vector3(0.10, 0.55, 1.76), COLOR_BLADE, 0.3)
+			Vector3(0.0, 0.09, 0.0), Vector3(0.10, 0.37, 1.76), COLOR_BLADE, 0.3)
+
+	# Gume em cunha: prisma triangular com o ápice para baixo completa a
+	# chapa — mesma envoltória da caixa antiga (base em y=-0.275), então
+	# CUT_PLANE_Y e BLADE_DOWN_Y não mudam
+	var edge := MeshInstance3D.new()
+	edge.name = "BladeEdge"
+	edge.position = Vector3(0.0, -0.185, 0.0)
+	edge.rotation.z = PI  # ápice do prisma aponta para baixo
+	var prism := PrismMesh.new()
+	prism.size = Vector3(0.10, 0.18, 1.76)
+	edge.mesh = prism
+	edge.set_surface_override_material(0,
+			(_blade_assembly.get_node("BladeBody") as MeshInstance3D)
+			.get_surface_override_material(0))
+	_blade_assembly.add_child(edge)
 
 	# Bloco de peso — ferro escuro sobre a lâmina, dá massa visual ao conjunto
 	_mesh(_blade_assembly, "BladeWeight",
