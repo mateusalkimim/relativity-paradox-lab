@@ -53,6 +53,7 @@ var _guillotine_left: Guillotine
 var _guillotine_right: Guillotine
 var _bob_avatar: Avatar
 var _alice_avatar: Avatar
+var _player: CharacterBody3D
 var _tint: ColorRect
 var _phase: ToraPhase = ToraPhase.RIDING
 var _lifecycle_tween: Tween
@@ -216,6 +217,30 @@ func _follow_tora_with_bob() -> void:
 			BOB_MIN_X, EXIT_TRIGGER_X)
 	_bob_avatar.scale.x = _tora.scale.x
 
+# Meio da transição: o operador vai pro posto do referencial novo e o NPC
+# que ele encarna some (o corpo em primeira pessoa do Player assume — você
+# olha pra baixo e vê as mãos/pernas dele).
+func _midpoint_swap() -> void:
+	var is_bob := GameState.current_frame == GameState.Frame.BOB
+	if not is_bob:
+		# Reassenta o Bob NPC atrás da tora antes de revelá-lo (a tora está
+		# no meio do tween de volta; sem isso ele apareceria onde a passada parou)
+		_follow_tora_with_bob()
+	var player := _get_player()
+	if player != null:
+		var target: Avatar = _bob_avatar if is_bob else _alice_avatar
+		player.global_position = target.global_position
+		player.velocity = Vector3.ZERO
+	_bob_avatar.visible = not is_bob
+	_alice_avatar.visible = is_bob
+
+# Lazy: o Player entra na cena depois do Galpao (main.tscn), então o grupo
+# "player" ainda não existe quando este controller dá _ready
+func _get_player() -> CharacterBody3D:
+	if _player == null:
+		_player = get_tree().get_first_node_in_group("player") as CharacterBody3D
+	return _player
+
 # Garante a tora assentada na correia (usado na troca de referencial,
 # que pode interromper animações de entrada/saída no meio). Bob vem junto:
 # o snap pode pegá-lo no meio do mergulho no poço.
@@ -238,6 +263,9 @@ func _on_frame_changed(new_frame: GameState.Frame) -> void:
 	if _lifecycle_tween != null and _lifecycle_tween.is_valid():
 		_lifecycle_tween.kill()
 	_snap_tora_to_belt()
+	# Encarnação no meio da transição (o Player troca o corpo dele no mesmo
+	# instante, ver player.gd._on_frame_changed)
+	get_tree().create_timer(TRANSITION_DURATION * 0.5).timeout.connect(_midpoint_swap)
 
 	var inv_gamma := 1.0 / GameState.get_gamma()
 	var is_bob := new_frame == GameState.Frame.BOB

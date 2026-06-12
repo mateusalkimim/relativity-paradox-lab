@@ -62,6 +62,9 @@ func _ready() -> void:
 func play(anim: String) -> void:
 	if _anim_player == null or not _anim_player.has_animation(anim):
 		return
+	# Idempotente: chamado todo frame pelo player.gd (andar/parar)
+	if _anim_player.current_animation == anim:
+		return
 	_anim_player.get_animation(anim).loop_mode = Animation.LOOP_LINEAR
 	_anim_player.play(anim)
 
