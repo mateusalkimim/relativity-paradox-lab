@@ -36,3 +36,7 @@ __pycache__/
 # Claude Code local config
 .claude/
 .env
+
+# Pacotes de asset originais (zips re-baixáveis; o que o jogo usa está
+# extraído em assets/models/characters/)
+assets/packages/

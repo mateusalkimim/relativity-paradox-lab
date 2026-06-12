@@ -253,6 +253,7 @@ Variação do Barra e Fenda em que a barra cai sob gravidade enquanto cruza a fe
 - **Controle**: Gamepad Xbox (testado nativamente no Godot 4)
 - **Versionamento**: Git
 - **Geração de assets 3D**: Hyper3D.ai (Rodin) — exportação em GLB
+- **Personagens e animações**: KayKit (Kay Lousberg, kaylousberg.com) — CC0; Adventurers 2.0 FREE + Character Animations 1.1 (Rig_Medium), extraídos em `assets/models/characters/` (zips originais em `assets/packages/`, fora do versionamento)
 - **Geração de assets 2D**: PixelLab.ai — pixel art para sprites
 - **Pipeline de áudio**: a definir (Freesound, geração própria)
 
@@ -569,7 +570,8 @@ ParadoxoRelatividade/
 - [x] Detecção e visual de corte — lâmina cruza o plano da tora, corte geométrico, tora se separa em duas metades animadas; indicador na HUD
 - [x] Reset da cena (Botão B) — `reset_session()` + reload
 - [x] Cena do paradoxo funcionando completa em ambos os frames
-- [x] Avatares Bob e Alice (`avatar.gd`, low-poly procedural) — Bob viaja na correia atrás da tora (contrai com ela em ALICE); Alice no posto ao lado da esteira (contrai com o mundo em BOB)
+- [x] Avatares Bob e Alice (`avatar.gd`) — Bob viaja na correia atrás da tora (contrai com ela em ALICE); Alice no posto ao lado da esteira (contrai com o mundo em BOB)
+- [x] Modelos KayKit animados nos avatares — Bob = Barbarian, Alice = Rogue sem capa, idle do Rig_Medium (`general/Idle_A`); fallback low-poly procedural se o GLB faltar; `tools/Sawing` e `Working_A/B/C` disponíveis pra cenografia futura
 - [x] Troca de corpo no meio da transição — no pico do tint o player teleporta para o posto do referencial novo e os avatares trocam de visibilidade
 - [x] Soft-cap de velocidade em BOB (β ≤ 0.9) — a 0.99c o offset de simultaneidade excederia a duração da passada; 0.99c fica reservado ao Ato 1 em ALICE
 - [x] Correia fora do MovingWorld + scroll só em ALICE — a superfície da correia está em repouso com a tora, não com o galpão
