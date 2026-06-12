@@ -12,21 +12,45 @@ class_name FrameController
 # "Mundo" = MovingWorld (galpão + guilhotinas + esteira), montado por galpao.gd.
 # A tora vive FORA desse grupo justamente para não herdar a escala do mundo.
 
+enum ToraPhase { RIDING, EXITING, SPAWNING }
+
 # 1. Constantes
 const TRANSITION_DURATION: float = 2.0
-# Faixa de viagem relativa tora↔mundo — mesmos limites da esteira de 20u
-const LOG_RESET_X: float = -9.0
-const LOG_EXIT_X: float = 9.0
+# Spawn: traseira da tora (centro − 2u) ainda sobre a correia (início em -10).
+# Sincronizado com Esteira.FEED_X (calha) e galpao.LOG_RESET_X.
+const LOG_RESET_X: float = -7.5
+# Gatilho de saída: centro de gravidade próximo do rolete final (x=10) —
+# ponto em que a tora começaria a tombar de verdade
+const EXIT_TRIGGER_X: float = 9.6
+const LOG_Y: float = 0.75
+# Queda da calha: tora nasce no vão do V (Esteira._build_hopper)
+const SPAWN_Y: float = 2.35
+const SPAWN_DURATION: float = 0.6
+# Mergulho no poço de descarga (Esteira.PIT_X)
+const PIT_X: float = 11.55
+const EXIT_DURATION: float = 0.9
+const EXIT_DIVE_Y: float = -1.6
+const EXIT_SINK_Y: float = -2.4
+const EXIT_TILT_RAD: float = -1.1
+# Desaceleração suave do mundo ao fim da passada em BOB
+const BOB_STOP_DURATION: float = 1.0
 # Pico de opacidade do tint azulado durante a transição (efeito sutil, README Semana 3)
 const TINT_PEAK_ALPHA: float = 0.22
 const TINT_COLOR: Color = Color(0.45, 0.65, 1.0)
 
 # 5. Variáveis privadas
 var _world: Node3D
+var _esteira: Esteira
 var _tora: Tora
 var _guillotine_left: Guillotine
 var _guillotine_right: Guillotine
 var _tint: ColorRect
+var _phase: ToraPhase = ToraPhase.RIDING
+var _lifecycle_tween: Tween
+# Fator de desaceleração do mundo em BOB (1.0 = velocidade plena da passada)
+var _world_speed_scale: float = 1.0
+var _bob_pass_done: bool = false
+var _scroll_scale_default: float = 0.8
 
 # 7. Funções built-in
 
@@ -43,16 +67,16 @@ func _process(delta: float) -> void:
 		return
 	var step := GameState.belt_beta * Esteira.VISUAL_C * delta
 	if GameState.current_frame == GameState.Frame.ALICE:
-		_tora.position.x += step
-		if _tora.position.x > LOG_EXIT_X:
-			_tora.position.x = LOG_RESET_X
-			_restore_tora()
+		# Tora só viaja em RIDING; EXITING/SPAWNING são animados por tween
+		if _phase == ToraPhase.RIDING:
+			_tora.position.x += step
+			if _tora.position.x > EXIT_TRIGGER_X:
+				_begin_exit()
 	else:
 		# No referencial de Bob a tora está em repouso; é o mundo que passa por ela
-		_world.position.x -= step
-		if _tora.position.x - _world.position.x > LOG_EXIT_X:
-			_world.position.x = _tora.position.x - LOG_RESET_X
-			_restore_tora()
+		_world.position.x -= step * _world_speed_scale
+		if not _bob_pass_done and _tora.position.x - _world.position.x > EXIT_TRIGGER_X:
+			_finish_bob_pass()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("switch_frame"):
@@ -67,8 +91,11 @@ func _unhandled_input(event: InputEvent) -> void:
 # 8. Funções públicas
 
 # Chamado por galpao.gd antes de add_child — injeta as referências da cena
-func setup(world: Node3D, tora: Tora, guillotine_left: Guillotine, guillotine_right: Guillotine) -> void:
+func setup(world: Node3D, esteira: Esteira, tora: Tora,
+		guillotine_left: Guillotine, guillotine_right: Guillotine) -> void:
 	_world = world
+	_esteira = esteira
+	_scroll_scale_default = esteira.uv_scroll_visual_scale
 	_tora = tora
 	_guillotine_left = guillotine_left
 	_guillotine_right = guillotine_right
@@ -114,12 +141,68 @@ func _restore_tora() -> void:
 		_tora.restore()
 		GameState.set_tora_cut(false)
 
+# Saída (ALICE): a tora passa do rolete final, tomba e mergulha no poço de
+# descarga; o interior escuro do poço mascara o despawn. Depois, respawn.
+func _begin_exit() -> void:
+	_phase = ToraPhase.EXITING
+	_lifecycle_tween = create_tween().set_parallel(true)
+	_lifecycle_tween.tween_property(_tora, "position:x", PIT_X, EXIT_DURATION) \
+		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	_lifecycle_tween.tween_property(_tora, "position:y", EXIT_DIVE_Y, EXIT_DURATION) \
+		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+	_lifecycle_tween.tween_property(_tora, "rotation:z", EXIT_TILT_RAD, EXIT_DURATION) \
+		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+	# Afunda o resto do comprimento abaixo do chão antes do respawn
+	_lifecycle_tween.chain().tween_property(_tora, "position:y", EXIT_SINK_Y, 0.25)
+	_lifecycle_tween.chain().tween_interval(0.2)
+	_lifecycle_tween.chain().tween_callback(_spawn_tora)
+
+# Entrada (ALICE): tora nova cai da calha de alimentação com leve bounce
+func _spawn_tora() -> void:
+	_phase = ToraPhase.SPAWNING
+	_restore_tora()
+	_tora.rotation.z = 0.0
+	_tora.position = Vector3(LOG_RESET_X, SPAWN_Y, 0.0)
+	_lifecycle_tween = create_tween()
+	_lifecycle_tween.tween_property(_tora, "position:y", LOG_Y, SPAWN_DURATION) \
+		.set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
+	_lifecycle_tween.tween_callback(func() -> void: _phase = ToraPhase.RIDING)
+
+# Fim da passada em BOB: o galpão já passou inteiro pela tora. Em vez de
+# teleportar de volta, o mundo desacelera suavemente e para — a repetição
+# fica a cargo do operador (LB volta a Alice, B reseta, slow-mo no replay).
+# O scroll da correia desacelera junto para manter a coerência visual.
+func _finish_bob_pass() -> void:
+	_bob_pass_done = true
+	var tween := create_tween().set_parallel(true) \
+		.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	tween.tween_property(self, "_world_speed_scale", 0.0, BOB_STOP_DURATION)
+	tween.tween_property(_esteira, "uv_scroll_visual_scale", 0.0, BOB_STOP_DURATION)
+
+func _reset_bob_pass() -> void:
+	_bob_pass_done = false
+	_world_speed_scale = 1.0
+	_esteira.uv_scroll_visual_scale = _scroll_scale_default
+
+# Garante a tora assentada na correia (usado na troca de referencial,
+# que pode interromper animações de entrada/saída no meio)
+func _snap_tora_to_belt() -> void:
+	_phase = ToraPhase.RIDING
+	_tora.rotation.z = 0.0
+	_tora.position.x = clampf(_tora.position.x, LOG_RESET_X, EXIT_TRIGGER_X)
+	_tora.position.y = LOG_Y
+
 func _reset_scene() -> void:
 	GameState.reset_session()
 	get_tree().reload_current_scene()
 
 func _on_frame_changed(new_frame: GameState.Frame) -> void:
 	GameState.is_transitioning = true
+	# Animação de ciclo da tora não sobrevive à troca de referencial
+	if _lifecycle_tween != null and _lifecycle_tween.is_valid():
+		_lifecycle_tween.kill()
+	_snap_tora_to_belt()
+
 	var inv_gamma := 1.0 / GameState.get_gamma()
 	var is_bob := new_frame == GameState.Frame.BOB
 	var tora_target := 1.0 if is_bob else inv_gamma
@@ -130,6 +213,19 @@ func _on_frame_changed(new_frame: GameState.Frame) -> void:
 	tween.tween_property(_tora, "scale:x", tora_target, TRANSITION_DURATION)
 	tween.tween_property(_world, "scale:x", world_target, TRANSITION_DURATION)
 	tween.tween_method(_set_tint_progress, 0.0, 1.0, TRANSITION_DURATION)
+
+	if not is_bob:
+		# Recentra o palco: em BOB o mundo deslizou; preservamos a posição
+		# relativa tora↔galpão trazendo ambos de volta junto com a transição.
+		# Se a passada já tinha terminado, recomeça com tora nova na entrada.
+		var rel := _tora.position.x - _world.position.x
+		var tora_target_x := rel if rel <= EXIT_TRIGGER_X else LOG_RESET_X
+		if rel > EXIT_TRIGGER_X:
+			_restore_tora()
+		tween.tween_property(_world, "position:x", 0.0, TRANSITION_DURATION)
+		tween.tween_property(_tora, "position:x", tora_target_x, TRANSITION_DURATION)
+		_reset_bob_pass()
+
 	tween.chain().tween_callback(func() -> void: GameState.is_transitioning = false)
 
 func _on_velocity_changed(_beta: float) -> void:

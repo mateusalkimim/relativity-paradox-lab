@@ -2,12 +2,15 @@
 # Copyright (C) 2026 Mateus Alkimim
 extends Node3D
 
-const GALPAO_LENGTH: float = 20.0
-const GALPAO_WIDTH: float = 8.0
-const GALPAO_HEIGHT: float = 5.0
+# Fallback procedural: dimensões aproximadas do GLB girado (26×15×6)
+const GALPAO_LENGTH: float = 26.0
+const GALPAO_WIDTH: float = 15.0
+const GALPAO_HEIGHT: float = 6.0
 const GUILLOTINE_SEPARATION: float = 4.0
 
-const LOG_RESET_X: float = -9.0
+# Sincronizado com FrameController.LOG_RESET_X: spawn com a traseira da
+# tora (centro − 2u) ainda sobre a correia (que começa em x = -10)
+const LOG_RESET_X: float = -7.5
 const LOG_Y: float = 0.75
 
 var _guillotine_left: Guillotine
@@ -59,7 +62,7 @@ func _build_ground() -> void:
 func _build_frame_controller() -> void:
 	var fc := FrameController.new()
 	fc.name = "FrameController"
-	fc.setup(_world, _tora, _guillotine_left, _guillotine_right)
+	fc.setup(_world, _esteira, _tora, _guillotine_left, _guillotine_right)
 	add_child(fc)
 
 func _build_structure() -> void:
@@ -78,7 +81,12 @@ func _build_galpao_mesh() -> void:
 	var mesh_node: Node3D = packed.instantiate()
 	mesh_node.name = "GalpaoMesh"
 	mesh_node.scale = Vector3(0.25, 0.25, 0.25)
-	mesh_node.position = Vector3(0.0, -0.44, -3.0)
+	# Rotação 90°: o eixo longo do GLB (25.6u) alinha com a esteira (eixo X).
+	# Sem isso a esteira de 20u atravessa as paredes (interior x era ±7.6).
+	# Offset recentra o bbox girado: paredes ficam em x ±12.8, z ±7.6 —
+	# folga de ~2.5u nas pontas da esteira para o player passar.
+	mesh_node.rotation_degrees = Vector3(0.0, 90.0, 0.0)
+	mesh_node.position = Vector3(-3.34, -0.44, -0.06)
 	_world.add_child(mesh_node)
 	_add_trimesh_collision(mesh_node)
 
@@ -93,7 +101,8 @@ func _build_skydome() -> void:
 	sphere.name = "Skydome"
 	sphere.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 
-	sphere.position = Vector3(0.0, 12.5, -3.0)
+	# Centrado no galpão girado (antes acompanhava o offset z=-3 do GLB)
+	sphere.position = Vector3(0.0, 12.5, 0.0)
 
 	var mesh := SphereMesh.new()
 	mesh.radius = 35.16

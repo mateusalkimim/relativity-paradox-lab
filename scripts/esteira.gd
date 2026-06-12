@@ -27,6 +27,13 @@ const MID_ROLLER_RADIUS: float = 0.22
 const MID_ROLLER_XS: Array[float] = [-7.5, -5.0, -2.5, 0.0, 2.5, 5.0, 7.5]
 const LEG_XS: Array[float] = [-5.0, 0.0, 5.0]
 
+# Cenografia do ciclo da tora (sincronizado com FrameController):
+# FEED_X = LOG_RESET_X — a tora cai da calha neste x
+# PIT_X — centro do poço de descarga onde a tora mergulha na saída
+const FEED_X: float = -7.5
+const PIT_X: float = 11.55
+const COLOR_PIT: Color = Color(0.04, 0.04, 0.05)  # quase-preto: lê como buraco
+
 # 2. Exportadas
 
 # Tune this in the Inspector while the game runs to visually match belt speed to tora.
@@ -98,6 +105,45 @@ func _build_structure() -> void:
 
 	# Bloco do motor na ponta de saída — dá direção visual à esteira
 	_add_box("Motor", Vector3(9.6, 0.30, 1.05), Vector3(0.7, 0.55, 0.5), COLOR_MOTOR, 0.4)
+
+	_build_hopper()
+	_build_discharge_pit()
+
+# Calha de alimentação: rack de aço sobre a entrada da esteira de onde a
+# tora nova cai (FrameController._spawn_tora). Pernas fora da correia (z ±1.0).
+func _build_hopper() -> void:
+	for i: int in 4:
+		var sx: float = -1.9 if i < 2 else 1.9
+		var sz: float = -1.0 if i % 2 == 0 else 1.0
+		_add_box("HopperLeg%d" % i, Vector3(FEED_X + sx, 1.1, sz),
+				Vector3(0.12, 2.2, 0.12), COLOR_RAIL)
+	_add_box("HopperRailL", Vector3(FEED_X, 2.25, -1.0), Vector3(3.95, 0.10, 0.10), COLOR_RAIL, 0.3)
+	_add_box("HopperRailR", Vector3(FEED_X, 2.25, 1.0), Vector3(3.95, 0.10, 0.10), COLOR_RAIL, 0.3)
+	# Calha em V: placas inclinadas com vão central por onde a tora é liberada
+	_add_sloped_plate("HopperPlateL", Vector3(FEED_X, 2.6, -0.42), 40.0)
+	_add_sloped_plate("HopperPlateR", Vector3(FEED_X, 2.6, 0.42), -40.0)
+
+func _add_sloped_plate(node_name: String, pos: Vector3, tilt_deg: float) -> void:
+	var mi := MeshInstance3D.new()
+	mi.name = node_name
+	mi.position = pos
+	mi.rotation_degrees.x = tilt_deg
+	var mesh := BoxMesh.new()
+	mesh.size = Vector3(4.2, 0.06, 1.0)
+	mi.mesh = mesh
+	mi.set_surface_override_material(0, _make_metal_material(COLOR_RAIL, 0.3))
+	add_child(mi)
+
+# Poço de descarga: abertura escura no chão depois da ponta da esteira.
+# A tora mergulha nele na saída e o interior quase-preto mascara o despawn.
+func _build_discharge_pit() -> void:
+	# Interior: caixa escura com topo no nível do chão — lê como buraco
+	_add_box("PitInterior", Vector3(PIT_X, -0.7, 0.0), Vector3(2.5, 1.4, 1.8), COLOR_PIT)
+	# Bordas metálicas emolduram a abertura
+	_add_box("PitRimFront", Vector3(PIT_X, 0.06, -1.0), Vector3(2.9, 0.12, 0.2), COLOR_RAIL, 0.3)
+	_add_box("PitRimBack", Vector3(PIT_X, 0.06, 1.0), Vector3(2.9, 0.12, 0.2), COLOR_RAIL, 0.3)
+	_add_box("PitRimLeft", Vector3(PIT_X - 1.35, 0.06, 0.0), Vector3(0.2, 0.12, 2.2), COLOR_RAIL, 0.3)
+	_add_box("PitRimRight", Vector3(PIT_X + 1.35, 0.06, 0.0), Vector3(0.2, 0.12, 2.2), COLOR_RAIL, 0.3)
 
 func _add_wrap_cap(node_name: String, x: float) -> void:
 	_add_cylinder(node_name, Vector3(x, 0.25, 0.0), 0.28, 1.52, COLOR_WRAP, 0.0)
