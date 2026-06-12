@@ -568,14 +568,16 @@ ParadoxoRelatividade/
 - [x] Modo câmera lenta (Botão X) — `Engine.time_scale = 0.25`, desacelera inclusive o offset das guilhotinas (útil no replay do Ato 3)
 - [x] Guilhotinas com offset temporal em `Frame.BOB` — direita desce primeiro, esquerda após `Δt' = γ·L₀·v/c²` (convertido pela escala visual)
 - [x] Detecção e visual de corte — lâmina cruza o plano da tora, corte geométrico, tora se separa em duas metades animadas; indicador na HUD
-- [x] Mira do corte corrigida — o ponto de corte é marcado em coordenada local da tora no instante do gatilho (intenção do operador) e executado quando a lâmina desce; antes a tora andava durante a queda e o corte caía fora da mira. Em BOB cada lâmina marca quando ela dispara, preservando a pedagogia da simultaneidade
+- [x] Mira do corte precisa — corte calculado no instante em que a lâmina cruza o topo da tora, com queda quase instantânea (~0.06s, no limite da percepção): a tora anda < 0.1u entre o gatilho e o cruzamento. Lâmina com gume em cunha (PrismMesh); retração e pausa embaixo também rápidas
 - [x] Reset da cena (Botão B) — `reset_session()` + reload
 - [x] Cena do paradoxo funcionando completa em ambos os frames
 - [x] Avatares Bob e Alice (`avatar.gd`) — Bob viaja na correia atrás da tora (contrai com ela em ALICE); Alice no posto ao lado da esteira (contrai com o mundo em BOB)
 - [x] Modelos KayKit animados nos avatares — Bob = Barbarian com machado de uma lâmina no `handslot.r` (lenhador a 0.9c), Alice = Rogue sem capa, idle do Rig_Medium (`general/Idle_A`); fallback low-poly procedural se o GLB faltar; `tools/Sawing` e `Working_A/B/C` disponíveis pra cenografia futura
-- [x] Troca de corpo no meio da transição — no pico do tint o player teleporta para o posto do referencial novo e os avatares trocam de visibilidade
+- [x] Operador como observador — Alice e Bob sempre visíveis em cena; a troca de referencial reconfigura o mundo sem mover o player (substituiu o conceito anterior de "trocar de corpo" com teleporte + troca de visibilidade)
 - [x] Soft-cap de velocidade em BOB (β ≤ 0.9) — a 0.99c o offset de simultaneidade excederia a duração da passada; 0.99c fica reservado ao Ato 1 em ALICE
-- [x] Correia fora do MovingWorld + scroll só em ALICE — a superfície da correia está em repouso com a tora, não com o galpão
+- [x] Correia física — sarrafos transladam com o mesmo passo da tora (`belt_beta × VISUAL_C × delta`) com wrap nas pontas e rolos girando (ω = v/r); substituiu o UV scroll, que dependia de fator de ajuste e não casava com a tora. Correia fora do MovingWorld, movimento só em ALICE (em BOB a superfície está em repouso com a tora)
+- [x] Bob completa o ciclo da madeira — segue até o fim da correia, mergulha no poço atrás da tora e cai da calha junto com a tora nova
+- [x] Iluminação estilizada (ref. Zelda Link's Awakening Remake) — WorldEnvironment com ambiente difuso forte + tonemap Filmic, sol moderado com penumbra macia (`light_angular_distance` + `shadow_blur`), materiais foscos sem metallic
 - [ ] Som ambiente do galpão
 - [ ] Efeitos sonoros pontuais (esteira, guilhotinas, transição)
 

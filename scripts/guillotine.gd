@@ -128,8 +128,10 @@ func _mesh(parent: Node3D, node_name: String, pos: Vector3, size: Vector3,
 	var mat := StandardMaterial3D.new()
 	mat.albedo_color = color
 	mat.shading_mode = BaseMaterial3D.SHADING_MODE_PER_VERTEX
-	mat.roughness = 0.85
-	mat.metallic = metallic
+	# Look LA Remake: fosco, metallic zerado (param vira leve ganho de specular)
+	mat.roughness = 0.9
+	mat.metallic = 0.0
+	mat.metallic_specular = 0.1 + metallic * 0.1
 	mi.mesh = mesh
 	mi.set_surface_override_material(0, mat)
 	parent.add_child(mi)

@@ -207,21 +207,38 @@ func _build_guillotines() -> void:
 	_guillotine_right.position.x = half_sep
 	_world.add_child(_guillotine_right)
 
+# Look Link's Awakening Remake: diorama de brinquedo — ambiente difuso forte
+# preenchendo tudo, sol moderado com penumbra macia, quase nenhum specular
+# (a parte de material fica nos helpers de esteira/guilhotina: metallic 0)
 func _setup_lighting() -> void:
+	var env := Environment.new()
+	env.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
+	env.ambient_light_color = Color(0.93, 0.91, 0.86)  # branco quente
+	env.ambient_light_energy = 0.7
+	env.tonemap_mode = Environment.TONE_MAPPER_FILMIC
+	var world_env := WorldEnvironment.new()
+	world_env.name = "WorldEnv"
+	world_env.environment = env
+	add_child(world_env)
+
 	var sun := DirectionalLight3D.new()
 	sun.name = "SunLight"
 	sun.rotation_degrees = Vector3(-50.0, 30.0, 0.0)
 	sun.light_color = Color(1.0, 0.92, 0.75)
-	sun.light_energy = 1.5
+	sun.light_energy = 1.0
 	sun.shadow_enabled = true
 	sun.shadow_bias = 0.05
+	# Penumbra: tamanho angular do sol + blur suavizam a borda da sombra
+	sun.light_angular_distance = 3.5
+	sun.shadow_blur = 2.0
 	add_child(sun)
 
+	# Fill discreto: o ambiente já preenche; só quebra o teto escuro
 	var fill := DirectionalLight3D.new()
 	fill.name = "FillLight"
 	fill.rotation_degrees = Vector3(-20.0, -150.0, 0.0)
 	fill.light_color = Color(0.5, 0.6, 0.8)
-	fill.light_energy = 0.4
+	fill.light_energy = 0.15
 	fill.shadow_enabled = false
 	add_child(fill)
 

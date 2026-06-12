@@ -14,12 +14,12 @@ roughness = 0.85
 [sub_resource type="BoxMesh" id="5"]
 size = Vector3(20.0, 0.05, 1.5)
 
-; Material dos roletes: cinza azulado metálico #6B7780
+; Material dos roletes: cinza azulado #6B7780 — fosco (look LA Remake)
 [sub_resource type="StandardMaterial3D" id="6"]
 shading_mode = 2
 albedo_color = Color(0.41961, 0.46667, 0.50196, 1)
-metallic = 0.6
-roughness = 0.4
+metallic_specular = 0.15
+roughness = 0.85
 
 ; Rolete: raio=0.25, comprimento=1.5, deitado em Z via rotação +90° em X.
 ; Centro em Y=0.25 → top do rolete em Y=0.5, tangente à face inferior da correia.
@@ -30,11 +30,12 @@ height = 1.5
 radial_segments = 8
 rings = 1
 
-; Material dos suportes: cinza azulado #4A5560
+; Material dos suportes: cinza azulado #4A5560 — fosco (look LA Remake)
 [sub_resource type="StandardMaterial3D" id="8"]
 shading_mode = 2
 albedo_color = Color(0.29020, 0.33333, 0.37647, 1)
-metallic = 0.3
+metallic_specular = 0.15
+roughness = 0.9
 
 ; Suporte: 0.15u × 0.5u (altura) × 0.15u — conecta os roletes ao chão (Y=0 → Y=0.5)
 [sub_resource type="BoxMesh" id="9"]
