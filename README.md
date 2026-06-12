@@ -568,10 +568,11 @@ ParadoxoRelatividade/
 - [x] Modo câmera lenta (Botão X) — `Engine.time_scale = 0.25`, desacelera inclusive o offset das guilhotinas (útil no replay do Ato 3)
 - [x] Guilhotinas com offset temporal em `Frame.BOB` — direita desce primeiro, esquerda após `Δt' = γ·L₀·v/c²` (convertido pela escala visual)
 - [x] Detecção e visual de corte — lâmina cruza o plano da tora, corte geométrico, tora se separa em duas metades animadas; indicador na HUD
+- [x] Mira do corte corrigida — o ponto de corte é marcado em coordenada local da tora no instante do gatilho (intenção do operador) e executado quando a lâmina desce; antes a tora andava durante a queda e o corte caía fora da mira. Em BOB cada lâmina marca quando ela dispara, preservando a pedagogia da simultaneidade
 - [x] Reset da cena (Botão B) — `reset_session()` + reload
 - [x] Cena do paradoxo funcionando completa em ambos os frames
 - [x] Avatares Bob e Alice (`avatar.gd`) — Bob viaja na correia atrás da tora (contrai com ela em ALICE); Alice no posto ao lado da esteira (contrai com o mundo em BOB)
-- [x] Modelos KayKit animados nos avatares — Bob = Barbarian, Alice = Rogue sem capa, idle do Rig_Medium (`general/Idle_A`); fallback low-poly procedural se o GLB faltar; `tools/Sawing` e `Working_A/B/C` disponíveis pra cenografia futura
+- [x] Modelos KayKit animados nos avatares — Bob = Barbarian com machado de uma lâmina no `handslot.r` (lenhador a 0.9c), Alice = Rogue sem capa, idle do Rig_Medium (`general/Idle_A`); fallback low-poly procedural se o GLB faltar; `tools/Sawing` e `Working_A/B/C` disponíveis pra cenografia futura
 - [x] Troca de corpo no meio da transição — no pico do tint o player teleporta para o posto do referencial novo e os avatares trocam de visibilidade
 - [x] Soft-cap de velocidade em BOB (β ≤ 0.9) — a 0.99c o offset de simultaneidade excederia a duração da passada; 0.99c fica reservado ao Ato 1 em ALICE
 - [x] Correia fora do MovingWorld + scroll só em ALICE — a superfície da correia está em repouso com a tora, não com o galpão

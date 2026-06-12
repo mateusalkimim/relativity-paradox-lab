@@ -27,6 +27,10 @@ const ANIM_LIBS: Dictionary = {
 @export var target_height: float = 1.4  # bind pose KayKit tem ~2.2-2.4u
 @export var model_yaw_degrees: float = 180.0  # KayKit olha +Z; Avatar usa -Z
 @export var hide_meshes: PackedStringArray = []  # ex.: ["Rogue_Cape"]
+# Prop preso à mão via BoneAttachment3D — o rig KayKit tem ossos dedicados
+# "handslot.r"/"handslot.l" e os props encaixam neles sem offset
+@export var attach_file: String = ""  # ex.: "axe_1handed.gltf"; vazio = nada
+@export var attach_bone: String = "handslot.r"
 @export var idle_animation: String = "general/Idle_A"
 # Cores — usadas apenas no fallback procedural
 @export var shirt_color: Color = Color(0.75, 0.45, 0.2)
@@ -72,7 +76,23 @@ func _build_model() -> void:
 		if mesh != null:
 			mesh.visible = false
 	add_child(model)
+	_attach_prop(model)
 	_setup_animations(model)
+
+func _attach_prop(model: Node3D) -> void:
+	if attach_file == "" or not ResourceLoader.exists(MODEL_DIR + attach_file):
+		if attach_file != "":
+			push_warning("[Avatar] prop %s não encontrado" % attach_file)
+		return
+	var skeleton := model.find_children("*", "Skeleton3D", true, false)
+	if skeleton.is_empty() or (skeleton[0] as Skeleton3D).find_bone(attach_bone) < 0:
+		push_warning("[Avatar] osso %s não existe no rig de %s" % [attach_bone, model_file])
+		return
+	var mount := BoneAttachment3D.new()
+	mount.name = "PropMount"
+	mount.bone_name = attach_bone
+	skeleton[0].add_child(mount)
+	mount.add_child((load(MODEL_DIR + attach_file) as PackedScene).instantiate())
 
 # Altura do bind pose pela união dos AABBs dos meshes — nos personagens
 # KayKit os meshes ficam no transform identidade sob o Skeleton3D, então o

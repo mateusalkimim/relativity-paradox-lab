@@ -9,7 +9,9 @@ enum State { READY, FALLING, DOWN, RETRACTING }
 # tora (CUT_PLANE_Y). O FrameController decide se há madeira sob a lâmina.
 signal blade_crossed_cut_plane
 
-const FALL_SPEED: float = 8.0
+# 14: queda pesada porém rápida (~0.21s até o plano de corte) — a mira não
+# depende dela (o ponto é marcado no disparo), mas a resposta fica imediata
+const FALL_SPEED: float = 14.0
 const RETRACT_SPEED: float = 3.0
 const DOWN_DURATION: float = 1.5
 

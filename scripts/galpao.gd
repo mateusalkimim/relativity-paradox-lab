@@ -99,6 +99,7 @@ func _build_avatars() -> void:
 	_bob_avatar = Avatar.new()
 	_bob_avatar.name = "BobAvatar"
 	_bob_avatar.model_file = "Barbarian.glb"
+	_bob_avatar.attach_file = "axe_1handed.gltf"  # lenhador a 0.9c
 	_bob_avatar.position = Vector3(LOG_RESET_X - 3.5, 0.5, 0.0)
 	_bob_avatar.rotation.y = -PI / 2  # frente -Z vira +X: olha o sentido da viagem
 	add_child(_bob_avatar)
