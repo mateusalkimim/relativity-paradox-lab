@@ -541,15 +541,16 @@ ParadoxoRelatividade/
 
 **Marco**: Apresentar Atos 0 e início do Ato 1. ✅ Atingido (sem assets Hyper3D).
 
-### Semana 3 — Coração: Troca de Referencial
+### Semana 3 — Coração: Troca de Referencial ✅ Concluída
 
 **Objetivos**:
-- Lógica de `Frame.ALICE` vs `Frame.BOB` em `GameState`
-- Contração de Lorentz aplicada via escala anisotrópica
-- Transição animada de 1.5-2s com easing
-- Indicador de γ na HUD atualizando dinamicamente
-- Bloqueio de inputs durante transição
-- Efeito visual sutil durante transição (vinheta, distorção cromática)
+- [x] Lógica de `Frame.ALICE` vs `Frame.BOB` em `GameState`
+- [x] Contração de Lorentz aplicada via escala anisotrópica — `frame_controller.gd` (tora `1/γ` em ALICE; grupo `MovingWorld` com galpão+guilhotinas+esteira `1/γ` em BOB)
+- [x] Transição animada de 2s com easing (`TRANS_CUBIC`/`EASE_IN_OUT`)
+- [x] Indicador de γ na HUD atualizando dinamicamente
+- [x] Bloqueio de inputs durante transição (`is_transitioning` guarda frame e velocidade)
+- [x] Efeito visual sutil durante transição (tint azulado em pulso senoidal)
+- [x] Movimento relativo coerente em BOB: tora em repouso, mundo desliza a -v (chão colisor invisível fixo sustenta o player)
 
 **Marco**: Trocar de referencial e ver o "efeito wow".
 

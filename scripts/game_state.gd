@@ -24,10 +24,14 @@ func toggle_frame() -> void:
 	frame_changed.emit(current_frame)
 
 func increase_speed() -> void:
+	if is_transitioning:
+		return
 	belt_beta = minf(belt_beta + BELT_BETA_STEP, BELT_BETA_MAX)
 	velocity_changed.emit(belt_beta)
 
 func decrease_speed() -> void:
+	if is_transitioning:
+		return
 	belt_beta = maxf(belt_beta - BELT_BETA_STEP, BELT_BETA_MIN)
 	velocity_changed.emit(belt_beta)
 
