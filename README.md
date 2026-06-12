@@ -167,6 +167,12 @@ onde ω é a velocidade angular constante, L a distância da dobradiça, e θ o 
 
 Visualmente espetacular (rotação relativística), mas exige tempo de setup conceitual incompatível com 20 minutos. **Documentado para possível expansão futura ou versão de TCC**.
 
+### 3.4 EXPANSÃO FUTURA — Barra e Fenda com Gravidade
+
+**Referência no artigo**: Seção IV.B.
+
+Variação do Barra e Fenda em que a barra cai sob gravidade enquanto cruza a fenda: a resolução combina contração de Lorentz com a inclinação relativística da barra no referencial da fenda. Mais rico que o IV.A, porém com os mesmos custos de setup conceitual — fica na fila atrás das tesouras superluminais (Bloco C), candidato natural a versão de TCC.
+
 ---
 
 ## 4. Arquitetura da Apresentação
@@ -563,6 +569,10 @@ ParadoxoRelatividade/
 - [x] Detecção e visual de corte — lâmina cruza o plano da tora, corte geométrico, tora se separa em duas metades animadas; indicador na HUD
 - [x] Reset da cena (Botão B) — `reset_session()` + reload
 - [x] Cena do paradoxo funcionando completa em ambos os frames
+- [x] Avatares Bob e Alice (`avatar.gd`, low-poly procedural) — Bob viaja na correia atrás da tora (contrai com ela em ALICE); Alice no posto ao lado da esteira (contrai com o mundo em BOB)
+- [x] Troca de corpo no meio da transição — no pico do tint o player teleporta para o posto do referencial novo e os avatares trocam de visibilidade
+- [x] Soft-cap de velocidade em BOB (β ≤ 0.9) — a 0.99c o offset de simultaneidade excederia a duração da passada; 0.99c fica reservado ao Ato 1 em ALICE
+- [x] Correia fora do MovingWorld + scroll só em ALICE — a superfície da correia está em repouso com a tora, não com o galpão
 - [ ] Som ambiente do galpão
 - [ ] Efeitos sonoros pontuais (esteira, guilhotinas, transição)
 

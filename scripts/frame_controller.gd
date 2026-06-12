@@ -35,16 +35,21 @@ const EXIT_SINK_Y: float = -2.4
 const EXIT_TILT_RAD: float = -1.1
 # Desaceleração suave do mundo ao fim da passada em BOB
 const BOB_STOP_DURATION: float = 1.0
+# Bob acompanha a tora 3.5u atrás do centro, contido na correia (início em -10)
+const BOB_FOLLOW_OFFSET: float = -3.5
+const BOB_MIN_X: float = -9.5
 # Pico de opacidade do tint azulado durante a transição (efeito sutil, README Semana 3)
 const TINT_PEAK_ALPHA: float = 0.22
 const TINT_COLOR: Color = Color(0.45, 0.65, 1.0)
 
 # 5. Variáveis privadas
 var _world: Node3D
-var _esteira: Esteira
 var _tora: Tora
 var _guillotine_left: Guillotine
 var _guillotine_right: Guillotine
+var _bob_avatar: Avatar
+var _alice_avatar: Avatar
+var _player: CharacterBody3D
 var _tint: ColorRect
 var _phase: ToraPhase = ToraPhase.RIDING
 var _lifecycle_tween: Tween
@@ -52,7 +57,6 @@ var _lifecycle_tween: Tween
 var _world_speed_scale: float = 1.0
 var _bob_pass_done: bool = false
 var _bob_stop_tween: Tween
-var _scroll_scale_default: float = 0.8
 
 # 7. Funções built-in
 
@@ -72,6 +76,7 @@ func _process(delta: float) -> void:
 		# Tora só viaja em RIDING; EXITING/SPAWNING são animados por tween
 		if _phase == ToraPhase.RIDING:
 			_tora.position.x += step
+			_follow_tora_with_bob()
 			if _tora.position.x > EXIT_TRIGGER_X:
 				_begin_exit()
 	else:
@@ -93,14 +98,14 @@ func _unhandled_input(event: InputEvent) -> void:
 # 8. Funções públicas
 
 # Chamado por galpao.gd antes de add_child — injeta as referências da cena
-func setup(world: Node3D, esteira: Esteira, tora: Tora,
-		guillotine_left: Guillotine, guillotine_right: Guillotine) -> void:
+func setup(world: Node3D, tora: Tora, guillotine_left: Guillotine,
+		guillotine_right: Guillotine, bob_avatar: Avatar, alice_avatar: Avatar) -> void:
 	_world = world
-	_esteira = esteira
-	_scroll_scale_default = esteira.uv_scroll_visual_scale
 	_tora = tora
 	_guillotine_left = guillotine_left
 	_guillotine_right = guillotine_right
+	_bob_avatar = bob_avatar
+	_alice_avatar = alice_avatar
 	_guillotine_left.blade_crossed_cut_plane.connect(_check_cut.bind(_guillotine_left))
 	_guillotine_right.blade_crossed_cut_plane.connect(_check_cut.bind(_guillotine_right))
 	_tora.was_cut.connect(func() -> void: GameState.set_tora_cut(true))
@@ -173,23 +178,51 @@ func _spawn_tora() -> void:
 # Fim da passada em BOB: o galpão já passou inteiro pela tora. Em vez de
 # teleportar de volta, o mundo desacelera suavemente e para — a repetição
 # fica a cargo do operador (LB volta a Alice, B reseta, slow-mo no replay).
-# O scroll da correia desacelera junto para manter a coerência visual.
+# A correia não entra aqui: em BOB ela já não rola (guard em Esteira._scroll_belt).
 func _finish_bob_pass() -> void:
 	_bob_pass_done = true
-	_bob_stop_tween = create_tween().set_parallel(true) \
+	_bob_stop_tween = create_tween() \
 		.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	_bob_stop_tween.tween_property(self, "_world_speed_scale", 0.0, BOB_STOP_DURATION)
-	_bob_stop_tween.tween_property(_esteira, "uv_scroll_visual_scale", 0.0, BOB_STOP_DURATION)
 
 func _reset_bob_pass() -> void:
 	# Mata o tween de desaceleração se ainda estiver rodando — sem isso ele
-	# continuaria após a troca de frame e re-zeraria o scroll em ALICE,
-	# congelando a correia permanentemente
+	# continuaria após a troca de frame e re-zeraria _world_speed_scale
 	if _bob_stop_tween != null and _bob_stop_tween.is_valid():
 		_bob_stop_tween.kill()
 	_bob_pass_done = false
 	_world_speed_scale = 1.0
-	_esteira.uv_scroll_visual_scale = _scroll_scale_default
+
+# Bob caminha na correia atrás da tora: mesma velocidade (está em repouso no
+# referencial dela) e mesma contração — em ALICE ele é um corpo em movimento.
+func _follow_tora_with_bob() -> void:
+	_bob_avatar.position.x = clampf(_tora.position.x + BOB_FOLLOW_OFFSET,
+			BOB_MIN_X, EXIT_TRIGGER_X)
+	_bob_avatar.scale.x = _tora.scale.x
+
+# Meio da transição (pico do tint): o operador "troca de corpo". Vai para o
+# posto do referencial novo com velocidade zerada, e os avatares trocam de
+# visibilidade — quem o operador encarna some, o outro aparece.
+func _midpoint_swap() -> void:
+	var is_bob := GameState.current_frame == GameState.Frame.BOB
+	if not is_bob:
+		# Reassenta Bob atrás da tora antes de revelá-lo (a tora está no meio
+		# do tween de volta; sem isso ele apareceria onde a passada parou)
+		_follow_tora_with_bob()
+	var player := _get_player()
+	if player != null:
+		var target: Avatar = _bob_avatar if is_bob else _alice_avatar
+		player.global_position = target.global_position
+		player.velocity = Vector3.ZERO
+	_bob_avatar.visible = not is_bob
+	_alice_avatar.visible = is_bob
+
+# Lazy: o Player entra na cena depois do Galpao (main.tscn), então o grupo
+# "player" ainda não existe quando este controller dá _ready
+func _get_player() -> CharacterBody3D:
+	if _player == null:
+		_player = get_tree().get_first_node_in_group("player") as CharacterBody3D
+	return _player
 
 # Garante a tora assentada na correia (usado na troca de referencial,
 # que pode interromper animações de entrada/saída no meio)
@@ -209,6 +242,8 @@ func _on_frame_changed(new_frame: GameState.Frame) -> void:
 	if _lifecycle_tween != null and _lifecycle_tween.is_valid():
 		_lifecycle_tween.kill()
 	_snap_tora_to_belt()
+	# Troca de corpo no pico do tint, quando a tela está mais encoberta
+	get_tree().create_timer(TRANSITION_DURATION * 0.5).timeout.connect(_midpoint_swap)
 
 	var inv_gamma := 1.0 / GameState.get_gamma()
 	var is_bob := new_frame == GameState.Frame.BOB

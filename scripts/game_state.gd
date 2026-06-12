@@ -11,6 +11,10 @@ signal tora_cut_changed(is_cut)
 
 const BELT_BETA_STEP: float = 0.1
 const BELT_BETA_MAX: float = 0.99
+# Soft-cap em BOB: a 0.99c o offset de simultaneidade visual (~5.6s) excede
+# a duração da passada (~3.5s) — a guilhotina esquerda baixaria com o mundo
+# já parado, fora do palco. A 0.9c tudo cabe em cena (offset 1.65s).
+const BELT_BETA_MAX_BOB: float = 0.9
 const BELT_BETA_MIN: float = 0.0
 const BELT_BETA_DEFAULT: float = 0.05
 const SLOW_MOTION_SCALE: float = 0.25
@@ -26,12 +30,17 @@ func toggle_frame() -> void:
 	if is_transitioning:
 		return
 	current_frame = Frame.BOB if current_frame == Frame.ALICE else Frame.ALICE
+	# Entrar em BOB acima do cap rebaixa β silenciosamente (a HUD atualiza
+	# via frame_changed); 0.99c fica reservado ao Ato 1 em ALICE
+	if current_frame == Frame.BOB and belt_beta > BELT_BETA_MAX_BOB:
+		belt_beta = BELT_BETA_MAX_BOB
 	frame_changed.emit(current_frame)
 
 func increase_speed() -> void:
 	if is_transitioning:
 		return
-	belt_beta = minf(belt_beta + BELT_BETA_STEP, BELT_BETA_MAX)
+	var cap := BELT_BETA_MAX_BOB if current_frame == Frame.BOB else BELT_BETA_MAX
+	belt_beta = minf(belt_beta + BELT_BETA_STEP, cap)
 	velocity_changed.emit(belt_beta)
 
 func decrease_speed() -> void:

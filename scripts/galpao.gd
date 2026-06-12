@@ -17,6 +17,8 @@ var _guillotine_left: Guillotine
 var _guillotine_right: Guillotine
 var _esteira: Esteira
 var _tora: Tora
+var _bob_avatar: Avatar
+var _alice_avatar: Avatar
 # Grupo escalado/movido pelo FrameController no referencial de Bob.
 # Tudo que está em repouso no referencial de Alice (galpão, guilhotinas,
 # esteira) vai aqui dentro; tora, skydome, luzes e HUD ficam fora.
@@ -29,8 +31,10 @@ func _ready() -> void:
 	_build_esteira()
 	_build_guillotines()
 	_build_tora()
+	_build_avatars()
 	_build_ground()
 	_build_boundary_walls()
+	_build_belt_walkway()
 	_setup_lighting()
 	_build_hud()
 	_build_frame_controller()
@@ -81,10 +85,39 @@ func _add_boundary(node_name: String, pos: Vector3, size: Vector3) -> void:
 	body.add_child(col)
 	add_child(body)
 
+# Piso físico invisível sobre a correia: o player anda na esteira nos dois
+# referenciais. Estático e fora do MovingWorld, como os boundary walls —
+# a Correia visual não tem colisão e a estrutura da esteira escala em BOB.
+# Topo em y=0.5 (face superior da correia).
+func _build_belt_walkway() -> void:
+	_add_boundary("BeltWalkway", Vector3(0.0, 0.25, 0.0), Vector3(20.0, 0.5, 1.5))
+
+func _build_avatars() -> void:
+	# Bob: viaja na correia atrás da tora — fora do MovingWorld, como a tora,
+	# para não herdar a escala do mundo. O FrameController o move/contrai em
+	# ALICE e o esconde em BOB (o operador passa a SER o Bob).
+	_bob_avatar = Avatar.new()
+	_bob_avatar.name = "BobAvatar"
+	_bob_avatar.position = Vector3(LOG_RESET_X - 3.5, 0.5, 0.0)
+	_bob_avatar.rotation.y = -PI / 2  # frente -Z vira +X: olha o sentido da viagem
+	add_child(_bob_avatar)
+
+	# Alice: posto de operação ao lado da correia, em repouso no galpão —
+	# dentro do MovingWorld (contrai/desliza em BOB com o resto do mundo).
+	# Invisível no frame inicial: em ALICE o operador É a Alice.
+	_alice_avatar = Avatar.new()
+	_alice_avatar.name = "AliceAvatar"
+	_alice_avatar.shirt_color = Color(0.30, 0.45, 0.60)
+	_alice_avatar.helmet_color = Color(0.85, 0.85, 0.88)
+	_alice_avatar.position = Vector3(0.0, 0.0, -2.0)
+	_alice_avatar.rotation.y = PI  # frente -Z vira +Z: olhando para a esteira
+	_alice_avatar.visible = false
+	_world.add_child(_alice_avatar)
+
 func _build_frame_controller() -> void:
 	var fc := FrameController.new()
 	fc.name = "FrameController"
-	fc.setup(_world, _esteira, _tora, _guillotine_left, _guillotine_right)
+	fc.setup(_world, _tora, _guillotine_left, _guillotine_right, _bob_avatar, _alice_avatar)
 	add_child(fc)
 
 func _build_structure() -> void:
@@ -149,6 +182,11 @@ func _build_esteira() -> void:
 	_esteira = load("res://scenes/world/esteira.tscn").instantiate() as Esteira
 	_esteira.name = "EsteiraNode"
 	_world.add_child(_esteira)
+	# A superfície da correia está em repouso com a TORA, não com o galpão:
+	# em BOB ela não pode contrair nem deslizar junto com a estrutura. Sai do
+	# MovingWorld já pronta (reparent preserva o transform global; a referência
+	# _correia interna da Esteira continua válida — é o mesmo nó).
+	_esteira.get_node("Correia").reparent(self)
 
 func _build_guillotines() -> void:
 	var half_sep := GUILLOTINE_SEPARATION * 0.5

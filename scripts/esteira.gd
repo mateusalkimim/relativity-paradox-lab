@@ -62,9 +62,6 @@ func _ready() -> void:
 	_build_structure()
 
 func _process(delta: float) -> void:
-	# O scroll roda nos dois referenciais: em ALICE a superfície acompanha a
-	# tora; em BOB a estrutura recua a -v enquanto a superfície avança a +v
-	# relativa a ela — saldo visual: superfície em repouso com a tora. Correto.
 	_scroll_belt(delta)
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -188,6 +185,11 @@ func _make_metal_material(color: Color, metallic: float) -> StandardMaterial3D:
 
 func _scroll_belt(delta: float) -> void:
 	if _mat == null:
+		return
+	# Scroll só em ALICE: no referencial de Bob a superfície da correia está
+	# em repouso com a tora — quem recua é a estrutura (MovingWorld, movido
+	# pelo FrameController). Scroll aqui somaria movimento que não existe.
+	if GameState.current_frame != GameState.Frame.ALICE:
 		return
 	# UV scroll creates the illusion of belt movement without any node translating.
 	# This is preferable to moving geometry: no floating-point drift, no wrap logic,
