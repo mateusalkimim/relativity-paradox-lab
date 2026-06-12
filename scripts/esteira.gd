@@ -221,14 +221,11 @@ func _add_box(node_name: String, pos: Vector3, size: Vector3,
 	mi.set_surface_override_material(0, _make_metal_material(color, metallic))
 	add_child(mi)
 
-# Look LA Remake: aço de brinquedo fosco — metallic zerado (specular real
-# estourava reflexos); o param metallic vira só um leve ganho de specular.
+# Aço de brinquedo fosco e granulado (Grain); o param metallic vira só um
+# leve ganho de specular sobre o acabamento padrão.
 func _make_metal_material(color: Color, metallic: float) -> StandardMaterial3D:
-	var mat := StandardMaterial3D.new()
+	var mat := Grain.apply(StandardMaterial3D.new())
 	mat.albedo_color = color
-	mat.shading_mode = BaseMaterial3D.SHADING_MODE_PER_VERTEX
-	mat.roughness = 0.9
-	mat.metallic = 0.0
-	mat.metallic_specular = 0.1 + metallic * 0.1
+	mat.metallic_specular = 0.05 + metallic * 0.05
 	return mat
 

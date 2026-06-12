@@ -42,6 +42,11 @@ var _halves: Array[MeshInstance3D] = []
 func _ready() -> void:
 	# Pivot no centro geométrico: scale.x = 1/γ contrai simetricamente nos dois lados
 	print("[Tora] L₀=%.1f u  diâmetro=%.1f u" % [rest_length, diameter])
+	# Granulado de madeira árida nos materiais do .tscn (corpo + tampas
+	# compartilham 2 materiais; aplicar de novo é idempotente). As metades
+	# do corte herdam via cópia do material do Mesh em _spawn_half.
+	for mi: MeshInstance3D in [_mesh, _cap_left, _cap_right]:
+		Grain.apply(mi.get_surface_override_material(0) as StandardMaterial3D)
 
 # 8. Funções públicas
 

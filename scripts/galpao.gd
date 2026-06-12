@@ -215,9 +215,14 @@ func _build_guillotines() -> void:
 func _setup_lighting() -> void:
 	var env := Environment.new()
 	env.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
-	env.ambient_light_color = Color(0.93, 0.91, 0.86)  # branco quente
-	env.ambient_light_energy = 0.7
+	env.ambient_light_color = Color(0.87, 0.82, 0.72)  # quente, menos branco
+	env.ambient_light_energy = 0.5
 	env.tonemap_mode = Environment.TONE_MAPPER_FILMIC
+	# Cores mais densas: estava branco demais e claro demais (feedback);
+	# saturação e brilho são os knobs de calibração no editor
+	env.adjustment_enabled = true
+	env.adjustment_saturation = 1.2
+	env.adjustment_brightness = 0.95
 	var world_env := WorldEnvironment.new()
 	world_env.name = "WorldEnv"
 	world_env.environment = env

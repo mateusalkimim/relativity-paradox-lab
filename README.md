@@ -573,11 +573,11 @@ ParadoxoRelatividade/
 - [x] Cena do paradoxo funcionando completa em ambos os frames
 - [x] Avatares Bob e Alice (`avatar.gd`) — Bob viaja na correia atrás da tora (contrai com ela em ALICE); Alice no posto ao lado da esteira (contrai com o mundo em BOB)
 - [x] Modelos KayKit animados nos avatares — Bob = Barbarian com machado de uma lâmina no `handslot.r` (lenhador a 0.9c), Alice = Rogue sem capa, idle do Rig_Medium (`general/Idle_A`); fallback low-poly procedural se o GLB faltar; `tools/Sawing` e `Working_A/B/C` disponíveis pra cenografia futura
-- [x] Operador como observador — Alice e Bob sempre visíveis em cena; a troca de referencial reconfigura o mundo sem mover o player (substituiu o conceito anterior de "trocar de corpo" com teleporte + troca de visibilidade)
+- [x] Encarnação em primeira pessoa — o operador É a Alice em ALICE e o Bob em BOB: corpo visível olhando pra baixo (tronco, braços, pernas; cabeça oculta pra câmera), animações de andar/parar, machado na mão do Bob; no meio da transição o player teleporta pro posto do referencial novo e o NPC encarnado some
 - [x] Soft-cap de velocidade em BOB (β ≤ 0.9) — a 0.99c o offset de simultaneidade excederia a duração da passada; 0.99c fica reservado ao Ato 1 em ALICE
-- [x] Correia física — sarrafos transladam com o mesmo passo da tora (`belt_beta × VISUAL_C × delta`) com wrap nas pontas e rolos girando (ω = v/r); substituiu o UV scroll, que dependia de fator de ajuste e não casava com a tora. Correia fora do MovingWorld, movimento só em ALICE (em BOB a superfície está em repouso com a tora)
+- [x] Correia física — sarrafos transladam com o mesmo passo da tora (`belt_beta × VISUAL_C × delta`) com wrap nas pontas e rolos girando (ω = v/r); substituiu o UV scroll, que dependia de fator de ajuste e não casava com a tora. Esteira inteira no MovingWorld (contrai e acompanha o galpão em BOB); em BOB os sarrafos andam a v·γ em coordenada local, ficando em repouso com a tora no espaço do mundo
 - [x] Bob completa o ciclo da madeira — segue até o fim da correia, mergulha no poço atrás da tora e cai da calha junto com a tora nova
-- [x] Iluminação estilizada (ref. Zelda Link's Awakening Remake) — WorldEnvironment com ambiente difuso forte + tonemap Filmic, sol moderado com penumbra macia (`light_angular_distance` + `shadow_blur`), materiais foscos sem metallic
+- [x] Iluminação estilizada (ref. Zelda Link's Awakening Remake) — WorldEnvironment com ambiente difuso quente + tonemap Filmic, ajustes de saturação (1.2) e brilho (0.95), sol moderado com penumbra macia (`light_angular_distance` + `shadow_blur`), materiais foscos sem metallic e com granulado procedural (`grain.gd`: normal map de ruído em runtime — aspecto árido, anti "balão de plástico")
 - [ ] Som ambiente do galpão
 - [ ] Efeitos sonoros pontuais (esteira, guilhotinas, transição)
 

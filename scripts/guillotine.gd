@@ -125,13 +125,10 @@ func _mesh(parent: Node3D, node_name: String, pos: Vector3, size: Vector3,
 	mi.position = pos
 	var mesh := BoxMesh.new()
 	mesh.size = size
-	var mat := StandardMaterial3D.new()
+	# Fosco e granulado (Grain); o param metallic vira leve ganho de specular
+	var mat := Grain.apply(StandardMaterial3D.new())
 	mat.albedo_color = color
-	mat.shading_mode = BaseMaterial3D.SHADING_MODE_PER_VERTEX
-	# Look LA Remake: fosco, metallic zerado (param vira leve ganho de specular)
-	mat.roughness = 0.9
-	mat.metallic = 0.0
-	mat.metallic_specular = 0.1 + metallic * 0.1
+	mat.metallic_specular = 0.05 + metallic * 0.05
 	mi.mesh = mesh
 	mi.set_surface_override_material(0, mat)
 	parent.add_child(mi)
