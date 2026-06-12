@@ -95,18 +95,20 @@ func _build_belt_walkway() -> void:
 func _build_avatars() -> void:
 	# Bob: viaja na correia atrás da tora — fora do MovingWorld, como a tora,
 	# para não herdar a escala do mundo. O FrameController o move/contrai em
-	# ALICE e o esconde em BOB (o operador passa a SER o Bob).
+	# ALICE e o faz mergulhar no poço junto com a madeira no fim da passada.
+	# Sempre visível: o operador é o observador, não encarna ninguém.
 	_bob_avatar = Avatar.new()
 	_bob_avatar.name = "BobAvatar"
 	_bob_avatar.model_file = "Barbarian.glb"
 	_bob_avatar.attach_file = "axe_1handed.gltf"  # lenhador a 0.9c
+	_bob_avatar.attach_rotation_degrees = Vector3(0.0, 0.0, 180.0)  # gume pra baixo
 	_bob_avatar.position = Vector3(LOG_RESET_X - 3.5, 0.5, 0.0)
 	_bob_avatar.rotation.y = -PI / 2  # frente -Z vira +X: olha o sentido da viagem
 	add_child(_bob_avatar)
 
 	# Alice: posto de operação ao lado da correia, em repouso no galpão —
 	# dentro do MovingWorld (contrai/desliza em BOB com o resto do mundo).
-	# Invisível no frame inicial: em ALICE o operador É a Alice.
+	# Sempre visível, como o Bob.
 	_alice_avatar = Avatar.new()
 	_alice_avatar.name = "AliceAvatar"
 	_alice_avatar.model_file = "Rogue.glb"
@@ -116,7 +118,6 @@ func _build_avatars() -> void:
 	_alice_avatar.helmet_color = Color(0.85, 0.85, 0.88)
 	_alice_avatar.position = Vector3(0.0, 0.0, -2.0)
 	_alice_avatar.rotation.y = PI  # frente -Z vira +Z: olhando para a esteira
-	_alice_avatar.visible = false
 	_world.add_child(_alice_avatar)
 
 func _build_frame_controller() -> void:

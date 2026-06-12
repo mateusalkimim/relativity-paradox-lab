@@ -38,6 +38,8 @@ const BOB_STOP_DURATION: float = 1.0
 # Bob acompanha a tora 3.5u atrás do centro, contido na correia (início em -10)
 const BOB_FOLLOW_OFFSET: float = -3.5
 const BOB_MIN_X: float = -9.5
+# Pés do Bob no topo da correia (sarrafos a 0.515; diferença imperceptível)
+const BOB_BELT_Y: float = 0.5
 # Pico de opacidade do tint azulado durante a transição (efeito sutil, README Semana 3)
 const TINT_PEAK_ALPHA: float = 0.22
 const TINT_COLOR: Color = Color(0.45, 0.65, 1.0)
@@ -49,7 +51,6 @@ var _guillotine_left: Guillotine
 var _guillotine_right: Guillotine
 var _bob_avatar: Avatar
 var _alice_avatar: Avatar
-var _player: CharacterBody3D
 var _tint: ColorRect
 var _phase: ToraPhase = ToraPhase.RIDING
 var _lifecycle_tween: Tween
@@ -161,26 +162,39 @@ func _begin_exit() -> void:
 		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
 	_lifecycle_tween.tween_property(_tora, "rotation:z", EXIT_TILT_RAD, EXIT_DURATION) \
 		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
-	# Afunda o resto do comprimento abaixo do chão antes do respawn
+	# Bob segue até o fim da correia enquanto a tora tomba à frente dele
+	_lifecycle_tween.tween_property(_bob_avatar, "position:x", PIT_X - 0.45,
+			EXIT_DURATION + 0.1).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
+	# Afunda o resto do comprimento abaixo do chão antes do respawn;
+	# Bob mergulha no poço logo atrás dela (paralelo dentro deste passo)
 	_lifecycle_tween.chain().tween_property(_tora, "position:y", EXIT_SINK_Y, 0.25)
+	_lifecycle_tween.tween_property(_bob_avatar, "position:y", EXIT_DIVE_Y, 0.3) \
+		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+	_lifecycle_tween.tween_property(_bob_avatar, "rotation:z", EXIT_TILT_RAD, 0.3) \
+		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
 	_lifecycle_tween.chain().tween_interval(0.2)
 	_lifecycle_tween.chain().tween_callback(_spawn_tora)
 
-# Entrada (ALICE): tora nova cai da calha de alimentação com leve bounce
+# Entrada (ALICE): tora nova cai da calha de alimentação com leve bounce.
+# Bob cai junto com ela (em BOB_MIN_X, o clamp de início da correia).
 func _spawn_tora() -> void:
 	_phase = ToraPhase.SPAWNING
 	_restore_tora()
 	_tora.rotation.z = 0.0
 	_tora.position = Vector3(LOG_RESET_X, SPAWN_Y, 0.0)
-	_lifecycle_tween = create_tween()
+	_bob_avatar.rotation.z = 0.0
+	_bob_avatar.position = Vector3(BOB_MIN_X, SPAWN_Y, 0.0)
+	_lifecycle_tween = create_tween().set_parallel(true)
 	_lifecycle_tween.tween_property(_tora, "position:y", LOG_Y, SPAWN_DURATION) \
 		.set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
-	_lifecycle_tween.tween_callback(func() -> void: _phase = ToraPhase.RIDING)
+	_lifecycle_tween.tween_property(_bob_avatar, "position:y", BOB_BELT_Y, SPAWN_DURATION) \
+		.set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
+	_lifecycle_tween.chain().tween_callback(func() -> void: _phase = ToraPhase.RIDING)
 
 # Fim da passada em BOB: o galpão já passou inteiro pela tora. Em vez de
 # teleportar de volta, o mundo desacelera suavemente e para — a repetição
 # fica a cargo do operador (LB volta a Alice, B reseta, slow-mo no replay).
-# A correia não entra aqui: em BOB ela já não rola (guard em Esteira._scroll_belt).
+# A correia não entra aqui: em BOB ela já não anda (guard em Esteira._process).
 func _finish_bob_pass() -> void:
 	_bob_pass_done = true
 	_bob_stop_tween = create_tween() \
@@ -202,37 +216,17 @@ func _follow_tora_with_bob() -> void:
 			BOB_MIN_X, EXIT_TRIGGER_X)
 	_bob_avatar.scale.x = _tora.scale.x
 
-# Meio da transição (pico do tint): o operador "troca de corpo". Vai para o
-# posto do referencial novo com velocidade zerada, e os avatares trocam de
-# visibilidade — quem o operador encarna some, o outro aparece.
-func _midpoint_swap() -> void:
-	var is_bob := GameState.current_frame == GameState.Frame.BOB
-	if not is_bob:
-		# Reassenta Bob atrás da tora antes de revelá-lo (a tora está no meio
-		# do tween de volta; sem isso ele apareceria onde a passada parou)
-		_follow_tora_with_bob()
-	var player := _get_player()
-	if player != null:
-		var target: Avatar = _bob_avatar if is_bob else _alice_avatar
-		player.global_position = target.global_position
-		player.velocity = Vector3.ZERO
-	_bob_avatar.visible = not is_bob
-	_alice_avatar.visible = is_bob
-
-# Lazy: o Player entra na cena depois do Galpao (main.tscn), então o grupo
-# "player" ainda não existe quando este controller dá _ready
-func _get_player() -> CharacterBody3D:
-	if _player == null:
-		_player = get_tree().get_first_node_in_group("player") as CharacterBody3D
-	return _player
-
 # Garante a tora assentada na correia (usado na troca de referencial,
-# que pode interromper animações de entrada/saída no meio)
+# que pode interromper animações de entrada/saída no meio). Bob vem junto:
+# o snap pode pegá-lo no meio do mergulho no poço.
 func _snap_tora_to_belt() -> void:
 	_phase = ToraPhase.RIDING
 	_tora.rotation.z = 0.0
 	_tora.position.x = clampf(_tora.position.x, LOG_RESET_X, EXIT_TRIGGER_X)
 	_tora.position.y = LOG_Y
+	_bob_avatar.rotation.z = 0.0
+	_bob_avatar.position.y = BOB_BELT_Y
+	_follow_tora_with_bob()
 
 func _reset_scene() -> void:
 	GameState.reset_session()
@@ -244,8 +238,6 @@ func _on_frame_changed(new_frame: GameState.Frame) -> void:
 	if _lifecycle_tween != null and _lifecycle_tween.is_valid():
 		_lifecycle_tween.kill()
 	_snap_tora_to_belt()
-	# Troca de corpo no pico do tint, quando a tela está mais encoberta
-	get_tree().create_timer(TRANSITION_DURATION * 0.5).timeout.connect(_midpoint_swap)
 
 	var inv_gamma := 1.0 / GameState.get_gamma()
 	var is_bob := new_frame == GameState.Frame.BOB

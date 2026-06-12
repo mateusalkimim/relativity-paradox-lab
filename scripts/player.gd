@@ -13,8 +13,6 @@ var _pitch: float = 0.0
 var _settle_until_ms: int = 0
 
 func _ready() -> void:
-	# Grupo usado pelo FrameController para o teleporte do midpoint swap
-	add_to_group("player")
 	_capture_mouse()
 	InputBus.look_input_changed.connect(_on_look_mouse)
 

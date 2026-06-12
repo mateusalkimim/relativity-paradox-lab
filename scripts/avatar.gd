@@ -31,6 +31,8 @@ const ANIM_LIBS: Dictionary = {
 # "handslot.r"/"handslot.l" e os props encaixam neles sem offset
 @export var attach_file: String = ""  # ex.: "axe_1handed.gltf"; vazio = nada
 @export var attach_bone: String = "handslot.r"
+# Orientação do prop dentro do slot (ajuste fino no Inspector se necessário)
+@export var attach_rotation_degrees: Vector3 = Vector3.ZERO
 @export var idle_animation: String = "general/Idle_A"
 # Cores — usadas apenas no fallback procedural
 @export var shirt_color: Color = Color(0.75, 0.45, 0.2)
@@ -92,7 +94,9 @@ func _attach_prop(model: Node3D) -> void:
 	mount.name = "PropMount"
 	mount.bone_name = attach_bone
 	skeleton[0].add_child(mount)
-	mount.add_child((load(MODEL_DIR + attach_file) as PackedScene).instantiate())
+	var prop := (load(MODEL_DIR + attach_file) as PackedScene).instantiate() as Node3D
+	prop.rotation_degrees = attach_rotation_degrees
+	mount.add_child(prop)
 
 # Altura do bind pose pela união dos AABBs dos meshes — nos personagens
 # KayKit os meshes ficam no transform identidade sob o Skeleton3D, então o
