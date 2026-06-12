@@ -1,29 +1,13 @@
-[gd_scene load_steps=9 format=3]
+[gd_scene load_steps=7 format=3]
 
 [ext_resource type="Script" path="res://scripts/esteira.gd" id="1"]
 
-; Gradient para a textura de listras da correia.
-; Uma banda escura (#2A2A2A) de U=0.69 a U=0.81 por período de textura.
-; Transição em 2 pontos (0.69→0.71 e 0.79→0.81) cria hard-edge de ~1px em 64px de largura.
-[sub_resource type="Gradient" id="2"]
-offsets = PackedFloat32Array(0.0, 0.69, 0.71, 0.79, 0.81, 1.0)
-colors = PackedColorArray(0.22745, 0.22745, 0.22745, 1, 0.22745, 0.22745, 0.22745, 1, 0.16471, 0.16471, 0.16471, 1, 0.16471, 0.16471, 0.16471, 1, 0.22745, 0.22745, 0.22745, 1, 0.22745, 0.22745, 0.22745, 1)
-
-; 64px suficientes para os 6 stops ficarem nítidos sem desperdício de VRAM
-[sub_resource type="GradientTexture1D" id="3"]
-gradient = SubResource("2")
-width = 64
-
-; Material da correia: cinza escuro #3A3A3A.
-; albedo_color branco para que as cores do gradient apareçam sem tinting.
-; uv1_scale.x=10 → 10 tiles de listra nos 20u do belt (1 listra visível a cada 2u).
-; esteira.gd decrementa uv1_offset.x a cada frame → listras se deslocam em +X.
+; Material da correia: cinza escuro chapado. O movimento visível vem dos
+; sarrafos físicos que esteira.gd cria como filhos da Correia — sem UV scroll.
 [sub_resource type="StandardMaterial3D" id="4"]
 shading_mode = 2
-albedo_color = Color(1, 1, 1, 1)
-albedo_texture = SubResource("3")
+albedo_color = Color(0.22745, 0.22745, 0.22745, 1)
 roughness = 0.85
-uv1_scale = Vector3(10.0, 1.0, 1.0)
 
 ; Correia: 20u × 0.05u (espessura) × 1.5u.
 ; Face superior em Y=0.5 → tora (raio=0.25) apoiada em Y=0.75.
@@ -98,8 +82,9 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 10, 0.25, 0)
 mesh = SubResource("7")
 surface_material_override/0 = SubResource("6")
 
-; Centro em Y=0.475 → face superior em Y=0.5 (plano de apoio da tora)
-; UV scroll horizontal controlado por esteira.gd via uv1_offset.x
+; Centro em Y=0.475 → face superior em Y=0.5 (plano de apoio da tora).
+; esteira.gd adiciona os sarrafos como filhos; galpao.gd reparenta este nó
+; para fora do MovingWorld (superfície em repouso com a tora, não com o galpão)
 [node name="Correia" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.475, 0)
 mesh = SubResource("5")

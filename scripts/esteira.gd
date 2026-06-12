@@ -10,10 +10,15 @@ class_name Esteira
 const VISUAL_C: float = 5.0
 
 const BELT_LENGTH: float = 20.0
-const UV_SCALE_X: float = 10.0
+const BELT_HALF: float = BELT_LENGTH * 0.5
 
-# Theoretical UV scroll rate: VISUAL_C / (BELT_LENGTH / UV_SCALE_X) = 2.5 UV-units/sec at beta=1.
-const UV_SCROLL_RATE: float = VISUAL_C / (BELT_LENGTH / UV_SCALE_X)
+# Sarrafos físicos sobre a correia: transladam com o MESMO passo da tora
+# (belt_beta * VISUAL_C * delta, ver FrameController._process) — o movimento
+# bate por construção. O UV scroll antigo dependia de um fator de ajuste
+# visual e nunca casou com a tora.
+const SLAT_COUNT: int = 10
+const SLAT_SIZE := Vector3(0.25, 0.03, 1.4)
+const COLOR_SLAT: Color = Color(0.16, 0.16, 0.16)
 
 # Paleta §8.2 do README — estrutura metálica, mesmo estilo da guilhotina
 const COLOR_RAIL: Color = Color(0.29, 0.33, 0.38)    # #4A5560 aço cinza-azulado
@@ -34,35 +39,36 @@ const FEED_X: float = -7.5
 const PIT_X: float = 11.35
 const COLOR_PIT: Color = Color(0.04, 0.04, 0.05)  # quase-preto: lê como buraco
 
-# 2. Exportadas
-
-# Tune this in the Inspector while the game runs to visually match belt speed to tora.
-# 1.0 = theoretical. Adjust until stripes and tora appear to move at the same rate.
-@export var uv_scroll_visual_scale: float = 0.8
-
 # 6. Onready
 @onready var _correia: MeshInstance3D = $Correia
 
 # 5. Variáveis privadas
-var _mat: StandardMaterial3D
+var _slats: Array[MeshInstance3D] = []
+var _spinners: Array[MeshInstance3D] = []
 
 # 7. Funções built-in
 
 func _ready() -> void:
-	var src_mat := _correia.get_surface_override_material(0) as StandardMaterial3D
-	# Duplicate so each Esteira instance has its own uv1_offset.
-	# Sub-resources in .tscn are shared across instances by default — without
-	# duplicate(), scrolling one instance would shift all others simultaneously.
-	_mat = src_mat.duplicate() as StandardMaterial3D
-	# Replace GradientTexture1D (clamp-only) with an ImageTexture that tiles.
-	# GradientTexture1D defaults to clamp mode, so UV > 1 showed solid color —
-	# the stripe was visible only in the first 2 world-units of the 20u belt.
-	_mat.albedo_texture = _create_stripe_texture()
-	_correia.set_surface_override_material(0, _mat)
+	_build_slats()
 	_build_structure()
+	_spinners.append($RoleteEsquerdo as MeshInstance3D)
+	_spinners.append($RoleteDireito as MeshInstance3D)
 
 func _process(delta: float) -> void:
-	_scroll_belt(delta)
+	# Movimento só em ALICE: no referencial de Bob a superfície da correia
+	# está em repouso com a tora — quem recua é a estrutura (MovingWorld).
+	if GameState.current_frame != GameState.Frame.ALICE:
+		return
+	var step := GameState.belt_beta * VISUAL_C * delta
+	for slat in _slats:
+		slat.position.x += step
+		if slat.position.x > BELT_HALF:
+			slat.position.x -= BELT_LENGTH
+	# Rolos giram com ω = v/r. Eixo do cilindro = Y local (deitado no mundo Z);
+	# sinal negativo: topo do rolo tangencia a correia que anda em +X.
+	for spinner in _spinners:
+		var radius := (spinner.mesh as CylinderMesh).top_radius
+		spinner.rotate_object_local(Vector3.UP, -step / radius)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("speed_up"):
@@ -81,10 +87,11 @@ func _build_structure() -> void:
 	_add_wrap_cap("WrapLeft", -BELT_LENGTH * 0.5)
 	_add_wrap_cap("WrapRight", BELT_LENGTH * 0.5)
 
-	# Roletes intermediários visíveis sob a correia
+	# Roletes intermediários visíveis sob a correia — giram junto com o belt
 	for i: int in MID_ROLLER_XS.size():
-		_add_cylinder("MidRoller%d" % i, Vector3(MID_ROLLER_XS[i], 0.475 - MID_ROLLER_RADIUS, 0.0),
-				MID_ROLLER_RADIUS, 1.5, COLOR_ROLLER, 0.6)
+		_spinners.append(_add_cylinder("MidRoller%d" % i,
+				Vector3(MID_ROLLER_XS[i], 0.475 - MID_ROLLER_RADIUS, 0.0),
+				MID_ROLLER_RADIUS, 1.5, COLOR_ROLLER, 0.6))
 
 	# Trilhos laterais na altura da correia: escondem a borda do belt
 	# (belt edge em z=±0.75; trilho centrado em ±0.79 encosta nela)
@@ -144,11 +151,36 @@ func _build_discharge_pit() -> void:
 	_add_box("PitRimLeft", Vector3(PIT_X - 1.1, 0.06, 0.0), Vector3(0.2, 0.12, 2.2), COLOR_RAIL, 0.3)
 	_add_box("PitRimRight", Vector3(PIT_X + 1.1, 0.06, 0.0), Vector3(0.2, 0.12, 2.2), COLOR_RAIL, 0.3)
 
+# Sarrafos: filhos da Correia — saem do MovingWorld junto com ela no reparent
+# do galpao.gd. y local 0.04 = topo da correia + 0.015 de relevo.
+func _build_slats() -> void:
+	var spacing := BELT_LENGTH / SLAT_COUNT
+	for i: int in SLAT_COUNT:
+		var mi := MeshInstance3D.new()
+		mi.name = "Slat%d" % i
+		mi.position = Vector3(-BELT_HALF + spacing * (i + 0.5), 0.04, 0.0)
+		var mesh := BoxMesh.new()
+		mesh.size = SLAT_SIZE
+		mi.mesh = mesh
+		mi.set_surface_override_material(0, _make_metal_material(COLOR_SLAT, 0.0))
+		_correia.add_child(mi)
+		_slats.append(mi)
+
 func _add_wrap_cap(node_name: String, x: float) -> void:
-	_add_cylinder(node_name, Vector3(x, 0.25, 0.0), 0.28, 1.52, COLOR_WRAP, 0.0)
+	var cap := _add_cylinder(node_name, Vector3(x, 0.25, 0.0), 0.28, 1.52, COLOR_WRAP, 0.0)
+	_spinners.append(cap)
+	# Pino de contraste na superfície: o giro de um cilindro liso é invisível
+	var pin := MeshInstance3D.new()
+	pin.name = "Pin"
+	pin.position = Vector3(0.27, 0.0, 0.0)
+	var mesh := BoxMesh.new()
+	mesh.size = Vector3(0.035, 1.45, 0.05)
+	pin.mesh = mesh
+	pin.set_surface_override_material(0, _make_metal_material(COLOR_ROLLER, 0.0))
+	cap.add_child(pin)
 
 func _add_cylinder(node_name: String, pos: Vector3, radius: float, length: float,
-		color: Color, metallic: float = 0.0) -> void:
+		color: Color, metallic: float = 0.0) -> MeshInstance3D:
 	var mi := MeshInstance3D.new()
 	mi.name = node_name
 	mi.position = pos
@@ -163,6 +195,7 @@ func _add_cylinder(node_name: String, pos: Vector3, radius: float, length: float
 	mi.mesh = mesh
 	mi.set_surface_override_material(0, _make_metal_material(color, metallic))
 	add_child(mi)
+	return mi
 
 func _add_box(node_name: String, pos: Vector3, size: Vector3,
 		color: Color, metallic: float = 0.0) -> void:
@@ -183,34 +216,3 @@ func _make_metal_material(color: Color, metallic: float) -> StandardMaterial3D:
 	mat.metallic = metallic
 	return mat
 
-func _scroll_belt(delta: float) -> void:
-	if _mat == null:
-		return
-	# Scroll só em ALICE: no referencial de Bob a superfície da correia está
-	# em repouso com a tora — quem recua é a estrutura (MovingWorld, movido
-	# pelo FrameController). Scroll aqui somaria movimento que não existe.
-	if GameState.current_frame != GameState.Frame.ALICE:
-		return
-	# UV scroll creates the illusion of belt movement without any node translating.
-	# This is preferable to moving geometry: no floating-point drift, no wrap logic,
-	# and frame_controller.gd can scale this whole node for Lorentz contraction
-	# without disturbing the scroll state.
-	# Decreasing uv1_offset.x shifts sampling to lower U values → stripe pattern
-	# appears to move in world +X direction (belt "runs forward").
-	var offset := _mat.uv1_offset
-	offset.x += GameState.belt_beta * UV_SCROLL_RATE * uv_scroll_visual_scale * delta
-	_mat.uv1_offset = offset
-
-func _create_stripe_texture() -> ImageTexture:
-	# 64×4 px: height irrelevant for a horizontal stripe pattern.
-	# Dark band from U=0.69 to U=0.81 — visible at 10× tiling as stripes every 2u.
-	# ImageTexture repeats by default in 3D materials, unlike GradientTexture1D.
-	var img := Image.create(64, 4, false, Image.FORMAT_RGB8)
-	var belt_color := Color(0.22745, 0.22745, 0.22745)
-	var stripe_color := Color(0.16471, 0.16471, 0.16471)
-	for x in 64:
-		var u := float(x) / 64.0
-		var color := stripe_color if (u >= 0.69 and u <= 0.81) else belt_color
-		for y in 4:
-			img.set_pixel(x, y, color)
-	return ImageTexture.create_from_image(img)
