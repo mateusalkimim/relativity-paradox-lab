@@ -56,8 +56,6 @@ var _alice_avatar: Avatar
 var _tint: ColorRect
 var _phase: ToraPhase = ToraPhase.RIDING
 var _lifecycle_tween: Tween
-# Fator de desaceleração do mundo em BOB (1.0 = velocidade plena da passada)
-var _world_speed_scale: float = 1.0
 var _bob_pass_done: bool = false
 var _bob_stop_tween: Tween
 
@@ -84,7 +82,7 @@ func _process(delta: float) -> void:
 				_begin_exit()
 	else:
 		# No referencial de Bob a tora está em repouso; é o mundo que passa por ela
-		_world.position.x -= step * _world_speed_scale
+		_world.position.x -= step * GameState.bob_pass_speed_scale
 		if not _bob_pass_done and _tora.position.x - _world.position.x > EXIT_TRIGGER_X:
 			_finish_bob_pass()
 
@@ -196,20 +194,20 @@ func _spawn_tora() -> void:
 # Fim da passada em BOB: o galpão já passou inteiro pela tora. Em vez de
 # teleportar de volta, o mundo desacelera suavemente e para — a repetição
 # fica a cargo do operador (LB volta a Alice, B reseta, slow-mo no replay).
-# A correia não entra aqui: em BOB ela já não anda (guard em Esteira._process).
+# O fator vive no GameState: a Esteira lê para os sarrafos pararem junto.
 func _finish_bob_pass() -> void:
 	_bob_pass_done = true
 	_bob_stop_tween = create_tween() \
 		.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
-	_bob_stop_tween.tween_property(self, "_world_speed_scale", 0.0, BOB_STOP_DURATION)
+	_bob_stop_tween.tween_property(GameState, "bob_pass_speed_scale", 0.0, BOB_STOP_DURATION)
 
 func _reset_bob_pass() -> void:
 	# Mata o tween de desaceleração se ainda estiver rodando — sem isso ele
-	# continuaria após a troca de frame e re-zeraria _world_speed_scale
+	# continuaria após a troca de frame e re-zeraria o fator em ALICE
 	if _bob_stop_tween != null and _bob_stop_tween.is_valid():
 		_bob_stop_tween.kill()
 	_bob_pass_done = false
-	_world_speed_scale = 1.0
+	GameState.bob_pass_speed_scale = 1.0
 
 # Bob caminha na correia atrás da tora: mesma velocidade (está em repouso no
 # referencial dela) e mesma contração — em ALICE ele é um corpo em movimento.

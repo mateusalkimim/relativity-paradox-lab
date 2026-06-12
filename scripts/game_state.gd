@@ -22,6 +22,9 @@ const SLOW_MOTION_SCALE: float = 0.25
 var current_frame: Frame = Frame.ALICE
 var belt_beta: float = BELT_BETA_DEFAULT
 var is_transitioning: bool = false
+# Desaceleração do mundo no fim da passada em BOB (1.0 = velocidade plena).
+# Tweened pelo FrameController; a Esteira lê para os sarrafos pararem junto.
+var bob_pass_speed_scale: float = 1.0
 var slow_motion_active: bool = false
 var overlay_active: bool = false
 var tora_is_cut: bool = false
@@ -68,6 +71,7 @@ func reset_session() -> void:
 	current_frame = Frame.ALICE
 	belt_beta = BELT_BETA_DEFAULT
 	is_transitioning = false
+	bob_pass_speed_scale = 1.0
 	slow_motion_active = false
 	overlay_active = false
 	tora_is_cut = false

@@ -185,14 +185,13 @@ func _build_hud() -> void:
 	add_child(hud)
 
 func _build_esteira() -> void:
+	# Inteira dentro do MovingWorld, Correia inclusive: a estrutura contrai e
+	# desliza junto com o galpão em BOB (fora do grupo, a correia de 20u
+	# vazava do galpão contraído). A física da SUPERFÍCIE fica nos sarrafos:
+	# a Esteira compensa o passo deles por γ em BOB (repouso com a tora).
 	_esteira = load("res://scenes/world/esteira.tscn").instantiate() as Esteira
 	_esteira.name = "EsteiraNode"
 	_world.add_child(_esteira)
-	# A superfície da correia está em repouso com a TORA, não com o galpão:
-	# em BOB ela não pode contrair nem deslizar junto com a estrutura. Sai do
-	# MovingWorld já pronta (reparent preserva o transform global; a referência
-	# _correia interna da Esteira continua válida — é o mesmo nó).
-	_esteira.get_node("Correia").reparent(self)
 
 func _build_guillotines() -> void:
 	var half_sep := GUILLOTINE_SEPARATION * 0.5

@@ -85,8 +85,8 @@ mesh = SubResource("7")
 surface_material_override/0 = SubResource("6")
 
 ; Centro em Y=0.475 → face superior em Y=0.5 (plano de apoio da tora).
-; esteira.gd adiciona os sarrafos como filhos; galpao.gd reparenta este nó
-; para fora do MovingWorld (superfície em repouso com a tora, não com o galpão)
+; esteira.gd adiciona os sarrafos como filhos; em BOB o passo deles é
+; compensado por γ para a superfície ficar em repouso com a tora
 [node name="Correia" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.475, 0)
 mesh = SubResource("5")

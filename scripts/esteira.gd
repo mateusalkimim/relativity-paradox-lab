@@ -55,20 +55,31 @@ func _ready() -> void:
 	_spinners.append($RoleteDireito as MeshInstance3D)
 
 func _process(delta: float) -> void:
-	# Movimento só em ALICE: no referencial de Bob a superfície da correia
-	# está em repouso com a tora — quem recua é a estrutura (MovingWorld).
-	if GameState.current_frame != GameState.Frame.ALICE:
+	# Congela durante a transição, junto com o resto do palco
+	if GameState.is_transitioning:
 		return
-	var step := GameState.belt_beta * VISUAL_C * delta
+	var local_step: float
+	if GameState.current_frame == GameState.Frame.ALICE:
+		local_step = GameState.belt_beta * VISUAL_C * delta
+	else:
+		# Em BOB a estrutura (este nó, no MovingWorld contraído por 1/γ)
+		# desliza a -v; sarrafos andando a v·γ em coordenada LOCAL ficam, no
+		# espaço do mundo, em repouso com a tora: ẋ_mundo = -v + (v·γ)/γ = 0.
+		# O fator de desaceleração os para junto com o mundo no fim da passada.
+		local_step = GameState.belt_beta * VISUAL_C * delta \
+				* GameState.get_gamma() * GameState.bob_pass_speed_scale
+	if local_step == 0.0:
+		return
 	for slat in _slats:
-		slat.position.x += step
+		slat.position.x += local_step
 		if slat.position.x > BELT_HALF:
 			slat.position.x -= BELT_LENGTH
-	# Rolos giram com ω = v/r. Eixo do cilindro = Y local (deitado no mundo Z);
-	# sinal negativo: topo do rolo tangencia a correia que anda em +X.
+	# Rolos giram com ω = v/r (velocidade relativa superfície↔estrutura, que é
+	# o passo local nos dois frames). Eixo do cilindro = Y local (mundo Z);
+	# sinal negativo: topo do rolo tangencia a correia que anda em +X local.
 	for spinner in _spinners:
 		var radius := (spinner.mesh as CylinderMesh).top_radius
-		spinner.rotate_object_local(Vector3.UP, -step / radius)
+		spinner.rotate_object_local(Vector3.UP, -local_step / radius)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("speed_up"):
@@ -153,8 +164,7 @@ func _build_discharge_pit() -> void:
 	_add_box("PitRimLeft", Vector3(PIT_X - 1.1, 0.06, 0.0), Vector3(0.2, 0.12, 2.2), COLOR_RAIL, 0.3)
 	_add_box("PitRimRight", Vector3(PIT_X + 1.1, 0.06, 0.0), Vector3(0.2, 0.12, 2.2), COLOR_RAIL, 0.3)
 
-# Sarrafos: filhos da Correia — saem do MovingWorld junto com ela no reparent
-# do galpao.gd. y local 0.04 = topo da correia + 0.015 de relevo.
+# Sarrafos: filhos da Correia. y local 0.04 = topo da correia + 0.015 de relevo.
 func _build_slats() -> void:
 	var spacing := BELT_LENGTH / SLAT_COUNT
 	for i: int in SLAT_COUNT:
