@@ -3,9 +3,15 @@
 extends CanvasLayer
 class_name HUD
 
+const COLOR_INTACT := Color(0.55, 0.60, 0.55)
+const COLOR_CUT := Color(0.95, 0.30, 0.25)
+const COLOR_SLOWMO := Color(0.35, 0.80, 0.95)
+
 var _label_beta: Label
 var _label_gamma: Label
 var _label_frame: Label
+var _label_status: Label
+var _label_slowmo: Label
 var _bar: ProgressBar
 
 func _ready() -> void:
@@ -27,15 +33,22 @@ func _ready() -> void:
 	_bar = _make_bar()
 	_label_gamma = _make_label("γ  1.001")
 	_label_frame = _make_label("ALICE", Color(0.4, 0.9, 0.5))
+	_label_status = _make_label("TORA INTACTA", COLOR_INTACT)
+	_label_slowmo = _make_label("⏱ CÂMERA LENTA", COLOR_SLOWMO)
+	_label_slowmo.visible = false
 
 	vbox.add_child(_label_beta)
 	vbox.add_child(_bar)
 	vbox.add_child(_label_gamma)
 	vbox.add_child(_label_frame)
+	vbox.add_child(_label_status)
+	vbox.add_child(_label_slowmo)
 	add_child(panel)
 
 	GameState.velocity_changed.connect(func(_v): _update())
 	GameState.frame_changed.connect(func(_f): _update())
+	GameState.tora_cut_changed.connect(func(_c): _update())
+	GameState.slow_motion_changed.connect(func(_s): _update())
 	_update()
 
 func _update() -> void:
@@ -48,13 +61,17 @@ func _update() -> void:
 	_label_frame.text = "ALICE" if is_alice else "BOB"
 	var frame_color := Color(0.4, 0.9, 0.5) if is_alice else Color(0.9, 0.6, 0.2)
 	_label_frame.add_theme_color_override("font_color", frame_color)
+	_label_status.text = "✂ TORA CORTADA" if GameState.tora_is_cut else "TORA INTACTA"
+	var status_color := COLOR_CUT if GameState.tora_is_cut else COLOR_INTACT
+	_label_status.add_theme_color_override("font_color", status_color)
+	_label_slowmo.visible = GameState.slow_motion_active
 
 func _build_panel() -> Panel:
 	var panel := Panel.new()
 	panel.name = "HUDPanel"
 	panel.set_anchors_preset(Control.PRESET_TOP_LEFT)
 	panel.position = Vector2(16.0, 16.0)
-	panel.size = Vector2(200.0, 110.0)
+	panel.size = Vector2(200.0, 160.0)
 	var style := StyleBoxFlat.new()
 	style.bg_color = Color(0.07, 0.07, 0.10, 0.88)
 	style.corner_radius_top_left = 5

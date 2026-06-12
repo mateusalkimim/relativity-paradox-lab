@@ -554,17 +554,19 @@ ParadoxoRelatividade/
 
 **Marco**: Trocar de referencial e ver o "efeito wow".
 
-### Semana 4 — Simultaneidade e Resolução
+### Semana 4 — Simultaneidade e Resolução 🟡 Parcial
 
 **Objetivos**:
-- Sistema de linhas de simultaneidade (sprites pixel art)
-- Modo câmera lenta (Botão X)
-- Guilhotinas com offset temporal em `Frame.BOB`
-- Cena do paradoxo funcionando completa em ambos os frames
-- Som ambiente do galpão
-- Efeitos sonoros pontuais (esteira, guilhotinas, transição)
+- [ ] Sistema de linhas de simultaneidade (sprites pixel art)
+- [x] Modo câmera lenta (Botão X) — `Engine.time_scale = 0.25`, desacelera inclusive o offset das guilhotinas (útil no replay do Ato 3)
+- [x] Guilhotinas com offset temporal em `Frame.BOB` — direita desce primeiro, esquerda após `Δt' = γ·L₀·v/c²` (convertido pela escala visual)
+- [x] Detecção e visual de corte — lâmina cruza o plano da tora, corte geométrico, tora se separa em duas metades animadas; indicador na HUD
+- [x] Reset da cena (Botão B) — `reset_session()` + reload
+- [x] Cena do paradoxo funcionando completa em ambos os frames
+- [ ] Som ambiente do galpão
+- [ ] Efeitos sonoros pontuais (esteira, guilhotinas, transição)
 
-**Marco**: Atos 0-3 rodam completos de ponta a ponta.
+**Marco**: Atos 0-3 rodam completos de ponta a ponta. ✅ Atingido (sem áudio e sem overlay de linhas).
 
 ### Semana 5 — Tesouras e Polimento
 
