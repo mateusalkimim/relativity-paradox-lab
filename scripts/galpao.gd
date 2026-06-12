@@ -30,6 +30,7 @@ func _ready() -> void:
 	_build_guillotines()
 	_build_tora()
 	_build_ground()
+	_build_boundary_walls()
 	_setup_lighting()
 	_build_hud()
 	_build_frame_controller()
@@ -47,14 +48,35 @@ func _build_tora() -> void:
 	add_child(_tora)
 
 func _build_ground() -> void:
-	# Colisor invisível fixo: sustenta o player quando o galpão (e seu chão
-	# trimesh) desliza para trás no referencial de Bob
+	# Colisor invisível fixo: único piso físico do player — a estrutura
+	# visual do galpão não tem colisão (ver _build_galpao_mesh)
 	var body := StaticBody3D.new()
 	body.name = "GroundCollider"
 	body.position = Vector3(0.0, -0.1, 0.0)
 	var col := CollisionShape3D.new()
 	var shape := BoxShape3D.new()
 	shape.size = Vector3(80.0, 0.2, 80.0)
+	col.shape = shape
+	body.add_child(col)
+	add_child(body)
+
+# Contenção invisível e estática do player, fora do MovingWorld — alinhada
+# às faces internas das paredes do GLB em escala 1 (x ±12.3/12.4, z ±7.1).
+# Nota: em BOB o galpão visual contrai/desliza e deixa de coincidir com
+# estes limites; o objetivo é só impedir o operador de sair do palco.
+func _build_boundary_walls() -> void:
+	_add_boundary("BoundXNeg", Vector3(-12.5, 3.0, 0.0), Vector3(0.4, 6.0, 15.0))
+	_add_boundary("BoundXPos", Vector3(12.6, 3.0, 0.0), Vector3(0.4, 6.0, 15.0))
+	_add_boundary("BoundZNeg", Vector3(0.0, 3.0, -7.3), Vector3(25.6, 6.0, 0.4))
+	_add_boundary("BoundZPos", Vector3(0.0, 3.0, 7.3), Vector3(25.6, 6.0, 0.4))
+
+func _add_boundary(node_name: String, pos: Vector3, size: Vector3) -> void:
+	var body := StaticBody3D.new()
+	body.name = node_name
+	body.position = pos
+	var col := CollisionShape3D.new()
+	var shape := BoxShape3D.new()
+	shape.size = size
 	col.shape = shape
 	body.add_child(col)
 	add_child(body)
@@ -87,14 +109,11 @@ func _build_galpao_mesh() -> void:
 	# folga de ~2.5u nas pontas da esteira para o player passar.
 	mesh_node.rotation_degrees = Vector3(0.0, 90.0, 0.0)
 	mesh_node.position = Vector3(-3.34, -0.44, -0.06)
+	# SEM colisão trimesh: a estrutura é filha do MovingWorld, que escala na
+	# transição e desliza em BOB — colisão móvel empurrava/arrastava o player.
+	# Estrutura interna (postes, vigas) é só visual; a contenção do player
+	# fica nas paredes invisíveis estáticas (_build_boundary_walls).
 	_world.add_child(mesh_node)
-	_add_trimesh_collision(mesh_node)
-
-func _add_trimesh_collision(node: Node) -> void:
-	for child: Node in node.get_children():
-		if child is MeshInstance3D:
-			child.create_trimesh_collision()
-		_add_trimesh_collision(child)
 
 func _build_skydome() -> void:
 	var sphere := MeshInstance3D.new()
@@ -162,12 +181,12 @@ func _setup_lighting() -> void:
 	fill.shadow_enabled = false
 	add_child(fill)
 
+# Fallback procedural: só visual (sem colisão), pelo mesmo motivo do GLB —
+# está no MovingWorld; a contenção do player é dos boundary walls estáticos
 func _add_static_box(node_name: String, pos: Vector3, size: Vector3, color: Color) -> void:
-	var body := StaticBody3D.new()
-	body.name = node_name
-	body.position = pos
-
 	var mi := MeshInstance3D.new()
+	mi.name = node_name
+	mi.position = pos
 	var mesh := BoxMesh.new()
 	mesh.size = size
 	var mat := StandardMaterial3D.new()
@@ -175,13 +194,4 @@ func _add_static_box(node_name: String, pos: Vector3, size: Vector3, color: Colo
 	mat.roughness = 0.9
 	mi.mesh = mesh
 	mi.set_surface_override_material(0, mat)
-	body.add_child(mi)
-
-	var col := CollisionShape3D.new()
-	var shape := BoxShape3D.new()
-	shape.size = size
-	col.shape = shape
-	body.add_child(col)
-
-	# Fallback procedural faz parte da estrutura do galpão → MovingWorld
-	_world.add_child(body)
+	_world.add_child(mi)
