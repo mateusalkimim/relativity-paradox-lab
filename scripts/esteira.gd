@@ -31,7 +31,7 @@ const LEG_XS: Array[float] = [-5.0, 0.0, 5.0]
 # FEED_X = LOG_RESET_X — a tora cai da calha neste x
 # PIT_X — centro do poço de descarga onde a tora mergulha na saída
 const FEED_X: float = -7.5
-const PIT_X: float = 11.55
+const PIT_X: float = 11.35
 const COLOR_PIT: Color = Color(0.04, 0.04, 0.05)  # quase-preto: lê como buraco
 
 # 2. Exportadas
@@ -137,13 +137,15 @@ func _add_sloped_plate(node_name: String, pos: Vector3, tilt_deg: float) -> void
 # Poço de descarga: abertura escura no chão depois da ponta da esteira.
 # A tora mergulha nele na saída e o interior quase-preto mascara o despawn.
 func _build_discharge_pit() -> void:
+	# Compacto para caber entre o fim da esteira (x=10.3) e a mureta da
+	# fachada aberta do galpão (face interna em x=12.54)
 	# Interior: caixa escura com topo no nível do chão — lê como buraco
-	_add_box("PitInterior", Vector3(PIT_X, -0.7, 0.0), Vector3(2.5, 1.4, 1.8), COLOR_PIT)
+	_add_box("PitInterior", Vector3(PIT_X, -0.7, 0.0), Vector3(2.0, 1.4, 1.8), COLOR_PIT)
 	# Bordas metálicas emolduram a abertura
-	_add_box("PitRimFront", Vector3(PIT_X, 0.06, -1.0), Vector3(2.9, 0.12, 0.2), COLOR_RAIL, 0.3)
-	_add_box("PitRimBack", Vector3(PIT_X, 0.06, 1.0), Vector3(2.9, 0.12, 0.2), COLOR_RAIL, 0.3)
-	_add_box("PitRimLeft", Vector3(PIT_X - 1.35, 0.06, 0.0), Vector3(0.2, 0.12, 2.2), COLOR_RAIL, 0.3)
-	_add_box("PitRimRight", Vector3(PIT_X + 1.35, 0.06, 0.0), Vector3(0.2, 0.12, 2.2), COLOR_RAIL, 0.3)
+	_add_box("PitRimFront", Vector3(PIT_X, 0.06, -1.0), Vector3(2.4, 0.12, 0.2), COLOR_RAIL, 0.3)
+	_add_box("PitRimBack", Vector3(PIT_X, 0.06, 1.0), Vector3(2.4, 0.12, 0.2), COLOR_RAIL, 0.3)
+	_add_box("PitRimLeft", Vector3(PIT_X - 1.1, 0.06, 0.0), Vector3(0.2, 0.12, 2.2), COLOR_RAIL, 0.3)
+	_add_box("PitRimRight", Vector3(PIT_X + 1.1, 0.06, 0.0), Vector3(0.2, 0.12, 2.2), COLOR_RAIL, 0.3)
 
 func _add_wrap_cap(node_name: String, x: float) -> void:
 	_add_cylinder(node_name, Vector3(x, 0.25, 0.0), 0.28, 1.52, COLOR_WRAP, 0.0)

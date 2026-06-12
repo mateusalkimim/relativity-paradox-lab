@@ -26,8 +26,9 @@ const LOG_Y: float = 0.75
 # Queda da calha: tora nasce no vão do V (Esteira._build_hopper)
 const SPAWN_Y: float = 2.35
 const SPAWN_DURATION: float = 0.6
-# Mergulho no poço de descarga (Esteira.PIT_X)
-const PIT_X: float = 11.55
+# Mergulho no poço de descarga (Esteira.PIT_X) — entre o fim da esteira
+# (x=10.3) e a mureta da fachada aberta (face interna em x=12.54)
+const PIT_X: float = 11.35
 const EXIT_DURATION: float = 0.9
 const EXIT_DIVE_Y: float = -1.6
 const EXIT_SINK_Y: float = -2.4
@@ -50,6 +51,7 @@ var _lifecycle_tween: Tween
 # Fator de desaceleração do mundo em BOB (1.0 = velocidade plena da passada)
 var _world_speed_scale: float = 1.0
 var _bob_pass_done: bool = false
+var _bob_stop_tween: Tween
 var _scroll_scale_default: float = 0.8
 
 # 7. Funções built-in
@@ -174,12 +176,17 @@ func _spawn_tora() -> void:
 # O scroll da correia desacelera junto para manter a coerência visual.
 func _finish_bob_pass() -> void:
 	_bob_pass_done = true
-	var tween := create_tween().set_parallel(true) \
+	_bob_stop_tween = create_tween().set_parallel(true) \
 		.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
-	tween.tween_property(self, "_world_speed_scale", 0.0, BOB_STOP_DURATION)
-	tween.tween_property(_esteira, "uv_scroll_visual_scale", 0.0, BOB_STOP_DURATION)
+	_bob_stop_tween.tween_property(self, "_world_speed_scale", 0.0, BOB_STOP_DURATION)
+	_bob_stop_tween.tween_property(_esteira, "uv_scroll_visual_scale", 0.0, BOB_STOP_DURATION)
 
 func _reset_bob_pass() -> void:
+	# Mata o tween de desaceleração se ainda estiver rodando — sem isso ele
+	# continuaria após a troca de frame e re-zeraria o scroll em ALICE,
+	# congelando a correia permanentemente
+	if _bob_stop_tween != null and _bob_stop_tween.is_valid():
+		_bob_stop_tween.kill()
 	_bob_pass_done = false
 	_world_speed_scale = 1.0
 	_esteira.uv_scroll_visual_scale = _scroll_scale_default
