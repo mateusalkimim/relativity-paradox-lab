@@ -21,12 +21,13 @@ albedo_color = Color(0.41961, 0.46667, 0.50196, 1)
 metallic_specular = 0.15
 roughness = 0.85
 
-; Rolete: raio=0.25, comprimento=1.5, deitado em Z via rotação +90° em X.
+; Rolete: raio=0.25, comprimento=1.4 (< largura da correia 1.5 — rolo mais
+; estreito evita z-fighting), deitado em Z via rotação +90° em X.
 ; Centro em Y=0.25 → top do rolete em Y=0.5, tangente à face inferior da correia.
 [sub_resource type="CylinderMesh" id="7"]
 top_radius = 0.25
 bottom_radius = 0.25
-height = 1.5
+height = 1.4
 radial_segments = 8
 rings = 1
 

@@ -87,11 +87,13 @@ func _build_structure() -> void:
 	_add_wrap_cap("WrapLeft", -BELT_LENGTH * 0.5)
 	_add_wrap_cap("WrapRight", BELT_LENGTH * 0.5)
 
-	# Roletes intermediários visíveis sob a correia — giram junto com o belt
+	# Roletes intermediários visíveis sob a correia — giram junto com o belt.
+	# Comprimento 1.42 < largura da correia (1.5): rolo mais estreito evita
+	# faces coincidentes brigando com a correia/trilhos (z-fighting)
 	for i: int in MID_ROLLER_XS.size():
 		_spinners.append(_add_cylinder("MidRoller%d" % i,
 				Vector3(MID_ROLLER_XS[i], 0.475 - MID_ROLLER_RADIUS, 0.0),
-				MID_ROLLER_RADIUS, 1.5, COLOR_ROLLER, 0.6))
+				MID_ROLLER_RADIUS, 1.42, COLOR_ROLLER, 0.6))
 
 	# Trilhos laterais na altura da correia: escondem a borda do belt
 	# (belt edge em z=±0.75; trilho centrado em ±0.79 encosta nela)
@@ -167,14 +169,15 @@ func _build_slats() -> void:
 		_slats.append(mi)
 
 func _add_wrap_cap(node_name: String, x: float) -> void:
-	var cap := _add_cylinder(node_name, Vector3(x, 0.25, 0.0), 0.28, 1.52, COLOR_WRAP, 0.0)
+	# 1.42 < largura da correia (1.5) — mesma regra anti z-fighting dos roletes
+	var cap := _add_cylinder(node_name, Vector3(x, 0.25, 0.0), 0.28, 1.42, COLOR_WRAP, 0.0)
 	_spinners.append(cap)
 	# Pino de contraste na superfície: o giro de um cilindro liso é invisível
 	var pin := MeshInstance3D.new()
 	pin.name = "Pin"
 	pin.position = Vector3(0.27, 0.0, 0.0)
 	var mesh := BoxMesh.new()
-	mesh.size = Vector3(0.035, 1.45, 0.05)
+	mesh.size = Vector3(0.035, 1.3, 0.05)
 	pin.mesh = mesh
 	pin.set_surface_override_material(0, _make_metal_material(COLOR_ROLLER, 0.0))
 	cap.add_child(pin)

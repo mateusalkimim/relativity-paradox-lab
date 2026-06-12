@@ -26,10 +26,11 @@ rings = 1
 cap_top = false
 cap_bottom = false
 
-; Disco de tampa: mesmo raio do corpo para silhueta contínua
+; Disco de tampa: raio 0.255 (> corpo) e centro deslocado para fora da ponta —
+; raio idêntico sobreposto ao corpo causava z-fighting ("outra tora dentro")
 [sub_resource type="CylinderMesh" id="5"]
-top_radius = 0.25
-bottom_radius = 0.25
+top_radius = 0.255
+bottom_radius = 0.255
 height = 0.05
 radial_segments = 8
 rings = 1
@@ -44,14 +45,14 @@ transform = Transform3D(0, -1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("4")
 surface_material_override/0 = SubResource("2")
 
-; Tampa esquerda: x=-2 (metade de L₀=4)
+; Tampa esquerda: x=-2.026 — fora da ponta do corpo (L₀/2=2), sem sobreposição
 [node name="CapLeft" type="MeshInstance3D" parent="."]
-transform = Transform3D(0, -1, 0, 1, 0, 0, 0, 0, 1, -2, 0, 0)
+transform = Transform3D(0, -1, 0, 1, 0, 0, 0, 0, 1, -2.026, 0, 0)
 mesh = SubResource("5")
 surface_material_override/0 = SubResource("3")
 
-; Tampa direita: x=+2
+; Tampa direita: x=+2.026
 [node name="CapRight" type="MeshInstance3D" parent="."]
-transform = Transform3D(0, -1, 0, 1, 0, 0, 0, 0, 1, 2, 0, 0)
+transform = Transform3D(0, -1, 0, 1, 0, 0, 0, 0, 1, 2.026, 0, 0)
 mesh = SubResource("5")
 surface_material_override/0 = SubResource("3")

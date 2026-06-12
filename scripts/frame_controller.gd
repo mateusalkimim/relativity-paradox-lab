@@ -35,9 +35,11 @@ const EXIT_SINK_Y: float = -2.4
 const EXIT_TILT_RAD: float = -1.1
 # Desaceleração suave do mundo ao fim da passada em BOB
 const BOB_STOP_DURATION: float = 1.0
-# Bob acompanha a tora 3.5u atrás do centro, contido na correia (início em -10)
-const BOB_FOLLOW_OFFSET: float = -3.5
-const BOB_MIN_X: float = -9.5
+# Bob acompanha a tora 2.4u atrás do centro (0.4u atrás da face traseira da
+# madeira). Offset maior deixava o alvo do spawn atrás do clamp e o Bob
+# ficava parado esperando a tora abrir vantagem antes de andar.
+const BOB_FOLLOW_OFFSET: float = -2.4
+const BOB_MIN_X: float = -9.9
 # Pés do Bob no topo da correia (sarrafos a 0.515; diferença imperceptível)
 const BOB_BELT_Y: float = 0.5
 # Pico de opacidade do tint azulado durante a transição (efeito sutil, README Semana 3)
