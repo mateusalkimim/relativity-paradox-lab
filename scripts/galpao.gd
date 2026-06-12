@@ -7,23 +7,60 @@ const GALPAO_WIDTH: float = 8.0
 const GALPAO_HEIGHT: float = 5.0
 const GUILLOTINE_SEPARATION: float = 4.0
 
+const LOG_RESET_X: float = -9.0
+const LOG_Y: float = 0.75
+
 var _guillotine_left: Guillotine
 var _guillotine_right: Guillotine
 var _esteira: Esteira
+var _tora: Tora
+# Grupo escalado/movido pelo FrameController no referencial de Bob.
+# Tudo que está em repouso no referencial de Alice (galpão, guilhotinas,
+# esteira) vai aqui dentro; tora, skydome, luzes e HUD ficam fora.
+var _world: Node3D
 
 func _ready() -> void:
 	_build_skydome()
+	_build_world_group()
 	_build_galpao_mesh()
 	_build_esteira()
 	_build_guillotines()
+	_build_tora()
+	_build_ground()
 	_setup_lighting()
 	_build_hud()
 	_build_frame_controller()
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("action_primary") and not GameState.is_transitioning:
-		_guillotine_left.drop()
-		_guillotine_right.drop()
+func _build_world_group() -> void:
+	_world = Node3D.new()
+	_world.name = "MovingWorld"
+	add_child(_world)
+
+func _build_tora() -> void:
+	# Fora do MovingWorld: a tora não herda a contração do mundo no frame Bob
+	_tora = load("res://scenes/world/tora.tscn").instantiate() as Tora
+	_tora.name = "Tora"
+	_tora.position = Vector3(LOG_RESET_X, LOG_Y, 0.0)
+	add_child(_tora)
+
+func _build_ground() -> void:
+	# Colisor invisível fixo: sustenta o player quando o galpão (e seu chão
+	# trimesh) desliza para trás no referencial de Bob
+	var body := StaticBody3D.new()
+	body.name = "GroundCollider"
+	body.position = Vector3(0.0, -0.1, 0.0)
+	var col := CollisionShape3D.new()
+	var shape := BoxShape3D.new()
+	shape.size = Vector3(80.0, 0.2, 80.0)
+	col.shape = shape
+	body.add_child(col)
+	add_child(body)
+
+func _build_frame_controller() -> void:
+	var fc := FrameController.new()
+	fc.name = "FrameController"
+	fc.setup(_world, _tora, _guillotine_left, _guillotine_right)
+	add_child(fc)
 
 func _build_structure() -> void:
 	_add_static_box("Floor",    Vector3(0, 0, 0),                                   Vector3(GALPAO_LENGTH, 0.2,  GALPAO_WIDTH), Color(0.612, 0.455, 0.259))
@@ -42,7 +79,7 @@ func _build_galpao_mesh() -> void:
 	mesh_node.name = "GalpaoMesh"
 	mesh_node.scale = Vector3(0.25, 0.25, 0.25)
 	mesh_node.position = Vector3(0.0, -0.44, -3.0)
-	add_child(mesh_node)
+	_world.add_child(mesh_node)
 	_add_trimesh_collision(mesh_node)
 
 func _add_trimesh_collision(node: Node) -> void:
@@ -80,16 +117,10 @@ func _build_hud() -> void:
 	hud.name = "HUD"
 	add_child(hud)
 
-func _build_frame_controller() -> void:
-	var fc := FrameController.new()
-	fc.name = "FrameController"
-	add_child(fc)
-	fc.init(_esteira, _guillotine_left, _guillotine_right)
-
 func _build_esteira() -> void:
 	_esteira = load("res://scenes/world/esteira.tscn").instantiate() as Esteira
 	_esteira.name = "EsteiraNode"
-	add_child(_esteira)
+	_world.add_child(_esteira)
 
 func _build_guillotines() -> void:
 	var half_sep := GUILLOTINE_SEPARATION * 0.5
@@ -97,12 +128,12 @@ func _build_guillotines() -> void:
 	_guillotine_left = Guillotine.new()
 	_guillotine_left.name = "GuillotineLeft"
 	_guillotine_left.position.x = -half_sep
-	add_child(_guillotine_left)
+	_world.add_child(_guillotine_left)
 
 	_guillotine_right = Guillotine.new()
 	_guillotine_right.name = "GuillotineRight"
 	_guillotine_right.position.x = half_sep
-	add_child(_guillotine_right)
+	_world.add_child(_guillotine_right)
 
 func _setup_lighting() -> void:
 	var sun := DirectionalLight3D.new()
@@ -143,4 +174,5 @@ func _add_static_box(node_name: String, pos: Vector3, size: Vector3, color: Colo
 	col.shape = shape
 	body.add_child(col)
 
-	add_child(body)
+	# Fallback procedural faz parte da estrutura do galpão → MovingWorld
+	_world.add_child(body)

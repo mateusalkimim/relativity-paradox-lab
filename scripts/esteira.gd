@@ -17,20 +17,12 @@ const UV_SCROLL_RATE: float = VISUAL_C / (BELT_LENGTH / UV_SCALE_X)
 
 # 2. Exportadas
 
-# LOG_Y = belt top (0.5) + tora radius (0.25)
-const LOG_RESET_X: float = -9.0
-const LOG_EXIT_X: float = 9.0
-const LOG_Y: float = 0.75
-
 # Tune this in the Inspector while the game runs to visually match belt speed to tora.
 # 1.0 = theoretical. Adjust until stripes and tora appear to move at the same rate.
 @export var uv_scroll_visual_scale: float = 0.8
 
 # 6. Onready
 @onready var _correia: MeshInstance3D = $Correia
-
-# 4. Variáveis públicas
-var _tora: Tora
 
 # 5. Variáveis privadas
 var _mat: StandardMaterial3D
@@ -48,33 +40,20 @@ func _ready() -> void:
 	# the stripe was visible only in the first 2 world-units of the 20u belt.
 	_mat.albedo_texture = _create_stripe_texture()
 	_correia.set_surface_override_material(0, _mat)
-	_build_tora()
 
 func _process(delta: float) -> void:
+	# O scroll roda nos dois referenciais: em ALICE a superfície acompanha a
+	# tora; em BOB a estrutura recua a -v enquanto a superfície avança a +v
+	# relativa a ela — saldo visual: superfície em repouso com a tora. Correto.
 	_scroll_belt(delta)
-	_move_tora(delta)
 
 func _unhandled_input(event: InputEvent) -> void:
-	if GameState.is_transitioning:
-		return
 	if event.is_action_pressed("speed_up"):
 		GameState.increase_speed()
 	elif event.is_action_pressed("speed_down"):
 		GameState.decrease_speed()
 
-# 8. Funções públicas
-
-func get_tora() -> Tora:
-	return _tora
-
 # 9. Funções privadas
-
-func _build_tora() -> void:
-	var packed: PackedScene = load("res://scenes/world/tora.tscn")
-	_tora = packed.instantiate() as Tora
-	_tora.name = "Tora"
-	_tora.position = Vector3(LOG_RESET_X, LOG_Y, 0.0)
-	add_child(_tora)
 
 func _scroll_belt(delta: float) -> void:
 	if _mat == null:
@@ -102,13 +81,3 @@ func _create_stripe_texture() -> ImageTexture:
 		for y in 4:
 			img.set_pixel(x, y, color)
 	return ImageTexture.create_from_image(img)
-
-func _move_tora(delta: float) -> void:
-	if _tora == null:
-		return
-	# No referencial de Bob a tora está em repouso; só o mundo se move
-	if GameState.current_frame == GameState.Frame.BOB:
-		return
-	_tora.position.x += GameState.belt_beta * VISUAL_C * delta
-	if _tora.position.x > LOG_EXIT_X:
-		_tora.position.x = LOG_RESET_X

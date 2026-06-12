@@ -541,29 +541,32 @@ ParadoxoRelatividade/
 
 **Marco**: Apresentar Atos 0 e início do Ato 1. ✅ Atingido (sem assets Hyper3D).
 
-### Semana 3 — Coração: Troca de Referencial
+### Semana 3 — Coração: Troca de Referencial ✅ Concluída
 
 **Objetivos**:
-- Lógica de `Frame.ALICE` vs `Frame.BOB` em `GameState`
-- Contração de Lorentz aplicada via escala anisotrópica
-- Transição animada de 1.5-2s com easing
-- Indicador de γ na HUD atualizando dinamicamente
-- Bloqueio de inputs durante transição
-- Efeito visual sutil durante transição (vinheta, distorção cromática)
+- [x] Lógica de `Frame.ALICE` vs `Frame.BOB` em `GameState`
+- [x] Contração de Lorentz aplicada via escala anisotrópica — `frame_controller.gd` (tora `1/γ` em ALICE; grupo `MovingWorld` com galpão+guilhotinas+esteira `1/γ` em BOB)
+- [x] Transição animada de 2s com easing (`TRANS_CUBIC`/`EASE_IN_OUT`)
+- [x] Indicador de γ na HUD atualizando dinamicamente
+- [x] Bloqueio de inputs durante transição (`is_transitioning` guarda frame e velocidade)
+- [x] Efeito visual sutil durante transição (tint azulado em pulso senoidal)
+- [x] Movimento relativo coerente em BOB: tora em repouso, mundo desliza a -v (chão colisor invisível fixo sustenta o player)
 
 **Marco**: Trocar de referencial e ver o "efeito wow".
 
-### Semana 4 — Simultaneidade e Resolução
+### Semana 4 — Simultaneidade e Resolução 🟡 Parcial
 
 **Objetivos**:
-- Sistema de linhas de simultaneidade (sprites pixel art)
-- Modo câmera lenta (Botão X)
-- Guilhotinas com offset temporal em `Frame.BOB`
-- Cena do paradoxo funcionando completa em ambos os frames
-- Som ambiente do galpão
-- Efeitos sonoros pontuais (esteira, guilhotinas, transição)
+- [ ] Sistema de linhas de simultaneidade (sprites pixel art)
+- [x] Modo câmera lenta (Botão X) — `Engine.time_scale = 0.25`, desacelera inclusive o offset das guilhotinas (útil no replay do Ato 3)
+- [x] Guilhotinas com offset temporal em `Frame.BOB` — direita desce primeiro, esquerda após `Δt' = γ·L₀·v/c²` (convertido pela escala visual)
+- [x] Detecção e visual de corte — lâmina cruza o plano da tora, corte geométrico, tora se separa em duas metades animadas; indicador na HUD
+- [x] Reset da cena (Botão B) — `reset_session()` + reload
+- [x] Cena do paradoxo funcionando completa em ambos os frames
+- [ ] Som ambiente do galpão
+- [ ] Efeitos sonoros pontuais (esteira, guilhotinas, transição)
 
-**Marco**: Atos 0-3 rodam completos de ponta a ponta.
+**Marco**: Atos 0-3 rodam completos de ponta a ponta. ✅ Atingido (sem áudio e sem overlay de linhas).
 
 ### Semana 5 — Tesouras e Polimento
 
