@@ -240,6 +240,8 @@ Variação do Barra e Fenda em que a barra cai sob gravidade enquanto cruza a fe
 | Botão View | Toggle vista isométrica / primeira pessoa |
 | Botão Menu | Próxima cena (Tesouras) |
 
+> Cada ação também possui atalho de teclado equivalente (WASD para mover, Q trocar referencial, E/Z velocidade, Espaço ação, O overlay, P câmera lenta, R reset, V vista, N próxima cena) para desenvolvimento. O teclado não é usado durante a apresentação.
+
 ---
 
 ## 5. Stack Técnica
@@ -307,53 +309,56 @@ ParadoxoRelatividade/
 ├── README.md                       # Este arquivo
 ├── .gitignore                      # Git ignore para Godot 4
 ├── project.godot                   # Arquivo principal do Godot
+├── setup-xbox-linux.sh             # Instala o driver xone (dongle Xbox no Linux)
 │
 ├── scenes/
 │   ├── main.tscn                   # Cena raiz, entrada do jogo
 │   ├── world/
 │   │   ├── galpao.tscn             # Cenário da madeireira (Atos 0-3)
-│   │   ├── esteira.tscn            # Esteira transportadora (Esteira class, UV scroll)
-│   │   ├── tora.tscn               # Tora reutilizável (CylinderMesh procedural, L₀=4u)
-│   │   └── observatorio.tscn       # Cenário das tesouras (Ato 4)
+│   │   ├── esteira.tscn            # Esteira transportadora (correia física, instancia tora.tscn)
+│   │   └── tora.tscn               # Tora reutilizável (CylinderMesh procedural, L₀=4u)
 │   └── player/
 │       └── player.tscn             # Câmera primeira pessoa + movimento
+│   # observatorio.tscn (Ato 4) — pendente, Semana 5
 │
 ├── scripts/
-│   ├── input_manager.gd            # Autoload: abstração de input
-│   ├── game_state.gd               # Autoload: estado global
-│   ├── player.gd                   # Movimento + câmera
+│   ├── input_manager.gd            # Autoload InputBus: abstração de input
+│   ├── game_state.gd               # Autoload GameState: estado global
+│   ├── player.gd                   # Movimento, câmera e encarnação em 1ª pessoa
 │   ├── frame_controller.gd         # Lógica de troca de referencial
 │   ├── lorentz_transform.gd        # Cálculos relativísticos (γ, contração, offset temporal)
-│   ├── esteira.gd                  # Esteira transportadora (UV scroll, instancia tora.tscn)
-│   ├── conveyor_belt.gd            # Legado — substituído por esteira.gd/esteira.tscn
-│   ├── tora.gd                     # Tora: @export L₀, diâmetro; set_lorentz_scale() pronto
+│   ├── esteira.gd                  # Esteira: correia física (sarrafos + rolos), instancia tora.tscn
+│   ├── conveyor_belt.gd            # Legado — substituído por esteira.gd/esteira.tscn (a remover na Semana 5)
+│   ├── tora.gd                     # Tora: @export L₀, diâmetro; set_lorentz_scale(); corte em duas metades
 │   ├── guillotine.gd               # Comportamento das guilhotinas
-│   ├── hud.gd                      # HUD: velocímetro, indicador de γ e referencial
-│   ├── simultaneity_lines.gd       # Overlay de linhas de simultaneidade
-│   └── scissors.gd                 # Lógica das tesouras (Ato 4)
+│   ├── galpao.gd                   # Cenário: skydome HDRI, WorldEnvironment, iluminação estilizada
+│   ├── avatar.gd                   # Avatares Bob (Barbarian) e Alice (Rogue) — KayKit animado
+│   ├── grain.gd                    # Granulado procedural (normal map de ruído em runtime)
+│   └── hud.gd                      # HUD: velocímetro, γ e referencial (Labels; sprite pendente)
+│   # simultaneity_lines.gd (overlay) — pendente, Semana 4
+│   # scissors.gd (tesouras, Ato 4) — pendente, Semana 5
 │
 ├── assets/
-│   ├── models/                     # .glb gerados no Hyper3D
-│   │   ├── galpao_estrutura.glb    # ✅ integrado com colisão trimesh
+│   ├── models/                     # .glb gerados no Hyper3D + personagens KayKit
+│   │   ├── galpao_estrutura.glb    # ✅ integrado com colisão trimesh (+ texturas PBR)
 │   │   ├── tora.glb                # presente; tora usa cena procedural (tora.tscn)
 │   │   ├── esteira.glb             # pendente
 │   │   ├── guilhotina.glb          # pendente
-│   │   └── observatorio.glb        # pendente
+│   │   ├── observatorio.glb        # pendente (Ato 4)
+│   │   └── characters/             # KayKit (CC0): Barbarian.glb, Rogue.glb, axe_1handed, anims/
+│   ├── packages/                   # Zips KayKit originais — fora do versionamento (ver .gitignore)
 │   ├── textures/                   # Texturas auxiliares
 │   │   └── hdri_galpao.hdr         # HDRI equiretangular para skydome do galpão
-│   ├── sprites/                    # Pixel art (PixelLab)
-│   │   ├── hud_velocimetro.png
-│   │   ├── linha_simultaneidade.png
-│   │   └── indicador_gamma.png
-│   └── audio/
+│   ├── sprites/                    # Pixel art (PixelLab) — pendente
+│   └── audio/                      # pendente
 │       ├── music/
 │       └── sfx/
 │
-├── shaders/                        # Reservado para Fase 3+ (opcional)
+├── shaders/                        # Reservado para Fase 3+ (vazio)
 │
 └── docs/
-    ├── apresentacao_script.md      # Script narrado da apresentação
-    └── referencias.md              # Referências bibliográficas extras
+    ├── referencia_principal.pdf    # Artigo de Alencar et al. (2023)
+    └── referencia_principal.txt    # Texto extraído do artigo (referência rápida)
 ```
 
 ---
@@ -405,6 +410,8 @@ ParadoxoRelatividade/
 
 **Ativação**: Botão Y (toggle)
 
+**Status**: 🟡 planejado — a ação `toggle_overlay` (Botão Y) está mapeada, mas `simultaneity_lines.gd` ainda não foi implementado (pendência da Semana 4). No Ato 3, a simultaneidade já é demonstrada pelo offset temporal das guilhotinas + câmera lenta; o overlay é a camada visual complementar.
+
 ### 7.4 Sistema de Câmera
 
 **Função**: Câmera em primeira pessoa controlável + modo isométrico opcional.
@@ -426,10 +433,10 @@ ParadoxoRelatividade/
 ### 7.5 Sistema de Esteira e Guilhotinas
 
 **Esteira (`esteira.gd` + `esteira.tscn`)**:
-- Velocidade ajustável de 0 a 0.99c (D-Pad ↑↓)
-- Movimento visual via UV scroll na textura da correia (sem translação de geometria — estável para contração de Lorentz)
+- Velocidade ajustável de 0 a 0.99c (D-Pad ↑↓); soft-cap β ≤ 0.9 no referencial de Bob (a 0.99c o offset de simultaneidade excederia a duração da passada)
+- Movimento visual via **correia física**: sarrafos transladam com o mesmo passo da tora (`belt_beta × VISUAL_C × delta`), com wrap nas pontas e rolos girando (ω = v/r) — substituiu o UV scroll antigo, que dependia de fator de ajuste e não casava com a tora
 - Instancia `tora.tscn` e a move ao longo do eixo X
-- Em `Frame.BOB`, a tora fica parada e o galpão se move
+- A esteira inteira pertence ao grupo `MovingWorld`: em `Frame.BOB`, a tora fica parada e o galpão (com a esteira) contrai e desliza a −v
 
 **Guilhotinas (`guillotine.gd`)**:
 - Duas instâncias: esquerda e direita
@@ -447,6 +454,8 @@ ParadoxoRelatividade/
 - Ponto de corte calculado geometricamente
 - Velocímetro do ponto de corte exibido em HUD
 - Cone de luz visualizado quando `v_ponto > c`
+
+**Status**: ⬜ não implementado — `scissors.gd` e `observatorio.tscn` previstos para a Semana 5. A ação `next_scene` (Botão Menu) já está mapeada para a transição.
 
 ---
 
@@ -594,6 +603,7 @@ ParadoxoRelatividade/
 - Polimento visual (bloom, motion blur)
 - Ensaio cronometrado da apresentação completa
 - Ajustes finos
+- Limpeza técnica: remover `scripts/conveyor_belt.gd` legado (substituído pela correia física em `esteira.gd`; resta só uma referência em comentário)
 
 **Marco**: Show completo de 20 minutos rodando.
 
@@ -794,22 +804,25 @@ Preferir sinais em vez de referências diretas entre sistemas independentes. O a
 
 ### Estado Atual do Projeto
 
-**Fase**: Semana 3 — Coração: Troca de Referencial
+**Fase**: Semana 4 — Simultaneidade e Resolução (🟡 parcial)
 **Ambiente de desenvolvimento**: AlmaLinux 9.8 + Godot 4.6.3 + VS Code 1.122.0 (ambos via Flatpak) — configurado e funcional.
-**Pendência da Semana 2**:
-- `esteira.glb`, `guilhotina.glb` do Hyper3D ainda pendentes (galpão integrado; esteira usa UV scroll procedural; tora usa cena procedural)
-**Ganchos já implementados para Semana 3**:
-- `tora.gd`: `set_lorentz_scale(gamma)` e `reset_lorentz_scale()` prontos — `frame_controller.gd` só precisa chamá-los
-- `lorentz_transform.gd`: `gamma()`, `contracted_length()`, `simultaneity_offset()` implementados e funcionando
+**Concluído (Atos 0-3 rodam de ponta a ponta)**:
+- Troca de referencial ALICE↔BOB com contração de Lorentz animada (Tween cúbico, bloqueio de input na transição)
+- Correia física (sarrafos + rolos) substituindo o UV scroll; tora se move e é cortada na mira do operador
+- Guilhotinas com offset temporal de simultaneidade em BOB + modo câmera lenta (Botão X) e reset (Botão B)
+- Avatares KayKit (Bob/Alice) com encarnação em 1ª pessoa e iluminação estilizada
+**Pendências da Semana 4**:
+- Overlay de linhas de simultaneidade (`simultaneity_lines.gd`, sprites pixel art)
+- Som ambiente do galpão e efeitos sonoros pontuais
+**Pendências de assets**: `esteira.glb`, `guilhotina.glb`, `observatorio.glb` (Hyper3D); sprites do HUD (PixelLab)
 **Próximos passos imediatos**:
-1. `frame_controller.gd`: switch ALICE↔BOB com escala anisotrópica (1/γ) usando os ganchos acima
-2. Transição animada de 1.5–2s com Tween (easing cúbico)
-3. Bloqueio de inputs durante transição
-4. Efeito visual sutil na transição (vinheta / distorção cromática)
+1. Sistema de linhas de simultaneidade (Botão Y) — última peça conceitual do Ato 3
+2. Camada de áudio (ambiente + SFX de esteira, guilhotinas e transição)
+3. Iniciar Semana 5: cena `observatorio.tscn` e lógica das tesouras superluminais (`scissors.gd`)
 
 ---
 
-*Última atualização: 31 de maio de 2026*
+*Última atualização: 24 de junho de 2026*
 *Projeto desenvolvido como instrumento de ensino de Relatividade Especial para o ensino médio brasileiro.*
 
 ---
