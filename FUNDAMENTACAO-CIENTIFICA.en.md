@@ -1,9 +1,10 @@
 <!-- idioma: linha gerada por i18n.py -->
-*[Leia em português](FUNDAMENTACAO-CIENTIFICA.en.md)*
+> [!NOTE]
+> ### 🇧🇷 **[Leia esta página em português →](FUNDAMENTACAO-CIENTIFICA.md)**
 
 # Scientific Foundation — Relativity Paradox
 
-> Conceptual, physical, and bibliographic deepening of the instrument. The [`README.md`](README.en.md)  
+> Conceptual, physical, and bibliographic deepening of the instrument. The [`README.md`](README.md)  
 > covers the technical architecture of the software; this document covers the **physics and pedagogy**  
 > that justify it.
 
@@ -185,4 +186,4 @@ Bar and Slit Variation in which the bar falls under gravity while crossing the s
 
 ---
 
-*Companion to [`README.md`](README.en.md) (technical reference). The visual/game design inspirations and tools used remain in `README.md`.*
+*Companion to [`README.md`](README.md) (technical reference). The visual/game design inspirations and tools used remain in `README.md`.*

@@ -1,5 +1,6 @@
 <!-- idioma: linha gerada por i18n.py -->
-*[Read this in English](FUNDAMENTACAO-CIENTIFICA.en.md)*
+> [!NOTE]
+> ### 🌍 **[Read this page in English →](FUNDAMENTACAO-CIENTIFICA.en.md)**
 
 # Fundamentação Científica — Paradoxo da Relatividade
 

@@ -1,626 +1,627 @@
 <!-- idioma: linha gerada por i18n.py -->
-*[Read this in English](README.en.md)*
+> [!NOTE]
+> ### 🇧🇷 **[Leia esta página em português →](README.pt-BR.md)**
 
-# Paradoxo da Relatividade — Instrumento Interativo de Ensino
+# Relativity Paradox — Interactive Teaching Instrument
 
-> *A relatividade não é difícil pela matemática — é difícil porque obriga a trocar de modelo de mundo. Este instrumento não deduz o resultado numa lousa: ele faz o aluno **trocar de referencial com o próprio corpo** e ver o mundo se reconfigurar à sua frente.*
+> *Relativity is not difficult because of the math — it is difficult because it forces you to switch world models. This tool does not deduce the result on a blackboard: it makes the student **switch reference frames with their own body** and see the world reconfigure in front of them.*
 
-> Uma experiência interativa em primeira pessoa para apresentação ao vivo, projetada para ensinar paradoxos da Relatividade Restrita a estudantes do ensino médio através de demonstração teatral conduzida por um orientador.
-
----
-
-## Sumário
-
-1. [Visão Geral do Projeto](#1-visão-geral-do-projeto)
-2. [Fundamentação Científica](#2-fundamentação-científica)
-3. [Paradoxos Selecionados](#3-paradoxos-selecionados)
-4. [Arquitetura da Apresentação](#4-arquitetura-da-apresentação)
-5. [Stack Técnica](#5-stack-técnica)
-6. [Estrutura do Projeto](#6-estrutura-do-projeto)
-7. [Sistemas Centrais](#7-sistemas-centrais)
-8. [Diretrizes Visuais](#8-diretrizes-visuais)
-9. [Roadmap de Desenvolvimento](#9-roadmap-de-desenvolvimento)
-10. [Princípios de Execução](#10-princípios-de-execução)
-11. [Convenções de Código](#11-convenções-de-código)
-12. [Glossário Técnico](#12-glossário-técnico)
-13. [Referências](#13-referências)
+> An interactive first-person experience designed for live presentation, intended to teach high school students about the paradoxes of Special Relativity through a theatrical demonstration led by a guide.
 
 ---
 
-## 1. Visão Geral do Projeto
+## Summary
 
-### 1.1 Natureza do Projeto
-
-Este **não é um jogo no sentido tradicional**. É um **instrumento de palco**: uma ferramenta de software interativa operada ao vivo por um orientador/professor, enquanto a audiência (estudantes do ensino médio) assiste em uma tela grande. O modelo mental correto é o de um *planetário portátil de relatividade* ou um *experimento científico moderno* — análogo às demonstrações de Faraday no século XIX, modernizadas.
-
-### 1.2 Formato da Apresentação
-
-- **Duração**: 20 minutos
-- **Audiência**: Estudantes do ensino médio (~14-17 anos)
-- **Operador**: Um único professor/orientador conduzindo
-- **Controle**: Gamepad Xbox (não teclado/mouse durante apresentação)
-- **Tela**: Projetor ou TV grande
-- **Sem dependência de internet**: executável standalone
-
-### 1.3 Filosofia de Design
-
-Se a barreira é trocar de modelo de mundo, o instrumento mais eficaz é o que faz o aluno *habitar* um referencial de cada vez — não o que compara dois diagramas de fora. Disso decorre tudo abaixo:
-
-- **Teatro sobre simulação**: quando física exata brigar com clareza visual, clareza visual ganha
-- **Sem UI textual pesada**: a voz do orientador substitui menus e tutoriais
-- **Mecânica única e forte**: a *troca de referencial* é o coração da experiência
-- **Sandbox controlado**: o orientador pode pausar, ajustar, repetir, responder perguntas em tempo real
-- **Coerência visual**: 3D low-poly + sprites pixel art com paleta unificada
-
-### 1.4 Objetivos Pedagógicos
-
-Ao final da apresentação, o estudante deve ter:
-
-1. Abandonado a **simultaneidade absoluta** como conceito intuitivo
-2. Compreendido visualmente a **contração de Lorentz**
-3. Entendido que objetos rígidos **não existem** na relatividade
-4. Aceitado que **velocidades superluminais aparentes** existem sem violar causalidade
-5. Reconhecido que descrições diferentes do mesmo evento físico podem coexistir consistentemente
+1. [Project Overview](#1-visão-geral-do-projeto)  
+2. [Scientific Foundation](#2-fundamentação-científica)  
+3. [Selected Paradoxes](#3-paradoxos-selecionados)  
+4. [Presentation Architecture](#4-arquitetura-da-apresentação)  
+5. [Technical Stack](#5-stack-técnica)  
+6. [Project Structure](#6-estrutura-do-projeto)  
+7. [Central Systems](#7-sistemas-centrais)  
+8. [Visual Guidelines](#8-diretrizes-visuais)  
+9. [Development Roadmap](#9-roadmap-de-desenvolvimento)  
+10. [Execution Principles](#10-princípios-de-execução)  
+11. [Code Conventions](#11-convenções-de-código)  
+12. [Technical Glossary](#12-glossário-técnico)  
+13. [References](#13-referências)
 
 ---
 
-## 2. Fundamentação Científica
+## 1. Project Overview
 
-O conteúdo conceitual deriva de um artigo de referência único:
+### 1.1 Nature of the Project
 
-**Alencar, G., Macedo, J., Maranhão, L., & Carneiro, P. (2023).** *Paradoxos da Relatividade*. arXiv:2307.05503v1 [physics.pop-ph]. UFC.
+This is **not a game in the traditional sense**. It is an **interactive teaching instrument**: a software tool operated live by a guide/teacher, while the audience (high school students) watches on a large screen. The correct mental model is that of a *portable relativity planetarium* or a *modern scientific experiment* — analogous to Faraday's demonstrations in the 19th century, modernized.
 
-Equações implementadas em `scripts/lorentz_transform.gd` (referência rápida para o código):
+### 1.2 Presentation Format
 
-| Grandeza | Equação |
+- **Duration**: 20 minutes  
+- **Audience**: High school students (~14-17 years old)  
+- **Operator**: A single teacher/guide conducting  
+- **Control**: Xbox gamepad (not keyboard/mouse during presentation)  
+- **Screen**: Projector or large TV  
+- **No internet dependency**: standalone executable
+
+### 1.3 Design Philosophy
+
+If the barrier is changing the world model, the most effective instrument is the one that makes the student *inhabit* a frame of reference at a time — not the one that compares two diagrams from the outside. Everything below follows from this:
+
+- **Theater over simulation**: when exact physics clashes with visual clarity, visual clarity wins  
+- **No heavy textual UI**: the instructor's voice replaces menus and tutorials  
+- **Single strong mechanic**: the *change of reference frame* is the heart of the experience  
+- **Controlled sandbox**: the instructor can pause, adjust, repeat, answer questions in real time  
+- **Visual coherence**: 3D low-poly + pixel art sprites with unified palette
+
+### 1.4 Pedagogical Objectives
+
+At the end of the presentation, the student should have:
+
+1. Abandoned **absolute simultaneity** as an intuitive concept  
+2. Visually understood **Lorentz contraction**  
+3. Recognized that rigid bodies **do not exist** in relativity  
+4. Accepted that **apparent superluminal speeds** exist without violating causality  
+5. Acknowledged that different descriptions of the same physical event can coexist consistently
+
+---
+
+## 2. Scientific Foundation
+
+The conceptual content derives from a single reference article:
+
+**Alencar, G., Macedo, J., Maranhão, L., & Carneiro, P. (2023).** *Paradoxes of Relativity*. arXiv:2307.05503v1 [physics.pop-ph]. UFC.
+
+Equations implemented in `scripts/lorentz_transform.gd` (quick reference to the code):
+
+| Magnitude | Equation |
 |---|---|
-| Fator de Lorentz | γ = 1 / √(1 − v²/c²) |
-| Contração de Lorentz | L = L₀ / γ |
-| Offset de simultaneidade | Δt' = γ·L₀·v/c² |
-| Velocidade do ponto de corte (tesouras) | v = ω·L·csc²(θ) |
+| Lorentz Factor | γ = 1 / √(1 − v²/c²) |
+| Lorentz Contraction | L = L₀ / γ |
+| Simultaneity Offset | Δt' = γ·L₀·v/c² |
+| Cutting Point Speed (scissors) | v = ω·L·csc²(θ) |
 
-> **Aprofundamento físico e bibliográfico** — derivação das equações, transformações de Lorentz completas, os conceitos que o aluno deve *sentir*, as concepções galileanas a abandonar, o glossário e a bibliografia acadêmica estão em [`FUNDAMENTACAO-CIENTIFICA.md`](FUNDAMENTACAO-CIENTIFICA.md). Mantém-se aqui apenas o núcleo técnico necessário ao código.
-
----
-
-## 3. Paradoxos Selecionados
-
-Dos sete paradoxos do artigo de referência, **dois** entram na apresentação. Resolução física detalhada, justificativa pedagógica e seções/páginas do artigo: [`FUNDAMENTACAO-CIENTIFICA.md §5`](FUNDAMENTACAO-CIENTIFICA.md#5-os-paradoxos-em-detalhe).
-
-### 3.1 Principal — A Madeireira Relativística
-
-Tora (comprimento próprio `L₀`) desliza sobre a esteira a `v`; duas guilhotinas separadas por `L₀` descem. Em **Alice**, a tora está contraída (`L₀/γ`) e passa; em **Bob**, tem tamanho próprio e "não caberia" — resolvido porque, em Bob, as guilhotinas não são simultâneas (`Δt' = γ·L₀·v/c²`).
-
-- **Implementação**: `frame_controller.gd`, `esteira.gd`, `guillotine.gd`, `tora.gd`
-- **Status**: ✅ implementado (Atos 0-3) · ~14 min
-
-### 3.2 Clímax — Tesouras Superluminais
-
-O ponto de cruzamento de duas lâminas pode exceder `c` (`v = ω·L·csc²θ`) sem violar causalidade — por não ser objeto material, não carrega informação.
-
-- **Implementação prevista**: `scissors.gd`, `observatorio.tscn`
-- **Status**: ⬜ pendente (Semana 5, Ato 4) · ~3 min
-
-### 3.3 Fora de escopo
-
-Barra-e-Fenda 2D (descartado por custo de *setup* conceitual) e Barra-e-Fenda com gravidade (expansão futura / TCC) — documentados na fundamentação.
+> **Physical and Bibliographic Deepening** — derivation of equations, complete Lorentz transformations, the concepts that the student should *feel*, the Galilean conceptions to abandon, the glossary, and the academic bibliography are in [`FUNDAMENTACAO-CIENTIFICA.md`](FUNDAMENTACAO-CIENTIFICA.en.md). Here, only the technical core necessary for the code is maintained.
 
 ---
 
-## 4. Arquitetura da Apresentação
+## 3. Selected Paradoxes
 
-### 4.1 Estrutura Narrativa (20 minutos)
+Of the seven paradoxes in the reference article, **two** are included in the presentation. Detailed physical resolution, pedagogical justification, and sections/pages of the article: [`FUNDAMENTACAO-CIENTIFICA.md §5`](FUNDAMENTACAO-CIENTIFICA.md#5-os-paradoxos-em-detalhe).
 
-#### **Ato 0 — Apresentação do Mundo Galileano** (2 min)
+### 3.1 Main — The Relativistic Lumberyard
 
-- Cena abre lentamente no galpão da madeireira
-- Esteira parada, tora parada, guilhotinas paradas
-- Orientador caminha em primeira pessoa, estabelece dimensões
-- Liga a esteira em **velocidade baixa** (0.05c)
-- Tora passa, é cortada normalmente
-- **Função**: estabelecer normalidade galileana antes da quebra
+Torus (proper length `L₀`) slides over the conveyor at `v`; two guillotines separated by `L₀` descend. In **Alice**, the torus is contracted (`L₀/γ`) and passes through; in **Bob**, it has its proper size and "wouldn't fit" — resolved because, in Bob, the guillotines are not simultaneous (`Δt' = γ·L₀·v/c²`).
 
-#### **Ato 1 — A Aceleração** (5 min)
+- **Implementation**: `frame_controller.gd`, `esteira.gd`, `guillotine.gd`, `tora.gd`  
+- **Status**: ✅ implemented (Acts 0-3) · ~14 min
 
-- Orientador aumenta velocidade da esteira (D-Pad Up)
-- v = 0.3c → 0.5c → 0.7c
-- Contração de Lorentz começa a ser visível
-- v = 0.9c: tora passa pelas guilhotinas com folga clara
-- Audiência aceita: "ok, ela passou"
+### 3.2 Climax — Superluminal Scissors
 
-#### **Ato 2 — O Paradoxo** (6 min)
+The intersection point of two blades can exceed `c` (`v = ω·L·csc²θ`) without violating causality — since it is not a material object, it does not carry information.
 
-- "E se eu subisse na esteira?"
-- **Troca de referencial** (Bumper Esquerdo — LB)
-- Transição animada de ~2 segundos
-- Mundo se reconfigura: tora volta a L₀, galpão e guilhotinas contraem
-- A tora **não cabe** entre as guilhotinas
-- Cliffhanger: "ela deveria ser cortada — mas vocês viram passar"
+- **Planned Implementation**: `scissors.gd`, `observatorio.tscn`  
+- **Status**: ⬜ pending (Week 5, Act 4) · ~3 min
 
-#### **Ato 3 — Resolução pela Simultaneidade** (4 min)
+### 3.3 Out of Scope
 
-- Ativação do **modo overlay** (Botão Y)
-- Linhas de simultaneidade aparecem como sprites pixel art
-- Replay em câmera lenta (Botão X)
-- No referencial de Bob, guilhotinas descem em momentos diferentes
-- Guilhotina direita primeiro → tora segue → guilhotina esquerda depois (tora já saiu)
-- Retorno ao referencial de Alice: tudo simultâneo
-- Mensagem: "o que muda não é o que acontece. É o que significa 'ao mesmo tempo'."
+Bar-and-Slit 2D (discarded due to conceptual setup cost) and Bar-and-Slit with gravity (future expansion / TCC) — documented in the foundation.
 
-#### **Ato 4 — Clímax Cósmico (Tesouras)** (3 min)
+---
 
-- Transição para segundo cenário (observatório cósmico, paleta noturna)
-- Duas lâminas cruzando
-- Orientador manipula ângulo
-- Velocímetro do ponto de corte: 0.5c → 0.9c → c → 2c → 10c
-- Visualização do cone de luz mostrando que causalidade está preservada
-- Encerramento
+## 4. Presentation Architecture
 
-### 4.2 Mapeamento de Controle Xbox
+### 4.1 Narrative Structure (20 minutes)
 
-| Input | Função |
+#### **Act 0 — Presentation of the Galilean World** (2 min)
+
+- Scene opens slowly in the lumberyard  
+- Conveyor belt stopped, log stopped, guillotines stopped  
+- Guide walks in first person, establishes dimensions  
+- Starts the conveyor belt at **low speed** (0.05c)  
+- Log passes, is cut normally  
+- **Function**: establish Galilean normality before the break
+
+#### **Act 1 — The Acceleration** (5 min)
+
+- Guide increases conveyor belt speed (D-Pad Up)  
+- v = 0.3c → 0.5c → 0.7c  
+- Lorentz contraction becomes visible  
+- v = 0.9c: beam passes through guillotines with clear margin  
+- Audience accepts: "ok, it passed"
+
+#### **Act 2 — The Paradox** (6 min)
+
+- "What if I got on the treadmill?"  
+- **Frame of Reference Change** (Left Bumper — LB)  
+- Animated transition of ~2 seconds  
+- World reconfigures: log returns to L₀, shed and guillotines contract  
+- The log **does not fit** between the guillotines  
+- Cliffhanger: "it should be cut — but you saw it pass"
+
+#### **Act 3 — Resolution by Simultaneity** (4 min)
+
+- Activation of **overlay mode** (Button Y)  
+- Lines of simultaneity appear as pixel art sprites  
+- Slow-motion replay (Button X)  
+- In Bob's reference frame, guillotines descend at different times  
+- Right guillotine first → beam follows → left guillotine later (beam already out)  
+- Return to Alice's reference frame: everything is simultaneous  
+- Message: "what changes is not what happens. It's what 'at the same time' means."
+
+#### **Act 4 — Cosmic Climax (Scissors)** (3 min)
+
+- Transition to second scenario (cosmic observatory, night palette)  
+- Two blades crossing  
+- Instructor manipulates angle  
+- Cut-off speedometer: 0.5c → 0.9c → c → 2c → 10c  
+- Visualization of light cone showing that causality is preserved  
+- Closure
+
+### 4.2 Xbox Control Mapping
+
+| Input | Function |
 |---|---|
-| Analógico Esquerdo | Movimento (WASD) |
-| Analógico Direito | Olhar (mouse look) |
-| Bumper Esquerdo (LB) | **Trocar referencial** |
-| D-Pad ↑ | Aumentar velocidade da esteira |
-| D-Pad ↓ | Diminuir velocidade da esteira |
-| Gatilho Direito (RT) | Acionar guilhotinas / Ação principal |
-| Botão Y | Toggle overlay (linhas de simultaneidade) |
-| Botão X | Pausar / Câmera lenta |
-| Botão B | Reset da cena |
-| Botão View | Toggle vista isométrica / primeira pessoa |
-| Botão Menu | Próxima cena (Tesouras) |
+| Left Analog | Movement (WASD) |
+| Right Analog | Look (mouse look) |
+| Left Bumper (LB) | **Change reference frame** |
+| D-Pad ↑ | Increase conveyor speed |
+| D-Pad ↓ | Decrease conveyor speed |
+| Right Trigger (RT) | Activate guillotines / Main action |
+| Button Y | Toggle overlay (lines of simultaneity) |
+| Button X | Pause / Slow motion |
+| Button B | Reset scene |
+| Button View | Toggle isometric view / first person |
+| Menu Button | Next scene (Saws) |
 
-> Cada ação também possui atalho de teclado equivalente (WASD para mover, Q trocar referencial, E/Z velocidade, Espaço ação, O overlay, P câmera lenta, R reset, V vista, N próxima cena) para desenvolvimento. O teclado não é usado durante a apresentação.
+> Each action also has an equivalent keyboard shortcut (WASD to move, Q to switch reference frame, E/Z for speed, Space for action, O for overlay, P for slow motion, R for reset, V for view, N for next scene) for development. The keyboard is not used during the presentation.
 
 ---
 
-## 5. Stack Técnica
+## 5. Technical Stack
 
-### 5.1 Tecnologias Confirmadas
+### 5.1 Confirmed Technologies
 
 - **Engine**: Godot 4.x
-- **Linguagem**: GDScript
-- **Plataformas-alvo**: Windows e Linux (executável standalone nas duas)
-- **Ambiente de desenvolvimento**: AlmaLinux 9.8 (GNOME X11) — desenvolvimento primário
-- **Controle**: Gamepad Xbox (testado nativamente no Godot 4)
-- **Versionamento**: Git
-- **Geração de assets 3D**: Hyper3D.ai (Rodin) — exportação em GLB
-- **Personagens e animações**: KayKit (Kay Lousberg, kaylousberg.com) — CC0; Adventurers 2.0 FREE + Character Animations 1.1 (Rig_Medium), extraídos em `assets/models/characters/` (zips originais em `assets/packages/`, fora do versionamento)
-- **Geração de assets 2D**: PixelLab.ai — pixel art para sprites
-- **Pipeline de áudio**: a definir (Freesound, geração própria)
+- **Language**: GDScript
+- **Target Platforms**: Windows and Linux (standalone executable on both)
+- **Development Environment**: AlmaLinux 9.8 (GNOME X11) — primary development
+- **Control**: Xbox Gamepad (natively tested in Godot 4)
+- **Versioning**: Git
+- **3D Asset Generation**: Hyper3D.ai (Rodin) — export in GLB
+- **Characters and Animations**: KayKit (Kay Lousberg, kaylousberg.com) — CC0; Adventurers 2.0 FREE + Character Animations 1.1 (Rig_Medium), extracted in `assets/models/characters/` (original zips in `assets/packages/`, out of versioning)
+- **2D Asset Generation**: PixelLab.ai — pixel art for sprites
+- **Audio Pipeline**: to be defined (Freesound, own generation)
 
-### 5.2 Decisões Arquiteturais
+### 5.2 Architectural Decisions
 
-**Implementação da contração de Lorentz**: **Caminho A — Contração Lógica** (não shader-based)
-- Duas representações do mundo (referencial S e S')
-- Ao trocar de frame, animar transição entre estados pré-calculados
-- Mais simples, mais previsível, suficiente para o show
-- Caminho B (shaders) descartado para evitar 2 semanas de debug
+**Implementation of Lorentz Contraction**: **Path A — Logical Contraction** (not shader-based)  
+- Two representations of the world (reference frame S and S')  
+- When switching frames, animate transition between pre-calculated states  
+- Simpler, more predictable, sufficient for the show  
+- Path B (shaders) discarded to avoid two weeks of debugging
 
-**Velocidade da luz no jogo**: `C = 1.0` unidade/segundo
+**Speed of light in the game**: `C = 1.0` unit/second
 
-**Escala do mundo**:
-- Galpão: ~20 unidades de comprimento
-- Tora: 4 unidades (comprimento próprio L₀)
-- Distância entre guilhotinas: 4 unidades (comprimento próprio L₀)
-- Velocidade máxima visualmente utilizada: 0.99c
+**World scale**:  
+- Warehouse: ~20 units of length  
+- Tora: 4 units (proper length L₀)  
+- Distance between guillotines: 4 units (proper length L₀)  
+- Maximum visually used speed: 0.99c
 
-### 5.3 Compatibilidade Cross-Platform (Restrição Rígida)
+### 5.3 Cross-Platform Compatibility (Strict Constraint)
 
-O executável final deve rodar em **Windows e Linux** sem modificações. Apresentações acontecem em escolas (tipicamente Windows); desenvolvimento ocorre em AlmaLinux 9.8.
+The final executable should run on **Windows and Linux** without modifications. Presentations take place in schools (typically Windows); development occurs on AlmaLinux 9.8.
 
-**Regras que se aplicam ao código:**
-- **Caminhos de arquivo**: usar exclusivamente `res://`, `user://` e APIs do Godot (`OS.get_user_data_dir()`, `ProjectSettings.globalize_path()`). Nunca caminhos absolutos do sistema operacional.
-- **Nomes de asset**: apenas caracteres ASCII sem acentos ou espaços — sistemas Windows são case-insensitive e têm restrições de caracteres que o Linux não tem.
-- **Chamadas de sistema** (`OS.execute`, `OS.shell_open`): só usar se testado nas duas plataformas.
-- **Export templates**: ao chegar na Semana 5, gerar templates para `Windows Desktop` (.exe) e `Linux/X11` (.x86_64) a partir do mesmo projeto.
-- **Gamepad Xbox**: funciona nativamente via XInput (Windows). No Linux, controle **com fio** funciona via SDL/xpad sem configuração; receptor **USB sem fio (dongle)** requer o driver `xone` (DKMS) — instalar com `sudo bash setup-xbox-linux.sh` (AlmaLinux 9 / RHEL). Sem código condicional de plataforma no Godot.
+**Rules that apply to the code:**  
+- **File paths**: use exclusively `res://`, `user://` and Godot APIs (`OS.get_user_data_dir()`, `ProjectSettings.globalize_path()`). Never use absolute file paths of the operating system.  
+- **Asset names**: only ASCII characters without accents or spaces — Windows systems are case-insensitive and have character restrictions that Linux does not have.  
+- **System calls** (`OS.execute`, `OS.shell_open`): only use if tested on both platforms.  
+- **Export templates**: upon reaching Week 5, generate templates for `Windows Desktop` (.exe) and `Linux/X11` (.x86_64) from the same project.  
+- **Xbox Gamepad**: works natively via XInput (Windows). On Linux, the **wired** controller works via SDL/xpad without configuration; the **wireless USB receiver (dongle)** requires the `xone` driver (DKMS) — install with `sudo bash setup-xbox-linux.sh` (AlmaLinux 9 / RHEL). No platform-specific code in Godot.
 
-### 5.4 Ambiente de Desenvolvimento
+### 5.4 Development Environment
 
-| Ferramenta | Versão | Instalação |
+| Tool | Version | Installation |
 |---|---|---|
-| Godot 4 | 4.6.3 stable | Flatpak (usuário) — `godot4` |
-| VS Code | 1.122.0 | Flatpak (usuário) — `code` |
-| godot-tools | 2.6.1 | Extensão VS Code |
+| Godot 4 | 4.6.3 stable | Flatpak (user) — `godot4` |
+| VS Code | 1.122.0 | Flatpak (user) — `code` |
+| godot-tools | 2.6.1 | VS Code Extension |
 | Claude Code | — | `~/.local/bin/claude` |
-| Driver xone (dongle Xbox) | DKMS | `sudo bash setup-xbox-linux.sh` (deps: dkms, kernel-devel, git, cabextract) |
+| Driver xone (Xbox dongle) | DKMS | `sudo bash setup-xbox-linux.sh` (deps: dkms, kernel-devel, git, cabextract) |
 
-**Launcher**: `~/Área de trabalho/Lab Relatividade.desktop` — abre Godot → aguarda LSP (porta 6005) → VS Code → terminal com Claude Code, tudo no diretório do projeto. Se o terminal com Claude já estiver aberto, foca a janela existente em vez de abrir uma nova.
+**Launcher**: `~/Desktop/Lab Relatividade.desktop` — opens Godot → waits for LSP (port 6005) → VS Code → terminal with Claude Code, all in the project directory. If the terminal with Claude is already open, focus the existing window instead of opening a new one.
 
-**Nota Flatpak**: VS Code e Godot rodam em sandboxes separadas. A comunicação entre eles (abrir arquivo no editor externo) usa o wrapper `~/.local/bin/godot4-vscode` via `flatpak-spawn --host`. O Language Server conecta normalmente via localhost:6005.
+**Flatpak Note**: VS Code and Godot run in separate sandboxes. Communication between them (opening a file in the external editor) uses the wrapper `~/.local/bin/godot4-vscode` via `flatpak-spawn --host`. The Language Server connects normally via localhost:6005.
 
 ---
 
-## 6. Estrutura do Projeto
+## 6. Project Structure
 
 ```
 ParadoxoRelatividade/
-├── README.md                       # Este arquivo
-├── .gitignore                      # Git ignore para Godot 4
-├── project.godot                   # Arquivo principal do Godot
-├── setup-xbox-linux.sh             # Instala o driver xone (dongle Xbox no Linux)
+├── README.md                       # This file
+├── .gitignore                      # Git ignore for Godot 4
+├── project.godot                   # Main Godot file
+├── setup-xbox-linux.sh             # Installs xone driver (Xbox dongle on Linux)
 │
 ├── scenes/
-│   ├── main.tscn                   # Cena raiz, entrada do jogo
+│   ├── main.tscn                   # Root scene, game entry point
 │   ├── world/
-│   │   ├── galpao.tscn             # Cenário da madeireira (Atos 0-3)
-│   │   ├── esteira.tscn            # Esteira transportadora (correia física, instancia tora.tscn)
-│   │   └── tora.tscn               # Tora reutilizável (CylinderMesh procedural, L₀=4u)
+│   │   ├── galpao.tscn             # Sawmill scene (Acts 0-3)
+│   │   ├── esteira.tscn            # Conveyor belt (physical belt, instances tora.tscn)
+│   │   └── tora.tscn               # Reusable log (procedural CylinderMesh, L₀=4u)
 │   └── player/
-│       └── player.tscn             # Câmera primeira pessoa + movimento
-│   # observatorio.tscn (Ato 4) — pendente, Semana 5
+│       └── player.tscn             # First-person camera + movement
+│   # observatorio.tscn (Act 4) — pending, Week 5
 │
 ├── scripts/
-│   ├── input_manager.gd            # Autoload InputBus: abstração de input
-│   ├── game_state.gd               # Autoload GameState: estado global
-│   ├── player.gd                   # Movimento, câmera e encarnação em 1ª pessoa
-│   ├── frame_controller.gd         # Lógica de troca de referencial
-│   ├── lorentz_transform.gd        # Cálculos relativísticos (γ, contração, offset temporal)
-│   ├── esteira.gd                  # Esteira: correia física (sarrafos + rolos), instancia tora.tscn
-│   ├── conveyor_belt.gd            # Legado — substituído por esteira.gd/esteira.tscn (a remover na Semana 5)
-│   ├── tora.gd                     # Tora: @export L₀, diâmetro; set_lorentz_scale(); corte em duas metades
-│   ├── guillotine.gd               # Comportamento das guilhotinas
-│   ├── galpao.gd                   # Cenário: skydome HDRI, WorldEnvironment, iluminação estilizada
-│   ├── avatar.gd                   # Avatares Bob (Barbarian) e Alice (Rogue) — KayKit animado
-│   ├── grain.gd                    # Granulado procedural (normal map de ruído em runtime)
-│   └── hud.gd                      # HUD: velocímetro, γ e referencial (Labels; sprite pendente)
-│   # simultaneity_lines.gd (overlay) — pendente, Semana 4
-│   # scissors.gd (tesouras, Ato 4) — pendente, Semana 5
+│   ├── input_manager.gd            # Autoload InputBus: input abstraction
+│   ├── game_state.gd               # Autoload GameState: global state
+│   ├── player.gd                   # Movement, camera, and first-person embodiment
+│   ├── frame_controller.gd         # Reference frame switching logic
+│   ├── lorentz_transform.gd        # Relativistic calculations (γ, contraction, time offset)
+│   ├── esteira.gd                  # Conveyor belt: physical belt (rollers + pulleys), instances tora.tscn
+│   ├── conveyor_belt.gd            # Legacy — replaced by esteira.gd/esteira.tscn (to be removed in Week 5)
+│   ├── tora.gd                     # Log: @export L₀, diameter; set_lorentz_scale(); cut into two halves
+│   ├── guillotine.gd               # Guillotine behavior
+│   ├── galpao.gd                   # Scene: HDRI skydome, WorldEnvironment, stylized lighting
+│   ├── avatar.gd                   # Avatars Bob (Barbarian) and Alice (Rogue) — animated KayKit
+│   ├── grain.gd                    # Procedural grain (runtime noise normal map)
+│   └── hud.gd                      # HUD: speedometer, γ and reference frame (Labels; sprite pending)
+│   # simultaneity_lines.gd (overlay) — pending, Week 4
+│   # scissors.gd (scissors, Act 4) — pending, Week 5
 │
 ├── assets/
-│   ├── models/                     # .glb gerados no Hyper3D + personagens KayKit
-│   │   ├── galpao_estrutura.glb    # ✅ integrado com colisão trimesh (+ texturas PBR)
-│   │   ├── tora.glb                # presente; tora usa cena procedural (tora.tscn)
-│   │   ├── esteira.glb             # pendente
-│   │   ├── guilhotina.glb          # pendente
-│   │   ├── observatorio.glb        # pendente (Ato 4)
+│   ├── models/                     # .glb generated in Hyper3D + KayKit characters
+│   │   ├── galpao_estrutura.glb    # ✅ integrated with trimesh collision (+ PBR textures)
+│   │   ├── tora.glb                # present; tora uses procedural scene (tora.tscn)
+│   │   ├── esteira.glb             # pending
+│   │   ├── guilhotina.glb          # pending
+│   │   ├── observatorio.glb        # pending (Act 4)
 │   │   └── characters/             # KayKit (CC0): Barbarian.glb, Rogue.glb, axe_1handed, anims/
-│   ├── packages/                   # Zips KayKit originais — fora do versionamento (ver .gitignore)
-│   ├── textures/                   # Texturas auxiliares
-│   │   └── hdri_galpao.hdr         # HDRI equiretangular para skydome do galpão
-│   ├── sprites/                    # Pixel art (PixelLab) — pendente
-│   └── audio/                      # pendente
+│   ├── packages/                   # Original KayKit zips — out of version control (see .gitignore)
+│   ├── textures/                   # Auxiliary textures
+│   │   └── hdri_galpao.hdr         # Equirectangular HDRI for sawmill skydome
+│   ├── sprites/                    # Pixel art (PixelLab) — pending
+│   └── audio/                      # pending
 │       ├── music/
 │       └── sfx/
 │
-├── shaders/                        # Reservado para Fase 3+ (vazio)
+├── shaders/                        # Reserved for Phase 3+ (empty)
 │
 └── docs/
-    ├── referencia_principal.pdf    # Artigo de Alencar et al. (2023)
-    └── referencia_principal.txt    # Texto extraído do artigo (referência rápida)
+    ├── referencia_principal.pdf    # Article by Alencar et al. (2023)
+    └── referencia_principal.txt    # Extracted text from the article (quick reference)
 ```
 
 ---
 
-## 7. Sistemas Centrais
+## 7. Core Systems
 
-### 7.1 Sistema de Referencial (`game_state.gd` + `frame_controller.gd`)
+### 7.1 Reference Frame System (`game_state.gd` + `frame_controller.gd`)
 
-**Responsabilidade**: Gerenciar o referencial ativo (ALICE ou BOB) e disparar transições visuais ao trocar.
+**Responsibility**: Manage the active reference frame (ALICE or BOB) and trigger visual transitions when switching.
 
-**Estados possíveis**:
-- `Frame.ALICE`: referencial de repouso da esteira (galpão estacionário)
-- `Frame.BOB`: referencial de repouso da tora (esteira em movimento aparente)
+**Possible states**:  
+- `Frame.ALICE`: rest frame of the conveyor (stationary warehouse)  
+- `Frame.BOB`: rest frame of the log (apparent motion of the conveyor)
 
-**Operações**:
-- `toggle_frame()`: alterna referencial atual
-- `get_gamma()`: retorna fator de Lorentz baseado em `belt_velocity_fraction`
-- `is_transitioning`: bloqueia inputs durante transição animada
-- Sinais: `frame_changed`, `velocity_changed`
+**Operations**:  
+- `toggle_frame()`: switches the current reference frame  
+- `get_gamma()`: returns Lorentz factor based on `belt_velocity_fraction`  
+- `is_transitioning`: blocks inputs during animated transition  
+- Signals: `frame_changed`, `velocity_changed`
 
-### 7.2 Sistema de Transformação Visual
+### 7.2 Visual Transformation System
 
-**Função**: Aplicar contração visual nos objetos conforme referencial e velocidade.
+**Function**: Apply visual contraction to objects based on reference frame and speed.
 
-**Em `Frame.ALICE`**:
-- Tora visualmente contraída: `tora.scale.x = 1.0 / gamma`
-- Galpão e guilhotinas em escala normal
-- Guilhotinas descem simultaneamente
+**In `Frame.ALICE`**:  
+- Visually contracted tora: `tora.scale.x = 1.0 / gamma`  
+- Barn and guillotines at normal scale  
+- Guillotines descend simultaneously
 
-**Em `Frame.BOB`**:
-- Tora em escala normal: `tora.scale.x = 1.0`
-- Galpão e guilhotinas contraídos: `scale.x = 1.0 / gamma`
-- Guilhotinas descem com offset temporal `Δt' = γ·L₀·v/c²`
+**In `Frame.BOB`**:  
+- Tora at normal scale: `tora.scale.x = 1.0`  
+- Galpão and guilhotinas contracted: `scale.x = 1.0 / gamma`  
+- Guilhotinas descend with temporal offset `Δt' = γ·L₀·v/c²`
 
-**Transição entre frames**:
-- Duração: 1.5 a 2.0 segundos
-- Easing: `Tween.EASE_IN_OUT`, `Tween.TRANS_CUBIC`
-- Bloqueia outros inputs durante transição
+**Transition Between Frames**:  
+- Duration: 1.5 to 2.0 seconds  
+- Easing: `Tween.EASE_IN_OUT`, `Tween.TRANS_CUBIC`  
+- Blocks other inputs during transition
 
-### 7.3 Sistema de Simultaneidade (Overlay)
+### 7.3 Simultaneity System (Overlay)
 
-**Função**: Visualizar a relatividade da simultaneidade no Ato 3.
+**Function**: Visualize the relativity of simultaneity in Act 3.
 
-**Implementação**:
-- Sprites pixel art 2D sobrepostos ao mundo 3D (via `Sprite3D` ou `Decal`)
-- Linhas horizontais flutuantes representando "fatias de tempo"
-- No referencial de Alice: linhas paralelas, eventos alinhados
-- No referencial de Bob: linhas inclinadas no espaço-tempo
+**Implementation**:  
+- 2D pixel art sprites overlaid on the 3D world (via `Sprite3D` or `Decal`)  
+- Floating horizontal lines representing "slices of time"  
+- In Alice's reference frame: parallel lines, aligned events  
+- In Bob's reference frame: lines inclined in space-time
 
-**Ativação**: Botão Y (toggle)
+**Activation**: Button Y (toggle)
 
-**Status**: 🟡 planejado — a ação `toggle_overlay` (Botão Y) está mapeada, mas `simultaneity_lines.gd` ainda não foi implementado (pendência da Semana 4). No Ato 3, a simultaneidade já é demonstrada pelo offset temporal das guilhotinas + câmera lenta; o overlay é a camada visual complementar.
+**Status**: 🟡 planned — the action `toggle_overlay` (Button Y) is mapped, but `simultaneity_lines.gd` has not yet been implemented (Week 4 backlog). In Act 3, simultaneity is demonstrated by the temporal offset of the guillotines + slow motion; the overlay is the complementary visual layer.
 
-### 7.4 Sistema de Câmera
+### 7.4 Camera System
 
-**Função**: Câmera em primeira pessoa controlável + modo isométrico opcional.
+**Function**: Controllable first-person camera + optional isometric mode.
 
-**Modos**:
-- **First-person**: padrão durante toda a apresentação
-- **Isométrico**: ativado por Botão View — mostra a cena toda como diorama, útil para explicações geométricas
+**Modes**:  
+- **First-person**: default throughout the presentation  
+- **Isometric**: activated by View Button — shows the entire scene as a diorama, useful for geometric explanations
 
-**Detalhes**:
-- Yaw aplicado ao `CharacterBody3D` (rotaciona corpo)
-- Pitch aplicado ao `CameraPivot` (apenas câmera)
-- Sensibilidade configurável (gamepad e mouse separados)
-- Clamp de pitch entre -π/2 + 0.05 e π/2 - 0.05
-- Input de gamepad ignorado quando nenhum joystick está conectado (evita drift do dongle Xbox sem controle na mão)
-- Eventos de mouse descartados por 100 ms após captura e quando delta > 0.5 rad (artefato de warp X11)
+**Details**:  
+- Yaw applied to `CharacterBody3D` (rotates body)  
+- Pitch applied to `CameraPivot` (only camera)  
+- Sensitivity configurable (gamepad and mouse separate)  
+- Pitch clamped between -π/2 + 0.05 and π/2 - 0.05  
+- Gamepad input ignored when no joystick is connected (avoids drift of Xbox dongle without controller in hand)  
+- Mouse events discarded for 100 ms after capture and when delta > 0.5 rad (X11 warp artifact)
 
-**Limitação conhecida**: mouse via AnyDesk não movimenta a câmera — o AnyDesk injeta eventos sintéticos (XTest) que não passam pelo pointer grab do Godot em `MOUSE_MODE_CAPTURED`. Touchpad e mouse USB físicos funcionam normalmente.
+**Known limitation**: mouse via AnyDesk does not move the camera — AnyDesk injects synthetic events (XTest) that do not pass through the pointer grab of Godot in `MOUSE_MODE_CAPTURED`. Touchpad and USB physical mouse work normally.
 
-### 7.5 Sistema de Esteira e Guilhotinas
+### 7.5 Conveyor Belt and Guillotines System
 
-**Esteira (`esteira.gd` + `esteira.tscn`)**:
-- Velocidade ajustável de 0 a 0.99c (D-Pad ↑↓); soft-cap β ≤ 0.9 no referencial de Bob (a 0.99c o offset de simultaneidade excederia a duração da passada)
-- Movimento visual via **correia física**: sarrafos transladam com o mesmo passo da tora (`belt_beta × VISUAL_C × delta`), com wrap nas pontas e rolos girando (ω = v/r) — substituiu o UV scroll antigo, que dependia de fator de ajuste e não casava com a tora
-- Instancia `tora.tscn` e a move ao longo do eixo X
-- A esteira inteira pertence ao grupo `MovingWorld`: em `Frame.BOB`, a tora fica parada e o galpão (com a esteira) contrai e desliza a −v
+**Conveyor Belt (`esteira.gd` + `esteira.tscn`)**:  
+- Adjustable speed from 0 to 0.99c (D-Pad ↑↓); soft-cap β ≤ 0.9 in Bob's reference frame (at 0.99c the simultaneity offset would exceed the stride duration)  
+- Visual movement via **physical belt**: slats move with the same step as the log (`belt_beta × VISUAL_C × delta`), with wrap at the ends and rollers rotating (ω = v/r) — replaced the old UV scroll, which depended on an adjustment factor and didn't match the log  
+- Instanciate `tora.tscn` and move it along the X axis  
+- The entire conveyor belongs to the group `MovingWorld`: in `Frame.BOB`, the log stays still and the shed (with the conveyor) contracts and slides at −v
 
-**Guilhotinas (`guillotine.gd`)**:
-- Duas instâncias: esquerda e direita
-- Estado: `READY`, `FALLING`, `DOWN`, `RETRACTING`
-- Em `Frame.ALICE`: descem simultaneamente quando RT é apertado
-- Em `Frame.BOB`: descem com offset temporal calculado
+**Guillotines (`guillotine.gd`)**:  
+- Two instances: left and right  
+- State: `READY`, `FALLING`, `DOWN`, `RETRACTING`  
+- In `Frame.ALICE`: fall simultaneously when RT is pressed  
+- In `Frame.BOB`: fall with calculated temporal offset
 
-### 7.6 Sistema de Tesouras (Ato 4)
+### 7.6 Scissors System (Act 4)
 
-**Função**: Visualizar o paradoxo das tesouras superluminais.
+**Function**: Visualize the paradox of superluminal scissors.
 
-**Implementação**:
-- Duas linhas (lâminas) em um plano
-- Uma estática (eixo X), outra rotacionando em torno de um ponto pivô
-- Ponto de corte calculado geometricamente
-- Velocímetro do ponto de corte exibido em HUD
-- Cone de luz visualizado quando `v_ponto > c`
+**Implementation**:
+- Two lines (blades) in a plane
+- One static (X axis), the other rotating around a pivot point
+- Intersection point calculated geometrically
+- Intersection point speedometer displayed in HUD
+- Light cone visualized when `v_ponto > c`
 
-**Status**: ⬜ não implementado — `scissors.gd` e `observatorio.tscn` previstos para a Semana 5. A ação `next_scene` (Botão Menu) já está mapeada para a transição.
+**Status**: ⬜ not implemented — `scissors.gd` and `observatorio.tscn` planned for Week 5. The action `next_scene` (Menu Button) is already mapped to the transition.
 
 ---
 
-## 8. Diretrizes Visuais
+## 8. Visual Guidelines
 
-### 8.1 Estilo Visual Híbrido
+### 8.1 Hybrid Visual Style
 
-**3D Low-Poly Flat Shaded para**:
-- Cenário (galpão, esteira, paredes, vigas)
-- Objetos físicos (tora, guilhotinas, lâminas)
-- Personagem em primeira pessoa (apenas mãos visíveis, opcional)
+**3D Low-Poly Flat Shaded for**:  
+- Scenario (warehouse, conveyor, walls, beams)  
+- Physical objects (torus, guillotines, blades)  
+- First-person character (only hands visible, optional)
 
-**Pixel Art 2D para**:
-- HUD: velocímetro, slider de γ, indicador de referencial
-- Linhas de simultaneidade (sobrepostas ao mundo 3D)
-- Diagrama de Minkowski (canto da tela, opcional)
-- Faíscas, partículas, efeitos de impacto
-- Texto pontual ("γ = 4.2", "RT para soltar")
+**2D Pixel Art for**:  
+- HUD: speedometer, γ slider, reference indicator  
+- Lines of simultaneity (overlaid on 3D world)  
+- Minkowski diagram (corner of screen, optional)  
+- Sparks, particles, impact effects  
+- Point text ("γ = 4.2", "RT to release")
 
-**Justificativa da divisão**:
-- 3D representa **fenômeno físico** (coisas que existem no mundo)
-- 2D representa **abstrações de medida** (observações, instrumentos, conceitos)
-- Essa separação reforça didaticamente a diferença entre realidade e medição
+**Justification for the Division**:
+- 3D represents **physical phenomena** (things that exist in the world)
+- 2D represents **measurement abstractions** (observations, instruments, concepts)
+- This separation didactically reinforces the difference between reality and measurement
 
-### 8.2 Paleta de Cores
+### 8.2 Color Palette
 
-**Cenário 1 — Galpão Madeireira (Atos 0-3)**:
-- Madeira: tons quentes terrosos (#8B7355, #A0826D, #6B4423)
-- Metal das guilhotinas: cinza azulado (#4A5560, #6B7780)
-- Concreto do chão: cinza claro (#9C9C9C)
-- Luz ambiente: dourada quente (#FFD89B)
+**Scenario 1 — Sawmill Warehouse (Acts 0-3)**:  
+- Wood: warm earthy tones (#8B7355, #A0826D, #6B4423)  
+- Metal of guillotines: blue-gray (#4A5560, #6B7780)  
+- Concrete floor: light gray (#9C9C9C)  
+- Ambient light: warm golden (#FFD89B)
 
-**Cenário 2 — Observatório Cósmico (Ato 4)**:
-- Espaço: azul profundo / negro (#0A0E27, #1B2845)
-- Lâminas: branco luminoso com brilho (#FFFFFF + bloom)
-- Cone de luz: azul ciano translúcido (#00D9FF)
-- Estrelas: amarelo pálido (#FFF8DC)
+**Scenario 2 — Cosmic Observatory (Act 4):**  
+- Space: deep blue/black (<span class="color">#0A0E27</span>, <span class="color">#1B2845</span>)  
+- Blades: bright white with glow (<span class="color">#FFFFFF</span> + bloom)  
+- Light cone: translucent cyan blue (<span class="color">#00D9FF</span>)  
+- Stars: pale yellow (<span class="color">#FFF8DC</span>)
 
-### 8.3 Efeitos de Pós-Processamento
+### 8.3 Post-Processing Effects
 
-**Globais**:
-- SSAO ativado (peso visual no low-poly)
-- Bloom suave (especialmente no Ato 4)
-- Sombras direcionais 4096px
+**Globals**:  
+- SSAO enabled (visual weight in low-poly)  
+- Soft bloom (especially in Act 4)  
+- Directional shadows 4096px
 
-**Contextual**:
-- Motion blur sutil em alta velocidade (v > 0.7c)
-- Distorção cromática leve durante transição de referencial
-- Vinheta sutil no modo câmera lenta
+**Contextual**:  
+- Subtle motion blur at high speed (v > 0.7c)  
+- Slight chromatic distortion during reference frame transition  
+- Subtle vignette in slow-motion mode
 
-### 8.4 Prompts de Geração no Hyper3D
+### 8.4 Generation Prompts in Hyper3D
 
-**Modificador de estilo padrão** (anexar a todos os prompts):
+**Default Style Modifier** (attach to all prompts):  
 > `"low poly, flat shaded, no textures, warm earth tones, simple geometry, game-ready, clean topology, 18k quads max"`
 
-**Assets principais a gerar**:
+**Main Assets to Generate**:
 
-1. **Galpão estrutural**: *"Low poly industrial sawmill warehouse interior, wooden support beams, corrugated metal walls, concrete floor"*
+1. **Structural Shed**: *"Low poly industrial sawmill warehouse interior, wooden support beams, corrugated metal walls, concrete floor"*
 
-2. **Tora de madeira**: *"Low poly wooden log, cylindrical, bark suggested by faceted geometry, brown and tan colors, 200 polygons max"*
+2. **Wooden log**: *"Low poly wooden log, cylindrical, bark suggested by faceted geometry, brown and tan colors, 200 polygons max"*
 
-3. **Guilhotina industrial**: *"Low poly industrial guillotine blade mechanism, vertical metal blade in wooden frame, sawmill cutter"*
+3. **Industrial guillotine**: *"Low poly industrial guillotine blade mechanism, vertical metal blade in wooden frame, sawmill cutter"*
 
-4. **Esteira transportadora**: *"Low poly conveyor belt with metal rollers, industrial style, dark grey belt, metallic supports"*
+4. **Conveyor Belt**: *"Low poly conveyor belt with metal rollers, industrial style, dark grey belt, metallic supports"*
 
-5. **Observatório (Ato 4)**: *"Low poly cosmic observatory platform, minimalist circular structure, floating in space, dark blue palette"*
-
----
-
-## 9. Roadmap de Desenvolvimento
-
-### Semana 1 — Fundação ✅ Concluída
-
-**Objetivos**:
-- [x] Setup do projeto Godot 4
-- [x] Configuração de Input Map (17 ações)
-- [x] Estrutura de pastas
-- [x] Git inicializado com `.gitignore`
-- [x] Autoloads (`InputBus`, `GameState`) funcionando
-- [x] Cena `player.tscn` com câmera FPS funcional
-- [x] Cena `galpao.tscn` com primitivos
-- [x] Cena `main.tscn` rodando
-- [x] Caminhar pelo galpão com Xbox
-
-**Marco**: Caminhar pelo galpão vazio em primeira pessoa.
-
-### Semana 2 — Mundo Galileano ✅ Concluída
-
-**Objetivos**:
-- [x] Importar assets do Hyper3D (parcial: `galpao_estrutura.glb` integrado com colisão trimesh; `esteira.glb`, `guilhotina.glb` pendentes)
-- [x] Esteira animada com velocidade ajustável (D-Pad ↑↓) — `esteira.gd` + `esteira.tscn` (UV scroll; substitui `conveyor_belt.gd`)
-- [x] Tora se movendo ao longo da esteira — instanciada via `esteira.gd`
-- [x] `tora.tscn` criada como cena reutilizável — `tora.gd` (CylinderMesh procedural, L₀=4u, diâmetro=0.5; `set_lorentz_scale()` preparado para Semana 3)
-- [x] Skydome com HDRI adicionado ao galpão — `galpao.gd`
-- [x] Duas guilhotinas descendo ao apertar RT — `guillotine.gd`
-- [x] Caso galileano trivial (v baixa) funcionando
-- [x] HUD básica: velocímetro texto (β, γ, barra, referencial) — `hud.gd`; sprite pixel art pendente
-- [x] Bugfix: `lorentz_transform.gd` — inferência de tipo em `clamp()` tratada como erro (`var b: float`)
-
-**Marco**: Apresentar Atos 0 e início do Ato 1. ✅ Atingido (sem assets Hyper3D).
-
-### Semana 3 — Coração: Troca de Referencial ✅ Concluída
-
-**Objetivos**:
-- [x] Lógica de `Frame.ALICE` vs `Frame.BOB` em `GameState`
-- [x] Contração de Lorentz aplicada via escala anisotrópica — `frame_controller.gd` (tora `1/γ` em ALICE; grupo `MovingWorld` com galpão+guilhotinas+esteira `1/γ` em BOB)
-- [x] Transição animada de 2s com easing (`TRANS_CUBIC`/`EASE_IN_OUT`)
-- [x] Indicador de γ na HUD atualizando dinamicamente
-- [x] Bloqueio de inputs durante transição (`is_transitioning` guarda frame e velocidade)
-- [x] Efeito visual sutil durante transição (tint azulado em pulso senoidal)
-- [x] Movimento relativo coerente em BOB: tora em repouso, mundo desliza a -v (chão colisor invisível fixo sustenta o player)
-
-**Marco**: Trocar de referencial e ver o "efeito wow".
-
-### Semana 4 — Simultaneidade e Resolução 🟡 Parcial
-
-**Objetivos**:
-- [ ] Sistema de linhas de simultaneidade (sprites pixel art)
-- [x] Modo câmera lenta (Botão X) — `Engine.time_scale = 0.25`, desacelera inclusive o offset das guilhotinas (útil no replay do Ato 3)
-- [x] Guilhotinas com offset temporal em `Frame.BOB` — direita desce primeiro, esquerda após `Δt' = γ·L₀·v/c²` (convertido pela escala visual)
-- [x] Detecção e visual de corte — lâmina cruza o plano da tora, corte geométrico, tora se separa em duas metades animadas; indicador na HUD
-- [x] Mira do corte precisa — corte calculado no instante em que a lâmina cruza o topo da tora, com queda quase instantânea (~0.06s, no limite da percepção): a tora anda < 0.1u entre o gatilho e o cruzamento. Lâmina com gume em cunha (PrismMesh); retração e pausa embaixo também rápidas
-- [x] Reset da cena (Botão B) — `reset_session()` + reload
-- [x] Cena do paradoxo funcionando completa em ambos os frames
-- [x] Avatares Bob e Alice (`avatar.gd`) — Bob viaja na correia atrás da tora (contrai com ela em ALICE); Alice no posto ao lado da esteira (contrai com o mundo em BOB)
-- [x] Modelos KayKit animados nos avatares — Bob = Barbarian com machado de uma lâmina no `handslot.r` (lenhador a 0.9c), Alice = Rogue sem capa, idle do Rig_Medium (`general/Idle_A`); fallback low-poly procedural se o GLB faltar; `tools/Sawing` e `Working_A/B/C` disponíveis pra cenografia futura
-- [x] Encarnação em primeira pessoa — o operador É a Alice em ALICE e o Bob em BOB: corpo visível olhando pra baixo (tronco, braços, pernas; cabeça oculta pra câmera), animações de andar/parar, machado na mão do Bob; no meio da transição o player teleporta pro posto do referencial novo e o NPC encarnado some
-- [x] Soft-cap de velocidade em BOB (β ≤ 0.9) — a 0.99c o offset de simultaneidade excederia a duração da passada; 0.99c fica reservado ao Ato 1 em ALICE
-- [x] Correia física — sarrafos transladam com o mesmo passo da tora (`belt_beta × VISUAL_C × delta`) com wrap nas pontas e rolos girando (ω = v/r); substituiu o UV scroll, que dependia de fator de ajuste e não casava com a tora. Esteira inteira no MovingWorld (contrai e acompanha o galpão em BOB); em BOB os sarrafos andam a v·γ em coordenada local, ficando em repouso com a tora no espaço do mundo
-- [x] Bob completa o ciclo da madeira — segue até o fim da correia, mergulha no poço atrás da tora e cai da calha junto com a tora nova
-- [x] Iluminação estilizada (ref. Zelda Link's Awakening Remake) — WorldEnvironment com ambiente difuso quente + tonemap Filmic, ajustes de saturação (1.2) e brilho (0.95), sol moderado com penumbra macia (`light_angular_distance` + `shadow_blur`), materiais foscos sem metallic e com granulado procedural (`grain.gd`: normal map de ruído em runtime — aspecto árido, anti "balão de plástico")
-- [ ] Som ambiente do galpão
-- [ ] Efeitos sonoros pontuais (esteira, guilhotinas, transição)
-
-**Marco**: Atos 0-3 rodam completos de ponta a ponta. ✅ Atingido (sem áudio e sem overlay de linhas).
-
-### Semana 5 — Tesouras e Polimento
-
-**Objetivos**:
-- Cena `observatorio.tscn` (Ato 4)
-- Lógica das tesouras superluminais
-- Velocímetro do ponto de corte
-- Visualização do cone de luz
-- Transição entre cenas
-- Polimento visual (bloom, motion blur)
-- Ensaio cronometrado da apresentação completa
-- Ajustes finos
-- Limpeza técnica: remover `scripts/conveyor_belt.gd` legado (substituído pela correia física em `esteira.gd`; resta só uma referência em comentário)
-
-**Marco**: Show completo de 20 minutos rodando.
+5. **Observatory (Act 4)**: *"Low poly cosmic observatory platform, minimalist circular structure, floating in space, dark blue palette"*
 
 ---
 
-## 10. Princípios de Execução
+## 9. Development Roadmap
 
-Aplicáveis em qualquer momento do desenvolvimento:
+### Week 1 — Foundation ✅ Completed
 
-### 10.1 Cada dia termina com algo rodável
+**Objectives**:  
+- [x] Setup of Godot 4 project  
+- [x] Input Map Configuration (17 actions)  
+- [x] Folder structure  
+- [x] Git initialized with `.gitignore`  
+- [x] Autoloads (`InputBus`, `GameState`) working  
+- [x] Scene `player.tscn` with functional FPS camera  
+- [x] Scene `galpao.tscn` with primitives  
+- [x] Scene `main.tscn` running  
+- [x] Walking through the galpao with Xbox
 
-Nada de "vou fazer a arquitetura toda primeiro". Sempre há algo para mostrar. Mesmo que feio.
+**Milestone**: Walk through the empty barn in first person.
 
-### 10.2 Assets antes de código bonito
+### Week 2 — Galilean World ✅ Completed
 
-Um boneco de palito andando no galpão é mais valioso que um sistema de física perfeito sem visual. Visual valida cedo.
+**Objectives**:  
+- [x] Import Hyper3D assets (partial: `galpao_estrutura.glb` integrated with trimesh collision; `esteira.glb`, `guilhotina.glb` pending)  
+- [x] Animated conveyor belt with adjustable speed (D-Pad ↑↓) — `esteira.gd` + `esteira.tscn` (UV scroll; replaces `conveyor_belt.gd`)  
+- [x] Torus moving along the conveyor belt — instantiated via `esteira.gd`  
+- [x] `tora.tscn` created as a reusable scene — `tora.gd` (procedural CylinderMesh, L₀=4u, diameter=0.5; `set_lorentz_scale()` prepared for Week 3)  
+- [x] Skydome with HDRI added to the warehouse — `galpao.gd`  
+- [x] Two guillotines descending on RT press — `guillotine.gd`  
+- [x] Trivial Galilean case (low v) working  
+- [x] Basic HUD: text speedometer (β, γ, bar, reference frame) — `hud.gd`; pixel art sprite pending  
+- [x] Bugfix: `lorentz_transform.gd` — type inference in `clamp()` treated as error (`var b: float`)
 
-### 10.3 Hardcode primeiro, generalize depois
+**Milestone**: Present Acts 0 and beginning of Act 1. ✅ Achieved (without Hyper3D assets).
 
-Parâmetros do paradoxo (velocidade, comprimento, etc) ficam hardcoded até a Fase 4. Só depois viram configuráveis. Otimização prematura mata projeto.
+### Week 3 — Heart: Frame of Reference Change ✅ Completed
 
-### 10.4 Teatro > simulação
+**Objectives**:
+- [x] Logic of `Frame.ALICE` vs `Frame.BOB` in `GameState`
+- [x] Lorentz contraction applied via anisotropic scaling — `frame_controller.gd` (scales `1/γ` in ALICE; group `MovingWorld` with guillotines+conveyor `1/γ` in BOB)
+- [x] 2s animated transition with easing (`TRANS_CUBIC`/`EASE_IN_OUT`)
+- [x] Indicator of γ in HUD updating dynamically
+- [x] Blocking inputs during transition (`is_transitioning` stores frame and speed)
+- [x] Subtle visual effect during transition (bluish tint in sinusoidal pulse)
+- [x] Coherent relative motion in BOB: tora at rest, world slides at -v (invisible fixed floor collider supports the player)
 
-Quando física exata brigar com clareza visual, **clareza visual ganha**. Este é um instrumento de palco, não um simulador.
+**Checkpoint**: Switch reference frames and see the "wow effect."
 
-### 10.5 Commit por milestone visual
+### Week 4 — Simultaneity and Resolution 🟡 Partial
 
-Sempre que algo funcionar visualmente, commit. Histórico de progresso vira material útil para TCC e apresentação posterior.
+**Objectives**:
+- [ ] Simultaneity line system (pixel art sprites)
+- [x] Slow-motion mode (Button X) — `Engine.time_scale = 0.25`, slows down including the offset of the guillotines (useful in Act 3 replay)
+- [x] Guillotines with temporal offset in `Frame.BOB` — right descends first, left after `Δt' = γ·L₀·v/c²` (converted by visual scale)
+- [x] Cut detection and visualization — blade crosses the log's plane, geometric cut, log separates into two animated halves; indicator on HUD
+- [x] Precise cut aim — cut calculated at the instant the blade crosses the top of the log, with almost instantaneous drop (~0.06s, at the limit of perception): the log moves < 0.1u between the trigger and the crossing. Blade with a wedge-shaped edge (PrismMesh); retraction and pause below also fast
+- [x] Scene reset (Button B) — `reset_session()` + reload
+- [x] Complete paradox scene functioning in both frames
+- [x] Avatars Bob and Alice (`avatar.gd`) — Bob travels on the belt behind the log (contracts with it in ALICE); Alice at the post next to the conveyor (contracts with the world in BOB)
+- [x] Animated KayKit models in avatars — Bob = Barbarian with a one-edged axe in `handslot.r` (lumberjack at 0.9c), Alice = Rogue without a cloak, idle of Rig_Medium (`general/Idle_A`); fallback low-poly procedural if the GLB is missing; `tools/Sawing` and `Working_A/B/C` available for future set design
+- [x] First-person embodiment — the operator is Alice in ALICE and Bob in BOB: visible body looking down (torso, arms, legs; head hidden from the camera), walking/stopping animations, axe in Bob's hand; in the middle of the transition the player teleports to the new reference post and the embodied NPC disappears
+- [x] Soft-cap on speed in BOB (β ≤ 0.9) — at 0.99c the simultaneity offset would exceed the duration of the stride; 0.99c is reserved for Act 1 in ALICE
+- [x] Physical conveyor belt — slats move with the same step as the log (`belt_beta × VISUAL_C × delta`) with wrap at the ends and rotating rollers (ω = v/r); replaced the UV scroll, which depended on an adjustment factor and didn't match the log. Entire belt in MovingWorld (contracts and follows the shed in BOB); in BOB the slats move at v·γ in local coordinates, coming to rest with the log in world space
+- [x] Bob completes the wood cycle — follows to the end of the conveyor, dives into the pit behind the log and falls from the chute with the new log
+- [x] Stylized lighting (ref. Zelda Link's Awakening Remake) — WorldEnvironment with warm diffuse environment + Filmic tonemap, saturation adjustments (1.2) and brightness (0.95), moderate sun with soft penumbra (`light_angular_distance` + `shadow_blur`), matte materials without metallic and with procedural grain (`grain.gd`: normal map of noise at runtime — arid look, anti "plastic balloon")
+- [ ] Shed ambient sound
+- [ ] Point-specific sound effects (conveyor, guillotines, transition)
 
-### 10.6 Foco no momento "wow"
+**Milestone**: Acts 0-3 run completely from start to finish. ✅ Achieved (without audio and without overlay lines).
 
-A mecânica de troca de referencial (Semana 3) é a coisa mais importante do projeto. Se essa transição estiver perfeita, o resto pode ser modesto e ainda assim funciona.
+### Week 5 — Scissors and Polishing
+
+**Objectives**:  
+- Scene `observatory.tscn` (Act 4)  
+- Logic of superluminal scissors  
+- Cut-off speedometer  
+- Visualization of the light cone  
+- Transition between scenes  
+- Visual polish (bloom, motion blur)  
+- Timed trial of the complete presentation  
+- Fine-tuning  
+- Technical cleanup: remove legacy `scripts/conveyor_belt.gd` (replaced by the physical belt in `esteira.gd`; only a reference remains in a comment)
+
+**Milestone**: Complete 20-minute show running.
 
 ---
 
-## 11. Convenções de Código
+## 10. Execution Principles
+
+Applicable at any time during development:
+
+### 10.1 Each day ends with something runnable
+
+Nothing like "I'm going to do the whole architecture first." There's always something to show. Even if it's ugly.
+
+### 10.2 Assets before elegant code
+
+A stick figure walking in the warehouse is more valuable than a perfect physics system without visuals. Visuals validate early.
+
+### 10.3 Hardcode first, generalize later
+
+Parameters of the paradox (speed, length, etc.) remain hardcoded until Phase 4. Premature optimization kills the project.
+
+### 10.4 Theater > simulation
+
+When exact physics clashes with visual clarity, **visual clarity wins**. This is a stage instrument, not a simulator.
+
+### 10.5 Commit by Visual Milestone
+
+Commit whenever something works visually. Progress history becomes useful material for the thesis and subsequent presentation.
+
+### 10.6 Focus on the "wow" moment
+
+The mechanics of reference frame change (Week 3) is the most important part of the project. If this transition is perfect, the rest can be modest and still work.
+
+---
+
+## 11. Coding Conventions
 
 ### 11.1 GDScript Style Guide
 
-- Seguir convenções oficiais do Godot 4: https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_styleguide.html
-- Indentação: tabs (padrão Godot)
-- Snake_case para variáveis, funções, sinais
-- PascalCase para classes e nodes no editor
-- SCREAMING_SNAKE_CASE para constantes
+- Follow official Godot 4 conventions: https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_styleguide.html
+- Indentation: tabs (Godot standard)
+- Snake_case for variables, functions, signals
+- PascalCase for classes and nodes in the editor
+- SCREAMING_SNAKE_CASE for constants
 
-### 11.2 Estrutura de Scripts
+### 11.2 Script Structure
 
 ```gdscript
-# scripts/exemplo.gd
+# scripts/example.gd  
 extends Node3D
 
-# 1. Constantes
+# 1. Constants  
 const MAX_SPEED: float = 10.0
 
-# 2. Exportadas (configuráveis no editor)
+# 2. Exported (configurable in the editor)  
 @export var some_value: float = 1.0
 
-# 3. Sinais
+# 3. Signals  
 signal something_happened
 
-# 4. Variáveis públicas
+# 4. Public variables  
 var current_state: int = 0
 
-# 5. Variáveis privadas (prefixo _)
+# 5. Private variables (prefix _)  
 var _internal_counter: int = 0
 
-# 6. Onready (referências de nodes)
+# 6. Onready (node references)  
 @onready var some_node: Node = $SomeNode
 
-# 7. Funções built-in (ordem do ciclo de vida)
-func _ready() -> void: pass
-func _process(delta: float) -> void: pass
-func _physics_process(delta: float) -> void: pass
+# 7. Built-in functions (life cycle order)  
+func _ready() -> void: pass  
+func _process(delta: float) -> void: pass  
+func _physics_process(delta: float) -> void: pass  
 func _input(event: InputEvent) -> void: pass
 
-# 8. Funções públicas
+# 8. Public functions  
 func do_something() -> void: pass
 
-# 9. Funções privadas
+# 9. Private functions  
 func _internal_helper() -> void: pass
 ```
 
-### 11.3 Type Hints Obrigatórios
+### 11.3 Required Type Hints
 
-Sempre tipar argumentos e retornos de funções:
+Always type arguments and function returns:
 
 ```gdscript
 # ✅ Correto
@@ -632,120 +633,120 @@ func calculate_gamma(velocity_fraction):
     return 1.0 / sqrt(1.0 - velocity_fraction * velocity_fraction)
 ```
 
-### 11.4 Sinais para Comunicação Entre Sistemas
+### 11.4 Signals for Communication Between Systems
 
-Preferir sinais em vez de referências diretas entre sistemas independentes. O autoload `InputBus` é o exemplo central desse padrão.
+Prefer signals over direct references between independent systems. The autoload `InputBus` is the central example of this pattern.
 
-### 11.5 Comentários
+### 11.5 Comments
 
-- Comentar **por que**, não **o quê**
-- Documentar funções públicas com comentário de uma linha acima
-- Equações relativísticas devem ter referência ao artigo (ex: `# Eq. 13 do artigo de Alencar et al.`)
+- Comment on **why**, not **what**  
+- Document public functions with a comment above  
+- Relativistic equations must have a reference to the article (e.g., `# Eq. 13 of the Alencar et al. article`)
 
 ---
 
-Termos do código relevantes para a implementação:
+Relevant code terms for the implementation:
 
-| Termo | Definição |
+| Term | Definition |
 |---|---|
-| **Frame (no código)** | Referencial inercial; valores: `ALICE` ou `BOB` |
-| **β (beta)** | Velocidade em frações de c (β = v/c, 0 a 1) — `belt_beta` no `GameState` |
-| **γ (gamma)** | Fator de Lorentz, 1/√(1−β²), sempre ≥ 1 — `get_gamma()` |
-| **L₀** | Comprimento próprio (tora = 4 u; distância entre guilhotinas = 4 u) |
-| **MovingWorld** | Grupo de nós (galpão + esteira + guilhotinas) que contrai/desliza em `BOB` |
+| **Frame (in code)** | Inertial reference frame; values: `ALICE` or `BOB` |
+| **β (beta)** | Speed as a fraction of c (β = v/c, 0 to 1) — `belt_beta` in `GameState` |
+| **γ (gamma)** | Lorentz factor, 1/√(1−β²), always ≥ 1 — `get_gamma()` |
+| **L₀** | Proper length (torus = 4 u; distance between guillotines = 4 u) |
+| **MovingWorld** | Group of nodes (warehouse + conveyor + guillotines) that contracts/slides in `BOB` |
 
-Glossário físico completo (referencial inercial, tempo próprio, cone de luz, linha de mundo, simultaneidade relativa): [`FUNDAMENTACAO-CIENTIFICA.md §6`](FUNDAMENTACAO-CIENTIFICA.md#6-glossário-técnico).
-
----
-
-## 13. Referências
-
-### 13.1 Referência Científica
-
-[1] **Alencar, G., Macedo, J., Maranhão, L., & Carneiro, P. (2023).** *Paradoxos da Relatividade*. arXiv:2307.05503v1 [physics.pop-ph]. UFC.
-
-> A bibliografia acadêmica completa (referências secundárias citadas no artigo: Rindler, Dewan, Taylor & Wheeler, Rothman, Kaushal & Nemiroff etc.) está em [`FUNDAMENTACAO-CIENTIFICA.md §7`](FUNDAMENTACAO-CIENTIFICA.md#7-referências).
-
-### 13.2 Referências de Inspiração Visual e de Game Design
-
-- **A Slower Speed of Light** (MIT Game Lab, 2012) — primeira pessoa com efeitos visuais relativísticos
-- **Velocity Raptor** (TestTubeGames) — plataforma 2D com contração de Lorentz
-- **Universe Sandbox** — modelo de "instrumento de palco" para fenômenos físicos
-- **Manifold Garden** — puzzle como exploração conceitual de geometria não-euclidiana
-- **Bret Victor — Stop Drawing Dead Fish** — referência sobre instrumentos interativos para demonstração
-
-### 13.3 Ferramentas Utilizadas
-
-- **Godot Engine 4.x** — https://godotengine.org
-- **Hyper3D.ai (Rodin)** — Geração de modelos 3D via IA — https://hyper3d.ai
-- **PixelLab.ai** — Geração de pixel art via IA — https://pixellab.ai
-
-### 13.4 Documentação Técnica de Referência
-
-- Godot 4 Documentation: https://docs.godotengine.org/en/stable/
-- GDScript Style Guide: https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_styleguide.html
-- Godot Input System: https://docs.godotengine.org/en/stable/tutorials/inputs/index.html
+Complete physics glossary (inertial reference frame, proper time, light cone, world line, relative simultaneity): [`FUNDAMENTACAO-CIENTIFICA.md §6`](FUNDAMENTACAO-CIENTIFICA.md#6-glossário-técnico).
 
 ---
 
-## Notas Finais para Claude Code
+## 13. References
 
-### Como Tratar Este Projeto
+### 13.1 Scientific Reference
 
-1. **Sempre validar mudanças contra o artigo de Alencar et al. (2023)**. Se uma decisão técnica conflitar com a explicação científica do artigo, a explicação científica vence.
+[1] **Alencar, G., Macedo, J., Maranhão, L., & Carneiro, P. (2023).** *Paradoxes of Relativity*. arXiv:2307.05503v1 [physics.pop-ph]. UFC.
 
-2. **Priorizar clareza visual sobre exatidão numérica**. Este não é um simulador científico — é um instrumento didático teatral.
+> The complete academic bibliography (secondary references cited in the article: Rindler, Dewan, Taylor & Wheeler, Rothman, Kaushal & Nemiroff, etc.) is in [`FUNDAMENTACAO-CIENTIFICA.md §7`](FUNDAMENTACAO-CIENTIFICA.md#7-referências).
 
-3. **Manter os 20 minutos como restrição rígida**. Se algo não couber no tempo, cortar. O paradoxo da Barra e Fenda 2D foi descartado por esse motivo.
+### 13.2 Visual and Game Design Inspirations
 
-4. **Foco absoluto na troca de referencial como mecânica central**. Tudo gira em torno desse momento. Outras decisões podem ser modestas.
+- **A Slower Speed of Light** (MIT Game Lab, 2012) — first-person with relativistic visual effects  
+- **Velocity Raptor** (TestTubeGames) — 2D platformer with Lorentz contraction  
+- **Universe Sandbox** — "stage instrument" model for physical phenomena  
+- **Manifold Garden** — puzzle as conceptual exploration of non-Euclidean geometry  
+- **Bret Victor — Stop Drawing Dead Fish** — reference on interactive instruments for demonstration
 
-5. **A audiência são adolescentes do ensino médio**. Linguagem visual e narrativa devem refletir isso — sem jargão técnico desnecessário, com momentos de impacto visual claros.
+### 13.3 Tools Used
 
-6. **O orientador é o único "usuário"**. Não há tutoriais, sem onboarding para o aluno. Tudo deve ser pensado para alguém que sabe usar a ferramenta operá-la ao vivo.
+- **Godot Engine 4.x** — https://godotengine.org  
+- **Hyper3D.ai (Rodin)** — 3D model generation via AI — https://hyper3d.ai  
+- **PixelLab.ai** — Pixel art generation via AI — https://pixellab.ai
 
-7. **Commit early, commit often**. Cada milestone visual merece um commit. O histórico vira documentação do progresso.
+### 13.4 Reference Technical Documentation
 
-8. **Em caso de dúvida sobre arquitetura, escolher a opção mais simples que funciona**. Refatorar é fácil depois que algo está rodando.
-
-9. **Compatibilidade Windows ↔ Linux é restrição rígida** (ver Seção 5.3). Nunca usar caminhos absolutos, nomes de arquivo com acentos nos assets, ou chamadas de sistema sem teste cross-platform. Desenvolvimento ocorre em AlmaLinux 9.8; apresentações em Windows.
-
-### Estado Atual do Projeto
-
-**Fase**: Semana 4 — Simultaneidade e Resolução (🟡 parcial)
-**Ambiente de desenvolvimento**: AlmaLinux 9.8 + Godot 4.6.3 + VS Code 1.122.0 (ambos via Flatpak) — configurado e funcional.
-**Concluído (Atos 0-3 rodam de ponta a ponta)**:
-- Troca de referencial ALICE↔BOB com contração de Lorentz animada (Tween cúbico, bloqueio de input na transição)
-- Correia física (sarrafos + rolos) substituindo o UV scroll; tora se move e é cortada na mira do operador
-- Guilhotinas com offset temporal de simultaneidade em BOB + modo câmera lenta (Botão X) e reset (Botão B)
-- Avatares KayKit (Bob/Alice) com encarnação em 1ª pessoa e iluminação estilizada
-**Pendências da Semana 4**:
-- Overlay de linhas de simultaneidade (`simultaneity_lines.gd`, sprites pixel art)
-- Som ambiente do galpão e efeitos sonoros pontuais
-**Pendências de assets**: `esteira.glb`, `guilhotina.glb`, `observatorio.glb` (Hyper3D); sprites do HUD (PixelLab)
-**Próximos passos imediatos**:
-1. Sistema de linhas de simultaneidade (Botão Y) — última peça conceitual do Ato 3
-2. Camada de áudio (ambiente + SFX de esteira, guilhotinas e transição)
-3. Iniciar Semana 5: cena `observatorio.tscn` e lógica das tesouras superluminais (`scissors.gd`)
+- Godot 4 Documentation: <a href="https://docs.godotengine.org/en/stable/">https://docs.godotengine.org/en/stable/</a>  
+- GDScript Style Guide: <a href="https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_styleguide.html">https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_styleguide.html</a>  
+- Godot Input System: <a href="https://docs.godotengine.org/en/stable/tutorials/inputs/index.html">https://docs.godotengine.org/en/stable/tutorials/inputs/index.html</a>
 
 ---
 
-> *O instrumento não termina quando a tora passa. Termina quando o aluno entende **por que** ela passou — e descobre que não precisou de um mundo de fantasia para se espantar: o nosso, descrito com honestidade, já bastava.*
+## Final Notes for Claude Code
 
-*Última atualização: 24 de junho de 2026*
-*Projeto desenvolvido como instrumento de ensino de Relatividade Especial para o ensino médio brasileiro.*
+### How to Handle This Project
+
+1. **Always validate changes against the article by Alencar et al. (2023)**. If a technical decision conflicts with the scientific explanation in the article, the scientific explanation prevails.
+
+2. **Prioritize visual clarity over numerical accuracy**. This is not a scientific simulator — it is a theatrical teaching instrument.
+
+3. **Maintain the 20-minute constraint as a strict limit**. If something doesn't fit in the time, cut it. The Bar and Slit 2D Paradox was discarded for this reason.
+
+4. **Absolute focus on the change of reference frame as central mechanics**. Everything revolves around this moment. Other decisions can be modest.
+
+5. **The audience is high school students**. Visual language and narrative should reflect this — without unnecessary technical jargon, with clear moments of visual impact.
+
+6. **The instructor is the only "user."** There are no tutorials, no onboarding for the student. Everything must be designed for someone who knows how to operate the tool live.
+
+7. **Commit early, commit often**. Each visual milestone deserves a commit. The history becomes documentation of progress.
+
+8. **In case of doubt about architecture, choose the simplest option that works**. Refactoring is easy once something is running.
+
+9. **Windows ↔ Linux compatibility is a strict constraint** (see Section 5.3). Never use absolute paths, accented filenames in assets, or system calls without cross-platform testing. Development occurs on AlmaLinux 9.8; presentations on Windows.
+
+### Current Project Status
+
+**Phase**: Week 4 — Simultaneity and Resolution (🟡 partial)  
+**Development Environment**: AlmaLinux 9.8 + Godot 4.6.3 + VS Code 1.122.0 (both via Flatpak) — configured and functional.  
+**Completed (Acts 0-3 run end-to-end)**:  
+- Reference frame swap ALICE↔BOB with animated Lorentz contraction (cubic Tween, input lock during transition)  
+- Physical conveyor belt (struts + rollers) replacing UV scroll; log moves and is cut at the operator's aim  
+- Guillotines with temporal simultaneity offset in BOB + slow-motion mode (Button X) and reset (Button B)  
+- KayKit avatars (Bob/Alice) with first-person embodiment and stylized lighting  
+**Week 4 Pending Items**:  
+- Simultaneity lines overlay (`simultaneity_lines.gd`, pixel art sprites)  
+- Ambient sounds of the warehouse and point sound effects  
+**Pending Assets**: `esteira.glb`, `guilhotina.glb`, `observatorio.glb` (Hyper3D); HUD sprites (PixelLab)  
+**Immediate Next Steps**:  
+1. Simultaneity lines system (Button Y) — last conceptual piece of Act 3  
+2. Audio layer (ambient + SFX of conveyor, guillotines, and transition)  
+3. Start Week 5: scene `observatorio.tscn` and logic of superluminal scissors (`scissors.gd`)
 
 ---
 
-## 14. Licença
+> *The instrument does not end when the tora passes. It ends when the student understands **why** it passed — and discovers that they didn't need a fantasy world to be amazed: ours, described honestly, was enough.*
 
-Este projeto usa uma **licença dupla**:
+*Last update: June 24, 2026*  
+*Project developed as a teaching instrument for Special Relativity for Brazilian high school.*
 
-| Componente | Licença | Arquivo |
+---
+
+## 14. License
+
+This project uses a **dual license**:
+
+| Component | License | File |
 |---|---|---|
-| Código-fonte (`scripts/`, `scenes/`, `project.godot`) | [GNU GPL v3](https://www.gnu.org/licenses/gpl-3.0.html) | `LICENSE` |
-| Assets e documentação (`assets/`, `docs/`, `README.md`) | [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) | `LICENSE-ASSETS` |
+| Source code (`scripts/`, `scenes/`, `project.godot`) | [GNU GPL v3](https://www.gnu.org/licenses/gpl-3.0.html) | `LICENSE` |
+| Assets and documentation (`assets/`, `docs/`, `README.md`) | [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) | `LICENSE-ASSETS` |
 
-**Em resumo:** você pode usar, estudar e modificar este projeto para fins educacionais e não-comerciais, desde que mantenha a atribuição ao autor original e distribua derivados sob as mesmas licenças.
+**In summary:** you can use, study, and modify this project for educational and non-commercial purposes, as long as you maintain attribution to the original author and distribute derivatives under the same licenses.
 
 Copyright (C) 2026 Mateus Alkimim
