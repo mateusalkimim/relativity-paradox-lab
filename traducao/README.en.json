@@ -1,0 +1,1472 @@
+{
+ "atualizado_em": "2026-08-27 14:36:09",
+ "blocos": {
+  "02f43701e0": {
+   "en": "> The complete academic bibliography (secondary references cited in the article: Rindler, Dewan, Taylor & Wheeler, Rothman, Kaushal & Nemiroff, etc.) is in [`FUNDAMENTACAO-CIENTIFICA.md §7`](FUNDAMENTACAO-CIENTIFICA.md#7-referências).",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "> A bibliografia acadêmica completa (referências secundárias citadas no artigo: Rindler, Dewan, Taylor & Wheeler, Rothman, Kaushal & Nemiroff etc.) está em [`FUNDAMENTACAO-CIENTIFICA.md §7`](FUNDAMENTACAO-CIENTIFICA.md#7-referências).",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "034bcea46a": {
+   "en": "5. **Observatory (Act 4)**: *\"Low poly cosmic observatory platform, minimalist circular structure, floating in space, dark blue palette\"*",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "5. **Observatório (Ato 4)**: *\"Low poly cosmic observatory platform, minimalist circular structure, floating in space, dark blue palette\"*",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "054e7564c5": {
+   "en": "### 7.2 Visual Transformation System",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "### 7.2 Sistema de Transformação Visual",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "05980d7575": {
+   "en": "### 11.4 Signals for Communication Between Systems",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "### 11.4 Sinais para Comunicação Entre Sistemas",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "0d95d4e6c6": {
+   "en": "Bar-and-Slit 2D (discarded due to conceptual setup cost) and Bar-and-Slit with gravity (future expansion / TCC) — documented in the foundation.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Barra-e-Fenda 2D (descartado por custo de *setup* conceitual) e Barra-e-Fenda com gravidade (expansão futura / TCC) — documentados na fundamentação.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "0f1ad401d7": {
+   "en": "7. **Commit early, commit often**. Each visual milestone deserves a commit. The history becomes documentation of progress.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "7. **Commit early, commit often**. Cada milestone visual merece um commit. O histórico vira documentação do progresso.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "12c2941ee9": {
+   "en": "This project uses a **dual license**:",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Este projeto usa uma **licença dupla**:",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "13be19322d": {
+   "en": "| Magnitude | Equation |\n|---|---|\n| Lorentz Factor | γ = 1 / √(1 − v²/c²) |\n| Lorentz Contraction | L = L₀ / γ |\n| Simultaneity Offset | Δt' = γ·L₀·v/c² |\n| Cutting Point Speed (scissors) | v = ω·L·csc²(θ) |",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "| Grandeza | Equação |\n|---|---|\n| Fator de Lorentz | γ = 1 / √(1 − v²/c²) |\n| Contração de Lorentz | L = L₀ / γ |\n| Offset de simultaneidade | Δt' = γ·L₀·v/c² |\n| Velocidade do ponto de corte (tesouras) | v = ω·L·csc²(θ) |",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "15ee75fecf": {
+   "en": "**Activation**: Button Y (toggle)",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Ativação**: Botão Y (toggle)",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "161b67d170": {
+   "en": "#### **Act 2 — The Paradox** (6 min)",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "#### **Ato 2 — O Paradoxo** (6 min)",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "1a2fb2ebce": {
+   "en": "- Follow official Godot 4 conventions: https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_styleguide.html\n- Indentation: tabs (Godot standard)\n- Snake_case for variables, functions, signals\n- PascalCase for classes and nodes in the editor\n- SCREAMING_SNAKE_CASE for constants",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "- Seguir convenções oficiais do Godot 4: https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_styleguide.html\n- Indentação: tabs (padrão Godot)\n- Snake_case para variáveis, funções, sinais\n- PascalCase para classes e nodes no editor\n- SCREAMING_SNAKE_CASE para constantes",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "1be2ab7db8": {
+   "en": "Equations implemented in `scripts/lorentz_transform.gd` (quick reference to the code):",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Equações implementadas em `scripts/lorentz_transform.gd` (referência rápida para o código):",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "259e1e182b": {
+   "en": "> *The instrument does not end when the tora passes. It ends when the student understands **why** it passed — and discovers that they didn't need a fantasy world to be amazed: ours, described honestly, was enough.*",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "> *O instrumento não termina quando a tora passa. Termina quando o aluno entende **por que** ela passou — e descobre que não precisou de um mundo de fantasia para se espantar: o nosso, descrito com honestidade, já bastava.*",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "261e5eed35": {
+   "en": "Copyright (C) 2026 Mateus Alkimim",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Copyright (C) 2026 Mateus Alkimim\n",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "28112ff0dd": {
+   "en": "### 10.1 Each day ends with something runnable",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "### 10.1 Cada dia termina com algo rodável",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "2e1cdeba07": {
+   "en": "- **Planned Implementation**: `scissors.gd`, `observatorio.tscn`  \n- **Status**: ⬜ pending (Week 5, Act 4) · ~3 min",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "- **Implementação prevista**: `scissors.gd`, `observatorio.tscn`\n- **Status**: ⬜ pendente (Semana 5, Ato 4) · ~3 min",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "2e37782198": {
+   "en": "**Milestone**: Present Acts 0 and beginning of Act 1. ✅ Achieved (without Hyper3D assets).",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Marco**: Apresentar Atos 0 e início do Ato 1. ✅ Atingido (sem assets Hyper3D).",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "2efd530f4c": {
+   "en": "1. **Always validate changes against the article by Alencar et al. (2023)**. If a technical decision conflicts with the scientific explanation in the article, the scientific explanation prevails.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "1. **Sempre validar mudanças contra o artigo de Alencar et al. (2023)**. Se uma decisão técnica conflitar com a explicação científica do artigo, a explicação científica vence.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "325fca2c52": {
+   "en": "### 3.3 Out of Scope",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "### 3.3 Fora de escopo",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "32afbe0629": {
+   "en": "**Objectives**:  \n- [x] Setup of Godot 4 project  \n- [x] Input Map Configuration (17 actions)  \n- [x] Folder structure  \n- [x] Git initialized with `.gitignore`  \n- [x] Autoloads (`InputBus`, `GameState`) working  \n- [x] Scene `player.tscn` with functional FPS camera  \n- [x] Scene `galpao.tscn` with primitives  \n- [x] Scene `main.tscn` running  \n- [x] Walking through the galpao with Xbox",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Objetivos**:\n- [x] Setup do projeto Godot 4\n- [x] Configuração de Input Map (17 ações)\n- [x] Estrutura de pastas\n- [x] Git inicializado com `.gitignore`\n- [x] Autoloads (`InputBus`, `GameState`) funcionando\n- [x] Cena `player.tscn` com câmera FPS funcional\n- [x] Cena `galpao.tscn` com primitivos\n- [x] Cena `main.tscn` rodando\n- [x] Caminhar pelo galpão com Xbox",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "338dc6fac1": {
+   "en": "### Week 2 — Galilean World ✅ Completed",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "### Semana 2 — Mundo Galileano ✅ Concluída",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "35e837235b": {
+   "en": "- **Implementation**: `frame_controller.gd`, `esteira.gd`, `guillotine.gd`, `tora.gd`  \n- **Status**: ✅ implemented (Acts 0-3) · ~14 min",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "- **Implementação**: `frame_controller.gd`, `esteira.gd`, `guillotine.gd`, `tora.gd`\n- **Status**: ✅ implementado (Atos 0-3) · ~14 min",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "3748474412": {
+   "en": "**Details**:  \n- Yaw applied to `CharacterBody3D` (rotates body)  \n- Pitch applied to `CameraPivot` (only camera)  \n- Sensitivity configurable (gamepad and mouse separate)  \n- Pitch clamped between -π/2 + 0.05 and π/2 - 0.05  \n- Gamepad input ignored when no joystick is connected (avoids drift of Xbox dongle without controller in hand)  \n- Mouse events discarded for 100 ms after capture and when delta > 0.5 rad (X11 warp artifact)",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Detalhes**:\n- Yaw aplicado ao `CharacterBody3D` (rotaciona corpo)\n- Pitch aplicado ao `CameraPivot` (apenas câmera)\n- Sensibilidade configurável (gamepad e mouse separados)\n- Clamp de pitch entre -π/2 + 0.05 e π/2 - 0.05\n- Input de gamepad ignorado quando nenhum joystick está conectado (evita drift do dongle Xbox sem controle na mão)\n- Eventos de mouse descartados por 100 ms após captura e quando delta > 0.5 rad (artefato de warp X11)",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "383c38588e": {
+   "en": "1. Abandoned **absolute simultaneity** as an intuitive concept  \n2. Visually understood **Lorentz contraction**  \n3. Recognized that rigid bodies **do not exist** in relativity  \n4. Accepted that **apparent superluminal speeds** exist without violating causality  \n5. Acknowledged that different descriptions of the same physical event can coexist consistently",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "1. Abandonado a **simultaneidade absoluta** como conceito intuitivo\n2. Compreendido visualmente a **contração de Lorentz**\n3. Entendido que objetos rígidos **não existem** na relatividade\n4. Aceitado que **velocidades superluminais aparentes** existem sem violar causalidade\n5. Reconhecido que descrições diferentes do mesmo evento físico podem coexistir consistentemente",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "3893be63fd": {
+   "en": "### 13.4 Reference Technical Documentation",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "### 13.4 Documentação Técnica de Referência",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "38c5ae474e": {
+   "en": "**Phase**: Week 4 — Simultaneity and Resolution (🟡 partial)  \n**Development Environment**: AlmaLinux 9.8 + Godot 4.6.3 + VS Code 1.122.0 (both via Flatpak) — configured and functional.  \n**Completed (Acts 0-3 run end-to-end)**:  \n- Reference frame swap ALICE↔BOB with animated Lorentz contraction (cubic Tween, input lock during transition)  \n- Physical conveyor belt (struts + rollers) replacing UV scroll; log moves and is cut at the operator's aim  \n- Guillotines with temporal simultaneity offset in BOB + slow-motion mode (Button X) and reset (Button B)  \n- KayKit avatars (Bob/Alice) with first-person embodiment and stylized lighting  \n**Week 4 Pending Items**:  \n- Simultaneity lines overlay (`simultaneity_lines.gd`, pixel art sprites)  \n- Ambient sounds of the warehouse and point sound effects  \n**Pending Assets**: `esteira.glb`, `guilhotina.glb`, `observatorio.glb` (Hyper3D); HUD sprites (PixelLab)  \n**Immediate Next Steps**:  \n1. Simultaneity lines system (Button Y) — last conceptual piece of Act 3  \n2. Audio layer (ambient + SFX of conveyor, guillotines, and transition)  \n3. Start Week 5: scene `observatorio.tscn` and logic of superluminal scissors (`scissors.gd`)",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Fase**: Semana 4 — Simultaneidade e Resolução (🟡 parcial)\n**Ambiente de desenvolvimento**: AlmaLinux 9.8 + Godot 4.6.3 + VS Code 1.122.0 (ambos via Flatpak) — configurado e funcional.\n**Concluído (Atos 0-3 rodam de ponta a ponta)**:\n- Troca de referencial ALICE↔BOB com contração de Lorentz animada (Tween cúbico, bloqueio de input na transição)\n- Correia física (sarrafos + rolos) substituindo o UV scroll; tora se move e é cortada na mira do operador\n- Guilhotinas com offset temporal de simultaneidade em BOB + modo câmera lenta (Botão X) e reset (Botão B)\n- Avatares KayKit (Bob/Alice) com encarnação em 1ª pessoa e iluminação estilizada\n**Pendências da Semana 4**:\n- Overlay de linhas de simultaneidade (`simultaneity_lines.gd`, sprites pixel art)\n- Som ambiente do galpão e efeitos sonoros pontuais\n**Pendências de assets**: `esteira.glb`, `guilhotina.glb`, `observatorio.glb` (Hyper3D); sprites do HUD (PixelLab)\n**Próximos passos imediatos**:\n1. Sistema de linhas de simultaneidade (Botão Y) — última peça conceitual do Ato 3\n2. Camada de áudio (ambiente + SFX de esteira, guilhotinas e transição)\n3. Iniciar Semana 5: cena `observatorio.tscn` e lógica das tesouras superluminais (`scissors.gd`)",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "3b87cb2441": {
+   "en": "- Godot 4 Documentation: <a href=\"https://docs.godotengine.org/en/stable/\">https://docs.godotengine.org/en/stable/</a>  \n- GDScript Style Guide: <a href=\"https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_styleguide.html\">https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_styleguide.html</a>  \n- Godot Input System: <a href=\"https://docs.godotengine.org/en/stable/tutorials/inputs/index.html\">https://docs.godotengine.org/en/stable/tutorials/inputs/index.html</a>",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "- Godot 4 Documentation: https://docs.godotengine.org/en/stable/\n- GDScript Style Guide: https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_styleguide.html\n- Godot Input System: https://docs.godotengine.org/en/stable/tutorials/inputs/index.html",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "3baef83237": {
+   "en": "Commit whenever something works visually. Progress history becomes useful material for the thesis and subsequent presentation.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Sempre que algo funcionar visualmente, commit. Histórico de progresso vira material útil para TCC e apresentação posterior.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "3efcb93feb": {
+   "en": "**Implementation of Lorentz Contraction**: **Path A — Logical Contraction** (not shader-based)  \n- Two representations of the world (reference frame S and S')  \n- When switching frames, animate transition between pre-calculated states  \n- Simpler, more predictable, sufficient for the show  \n- Path B (shaders) discarded to avoid two weeks of debugging",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Implementação da contração de Lorentz**: **Caminho A — Contração Lógica** (não shader-based)\n- Duas representações do mundo (referencial S e S')\n- Ao trocar de frame, animar transição entre estados pré-calculados\n- Mais simples, mais previsível, suficiente para o show\n- Caminho B (shaders) descartado para evitar 2 semanas de debug",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "3f34e32ad5": {
+   "en": "### Week 1 — Foundation ✅ Completed",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "### Semana 1 — Fundação ✅ Concluída",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "423316ff7b": {
+   "en": "**Conveyor Belt (`esteira.gd` + `esteira.tscn`)**:  \n- Adjustable speed from 0 to 0.99c (D-Pad ↑↓); soft-cap β ≤ 0.9 in Bob's reference frame (at 0.99c the simultaneity offset would exceed the stride duration)  \n- Visual movement via **physical belt**: slats move with the same step as the log (`belt_beta × VISUAL_C × delta`), with wrap at the ends and rollers rotating (ω = v/r) — replaced the old UV scroll, which depended on an adjustment factor and didn't match the log  \n- Instanciate `tora.tscn` and move it along the X axis  \n- The entire conveyor belongs to the group `MovingWorld`: in `Frame.BOB`, the log stays still and the shed (with the conveyor) contracts and slides at −v",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Esteira (`esteira.gd` + `esteira.tscn`)**:\n- Velocidade ajustável de 0 a 0.99c (D-Pad ↑↓); soft-cap β ≤ 0.9 no referencial de Bob (a 0.99c o offset de simultaneidade excederia a duração da passada)\n- Movimento visual via **correia física**: sarrafos transladam com o mesmo passo da tora (`belt_beta × VISUAL_C × delta`), com wrap nas pontas e rolos girando (ω = v/r) — substituiu o UV scroll antigo, que dependia de fator de ajuste e não casava com a tora\n- Instancia `tora.tscn` e a move ao longo do eixo X\n- A esteira inteira pertence ao grupo `MovingWorld`: em `Frame.BOB`, a tora fica parada e o galpão (com a esteira) contrai e desliza a −v",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "43bb0691fb": {
+   "en": "Parameters of the paradox (speed, length, etc.) remain hardcoded until Phase 4. Premature optimization kills the project.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Parâmetros do paradoxo (velocidade, comprimento, etc) ficam hardcoded até a Fase 4. Só depois viram configuráveis. Otimização prematura mata projeto.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "451c178514": {
+   "en": "Applicable at any time during development:",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Aplicáveis em qualquer momento do desenvolvimento:",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "471a40b229": {
+   "en": "### 8.4 Generation Prompts in Hyper3D",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "### 8.4 Prompts de Geração no Hyper3D",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "47f8c3a4d2": {
+   "en": "**Main Assets to Generate**:",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Assets principais a gerar**:",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "48ef40f9ab": {
+   "en": "Of the seven paradoxes in the reference article, **two** are included in the presentation. Detailed physical resolution, pedagogical justification, and sections/pages of the article: [`FUNDAMENTACAO-CIENTIFICA.md §5`](FUNDAMENTACAO-CIENTIFICA.md#5-os-paradoxos-em-detalhe).",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Dos sete paradoxos do artigo de referência, **dois** entram na apresentação. Resolução física detalhada, justificativa pedagógica e seções/páginas do artigo: [`FUNDAMENTACAO-CIENTIFICA.md §5`](FUNDAMENTACAO-CIENTIFICA.md#5-os-paradoxos-em-detalhe).",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "4a5c0b8e6a": {
+   "en": "## 6. Project Structure",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "## 6. Estrutura do Projeto",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "4ef831151e": {
+   "en": "4. **Conveyor Belt**: *\"Low poly conveyor belt with metal rollers, industrial style, dark grey belt, metallic supports\"*",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "4. **Esteira transportadora**: *\"Low poly conveyor belt with metal rollers, industrial style, dark grey belt, metallic supports\"*",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "4f73b4439d": {
+   "en": "### 1.3 Design Philosophy",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "### 1.3 Filosofia de Design",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "4f7e5cf1c8": {
+   "en": "**In `Frame.ALICE`**:  \n- Visually contracted tora: `tora.scale.x = 1.0 / gamma`  \n- Barn and guillotines at normal scale  \n- Guillotines descend simultaneously",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Em `Frame.ALICE`**:\n- Tora visualmente contraída: `tora.scale.x = 1.0 / gamma`\n- Galpão e guilhotinas em escala normal\n- Guilhotinas descem simultaneamente",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "50a9189d9d": {
+   "en": "The intersection point of two blades can exceed `c` (`v = ω·L·csc²θ`) without violating causality — since it is not a material object, it does not carry information.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "O ponto de cruzamento de duas lâminas pode exceder `c` (`v = ω·L·csc²θ`) sem violar causalidade — por não ser objeto material, não carrega informação.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "534701dd5e": {
+   "en": "1. [Project Overview](#1-visão-geral-do-projeto)  \n2. [Scientific Foundation](#2-fundamentação-científica)  \n3. [Selected Paradoxes](#3-paradoxos-selecionados)  \n4. [Presentation Architecture](#4-arquitetura-da-apresentação)  \n5. [Technical Stack](#5-stack-técnica)  \n6. [Project Structure](#6-estrutura-do-projeto)  \n7. [Central Systems](#7-sistemas-centrais)  \n8. [Visual Guidelines](#8-diretrizes-visuais)  \n9. [Development Roadmap](#9-roadmap-de-desenvolvimento)  \n10. [Execution Principles](#10-princípios-de-execução)  \n11. [Code Conventions](#11-convenções-de-código)  \n12. [Technical Glossary](#12-glossário-técnico)  \n13. [References](#13-referências)",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "1. [Visão Geral do Projeto](#1-visão-geral-do-projeto)\n2. [Fundamentação Científica](#2-fundamentação-científica)\n3. [Paradoxos Selecionados](#3-paradoxos-selecionados)\n4. [Arquitetura da Apresentação](#4-arquitetura-da-apresentação)\n5. [Stack Técnica](#5-stack-técnica)\n6. [Estrutura do Projeto](#6-estrutura-do-projeto)\n7. [Sistemas Centrais](#7-sistemas-centrais)\n8. [Diretrizes Visuais](#8-diretrizes-visuais)\n9. [Roadmap de Desenvolvimento](#9-roadmap-de-desenvolvimento)\n10. [Princípios de Execução](#10-princípios-de-execução)\n11. [Convenções de Código](#11-convenções-de-código)\n12. [Glossário Técnico](#12-glossário-técnico)\n13. [Referências](#13-referências)",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "557ab814a1": {
+   "en": "**Milestone**: Acts 0-3 run completely from start to finish. ✅ Achieved (without audio and without overlay lines).",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Marco**: Atos 0-3 rodam completos de ponta a ponta. ✅ Atingido (sem áudio e sem overlay de linhas).",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "5625cb3981": {
+   "en": "### 7.1 Reference Frame System (`game_state.gd` + `frame_controller.gd`)",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "### 7.1 Sistema de Referencial (`game_state.gd` + `frame_controller.gd`)",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "567a8fc8f3": {
+   "en": "**Milestone**: Walk through the empty barn in first person.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Marco**: Caminhar pelo galpão vazio em primeira pessoa.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "56b93248f5": {
+   "en": "## 13. References",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "## 13. Referências",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "572a4705b1": {
+   "en": "## 3. Selected Paradoxes",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "## 3. Paradoxos Selecionados",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "622e14f6db": {
+   "en": "### 13.1 Scientific Reference",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "### 13.1 Referência Científica",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "6318ff98a4": {
+   "en": "### 10.5 Commit by Visual Milestone",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "### 10.5 Commit por milestone visual",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "63c4a75193": {
+   "en": "**Flatpak Note**: VS Code and Godot run in separate sandboxes. Communication between them (opening a file in the external editor) uses the wrapper `~/.local/bin/godot4-vscode` via `flatpak-spawn --host`. The Language Server connects normally via localhost:6005.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Nota Flatpak**: VS Code e Godot rodam em sandboxes separadas. A comunicação entre eles (abrir arquivo no editor externo) usa o wrapper `~/.local/bin/godot4-vscode` via `flatpak-spawn --host`. O Language Server conecta normalmente via localhost:6005.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "64e30cac71": {
+   "en": "### 13.3 Tools Used",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "### 13.3 Ferramentas Utilizadas",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "64e5839922": {
+   "en": "**Speed of light in the game**: `C = 1.0` unit/second",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Velocidade da luz no jogo**: `C = 1.0` unidade/segundo",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "659292f3ea": {
+   "en": "- Transition to second scenario (cosmic observatory, night palette)  \n- Two blades crossing  \n- Instructor manipulates angle  \n- Cut-off speedometer: 0.5c → 0.9c → c → 2c → 10c  \n- Visualization of light cone showing that causality is preserved  \n- Closure",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "- Transição para segundo cenário (observatório cósmico, paleta noturna)\n- Duas lâminas cruzando\n- Orientador manipula ângulo\n- Velocímetro do ponto de corte: 0.5c → 0.9c → c → 2c → 10c\n- Visualização do cone de luz mostrando que causalidade está preservada\n- Encerramento",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "65da09aff7": {
+   "en": "**Scenario 1 — Sawmill Warehouse (Acts 0-3)**:  \n- Wood: warm earthy tones (#8B7355, #A0826D, #6B4423)  \n- Metal of guillotines: blue-gray (#4A5560, #6B7780)  \n- Concrete floor: light gray (#9C9C9C)  \n- Ambient light: warm golden (#FFD89B)",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Cenário 1 — Galpão Madeireira (Atos 0-3)**:\n- Madeira: tons quentes terrosos (#8B7355, #A0826D, #6B4423)\n- Metal das guilhotinas: cinza azulado (#4A5560, #6B7780)\n- Concreto do chão: cinza claro (#9C9C9C)\n- Luz ambiente: dourada quente (#FFD89B)",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "66d6b36f3c": {
+   "en": "### 8.3 Post-Processing Effects",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "### 8.3 Efeitos de Pós-Processamento",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "67033939ca": {
+   "en": "**Function**: Controllable first-person camera + optional isometric mode.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Função**: Câmera em primeira pessoa controlável + modo isométrico opcional.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "67c7c02e72": {
+   "en": "At the end of the presentation, the student should have:",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Ao final da apresentação, o estudante deve ter:",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "6825319d95": {
+   "en": "The mechanics of reference frame change (Week 3) is the most important part of the project. If this transition is perfect, the rest can be modest and still work.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "A mecânica de troca de referencial (Semana 3) é a coisa mais importante do projeto. Se essa transição estiver perfeita, o resto pode ser modesto e ainda assim funciona.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "68759eb631": {
+   "en": "### 5.2 Architectural Decisions",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "### 5.2 Decisões Arquiteturais",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "6a768705bd": {
+   "en": "### 7.4 Camera System",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "### 7.4 Sistema de Câmera",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "6ad48d491f": {
+   "en": "### 11.1 GDScript Style Guide",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "### 11.1 GDScript Style Guide",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "6b5c7c3f54": {
+   "en": "3. **Industrial guillotine**: *\"Low poly industrial guillotine blade mechanism, vertical metal blade in wooden frame, sawmill cutter\"*",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "3. **Guilhotina industrial**: *\"Low poly industrial guillotine blade mechanism, vertical metal blade in wooden frame, sawmill cutter\"*",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "6c3493f7a5": {
+   "en": "Complete physics glossary (inertial reference frame, proper time, light cone, world line, relative simultaneity): [`FUNDAMENTACAO-CIENTIFICA.md §6`](FUNDAMENTACAO-CIENTIFICA.md#6-glossário-técnico).",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Glossário físico completo (referencial inercial, tempo próprio, cone de luz, linha de mundo, simultaneidade relativa): [`FUNDAMENTACAO-CIENTIFICA.md §6`](FUNDAMENTACAO-CIENTIFICA.md#6-glossário-técnico).",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "6daf40cd80": {
+   "en": "### 1.2 Presentation Format",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "### 1.2 Formato da Apresentação",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "6db80a6d3c": {
+   "en": "**World scale**:  \n- Warehouse: ~20 units of length  \n- Tora: 4 units (proper length L₀)  \n- Distance between guillotines: 4 units (proper length L₀)  \n- Maximum visually used speed: 0.99c",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Escala do mundo**:\n- Galpão: ~20 unidades de comprimento\n- Tora: 4 unidades (comprimento próprio L₀)\n- Distância entre guilhotinas: 4 unidades (comprimento próprio L₀)\n- Velocidade máxima visualmente utilizada: 0.99c",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "6dbf22d700": {
+   "en": "#### **Act 3 — Resolution by Simultaneity** (4 min)",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "#### **Ato 3 — Resolução pela Simultaneidade** (4 min)",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "727f6d7e12": {
+   "en": "| Tool | Version | Installation |\n|---|---|---|\n| Godot 4 | 4.6.3 stable | Flatpak (user) — `godot4` |\n| VS Code | 1.122.0 | Flatpak (user) — `code` |\n| godot-tools | 2.6.1 | VS Code Extension |\n| Claude Code | — | `~/.local/bin/claude` |\n| Driver xone (Xbox dongle) | DKMS | `sudo bash setup-xbox-linux.sh` (deps: dkms, kernel-devel, git, cabextract) |",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "| Ferramenta | Versão | Instalação |\n|---|---|---|\n| Godot 4 | 4.6.3 stable | Flatpak (usuário) — `godot4` |\n| VS Code | 1.122.0 | Flatpak (usuário) — `code` |\n| godot-tools | 2.6.1 | Extensão VS Code |\n| Claude Code | — | `~/.local/bin/claude` |\n| Driver xone (dongle Xbox) | DKMS | `sudo bash setup-xbox-linux.sh` (deps: dkms, kernel-devel, git, cabextract) |",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "731a926d4a": {
+   "en": "Relevant code terms for the implementation:",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Termos do código relevantes para a implementação:",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "75f6b5be29": {
+   "en": "| Input | Function |\n|---|---|\n| Left Analog | Movement (WASD) |\n| Right Analog | Look (mouse look) |\n| Left Bumper (LB) | **Change reference frame** |\n| D-Pad ↑ | Increase conveyor speed |\n| D-Pad ↓ | Decrease conveyor speed |\n| Right Trigger (RT) | Activate guillotines / Main action |\n| Button Y | Toggle overlay (lines of simultaneity) |\n| Button X | Pause / Slow motion |\n| Button B | Reset scene |\n| Button View | Toggle isometric view / first person |\n| Menu Button | Next scene (Saws) |",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "| Input | Função |\n|---|---|\n| Analógico Esquerdo | Movimento (WASD) |\n| Analógico Direito | Olhar (mouse look) |\n| Bumper Esquerdo (LB) | **Trocar referencial** |\n| D-Pad ↑ | Aumentar velocidade da esteira |\n| D-Pad ↓ | Diminuir velocidade da esteira |\n| Gatilho Direito (RT) | Acionar guilhotinas / Ação principal |\n| Botão Y | Toggle overlay (linhas de simultaneidade) |\n| Botão X | Pausar / Câmera lenta |\n| Botão B | Reset da cena |\n| Botão View | Toggle vista isométrica / primeira pessoa |\n| Botão Menu | Próxima cena (Tesouras) |",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "7635b547a0": {
+   "en": "Nothing like \"I'm going to do the whole architecture first.\" There's always something to show. Even if it's ugly.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Nada de \"vou fazer a arquitetura toda primeiro\". Sempre há algo para mostrar. Mesmo que feio.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "76de9ef20d": {
+   "en": "This is **not a game in the traditional sense**. It is an **interactive teaching instrument**: a software tool operated live by a guide/teacher, while the audience (high school students) watches on a large screen. The correct mental model is that of a *portable relativity planetarium* or a *modern scientific experiment* — analogous to Faraday's demonstrations in the 19th century, modernized.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Este **não é um jogo no sentido tradicional**. É um **instrumento de palco**: uma ferramenta de software interativa operada ao vivo por um orientador/professor, enquanto a audiência (estudantes do ensino médio) assiste em uma tela grande. O modelo mental correto é o de um *planetário portátil de relatividade* ou um *experimento científico moderno* — análogo às demonstrações de Faraday no século XIX, modernizadas.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "77cb45d7ab": {
+   "en": "1. **Structural Shed**: *\"Low poly industrial sawmill warehouse interior, wooden support beams, corrugated metal walls, concrete floor\"*",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "1. **Galpão estrutural**: *\"Low poly industrial sawmill warehouse interior, wooden support beams, corrugated metal walls, concrete floor\"*",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "7921674c67": {
+   "en": "**Objectives**:  \n- Scene `observatory.tscn` (Act 4)  \n- Logic of superluminal scissors  \n- Cut-off speedometer  \n- Visualization of the light cone  \n- Transition between scenes  \n- Visual polish (bloom, motion blur)  \n- Timed trial of the complete presentation  \n- Fine-tuning  \n- Technical cleanup: remove legacy `scripts/conveyor_belt.gd` (replaced by the physical belt in `esteira.gd`; only a reference remains in a comment)",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Objetivos**:\n- Cena `observatorio.tscn` (Ato 4)\n- Lógica das tesouras superluminais\n- Velocímetro do ponto de corte\n- Visualização do cone de luz\n- Transição entre cenas\n- Polimento visual (bloom, motion blur)\n- Ensaio cronometrado da apresentação completa\n- Ajustes finos\n- Limpeza técnica: remover `scripts/conveyor_belt.gd` legado (substituído pela correia física em `esteira.gd`; resta só uma referência em comentário)",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "7e94e4d149": {
+   "en": "2. **Wooden log**: *\"Low poly wooden log, cylindrical, bark suggested by faceted geometry, brown and tan colors, 200 polygons max\"*",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "2. **Tora de madeira**: *\"Low poly wooden log, cylindrical, bark suggested by faceted geometry, brown and tan colors, 200 polygons max\"*",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "7eecabfc4a": {
+   "en": "### Week 4 — Simultaneity and Resolution 🟡 Partial",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "### Semana 4 — Simultaneidade e Resolução 🟡 Parcial",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "81d57ee14d": {
+   "en": "## 4. Presentation Architecture",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "## 4. Arquitetura da Apresentação",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "82ef329787": {
+   "en": "#### **Act 1 — The Acceleration** (5 min)",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "#### **Ato 1 — A Aceleração** (5 min)",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "84f7435d6b": {
+   "en": "- Scene opens slowly in the lumberyard  \n- Conveyor belt stopped, log stopped, guillotines stopped  \n- Guide walks in first person, establishes dimensions  \n- Starts the conveyor belt at **low speed** (0.05c)  \n- Log passes, is cut normally  \n- **Function**: establish Galilean normality before the break",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "- Cena abre lentamente no galpão da madeireira\n- Esteira parada, tora parada, guilhotinas paradas\n- Orientador caminha em primeira pessoa, estabelece dimensões\n- Liga a esteira em **velocidade baixa** (0.05c)\n- Tora passa, é cortada normalmente\n- **Função**: estabelecer normalidade galileana antes da quebra",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "873277bdae": {
+   "en": "**Objectives**:\n- [ ] Simultaneity line system (pixel art sprites)\n- [x] Slow-motion mode (Button X) — `Engine.time_scale = 0.25`, slows down including the offset of the guillotines (useful in Act 3 replay)\n- [x] Guillotines with temporal offset in `Frame.BOB` — right descends first, left after `Δt' = γ·L₀·v/c²` (converted by visual scale)\n- [x] Cut detection and visualization — blade crosses the log's plane, geometric cut, log separates into two animated halves; indicator on HUD\n- [x] Precise cut aim — cut calculated at the instant the blade crosses the top of the log, with almost instantaneous drop (~0.06s, at the limit of perception): the log moves < 0.1u between the trigger and the crossing. Blade with a wedge-shaped edge (PrismMesh); retraction and pause below also fast\n- [x] Scene reset (Button B) — `reset_session()` + reload\n- [x] Complete paradox scene functioning in both frames\n- [x] Avatars Bob and Alice (`avatar.gd`) — Bob travels on the belt behind the log (contracts with it in ALICE); Alice at the post next to the conveyor (contracts with the world in BOB)\n- [x] Animated KayKit models in avatars — Bob = Barbarian with a one-edged axe in `handslot.r` (lumberjack at 0.9c), Alice = Rogue without a cloak, idle of Rig_Medium (`general/Idle_A`); fallback low-poly procedural if the GLB is missing; `tools/Sawing` and `Working_A/B/C` available for future set design\n- [x] First-person embodiment — the operator is Alice in ALICE and Bob in BOB: visible body looking down (torso, arms, legs; head hidden from the camera), walking/stopping animations, axe in Bob's hand; in the middle of the transition the player teleports to the new reference post and the embodied NPC disappears\n- [x] Soft-cap on speed in BOB (β ≤ 0.9) — at 0.99c the simultaneity offset would exceed the duration of the stride; 0.99c is reserved for Act 1 in ALICE\n- [x] Physical conveyor belt — slats move with the same step as the log (`belt_beta × VISUAL_C × delta`) with wrap at the ends and rotating rollers (ω = v/r); replaced the UV scroll, which depended on an adjustment factor and didn't match the log. Entire belt in MovingWorld (contracts and follows the shed in BOB); in BOB the slats move at v·γ in local coordinates, coming to rest with the log in world space\n- [x] Bob completes the wood cycle — follows to the end of the conveyor, dives into the pit behind the log and falls from the chute with the new log\n- [x] Stylized lighting (ref. Zelda Link's Awakening Remake) — WorldEnvironment with warm diffuse environment + Filmic tonemap, saturation adjustments (1.2) and brightness (0.95), moderate sun with soft penumbra (`light_angular_distance` + `shadow_blur`), matte materials without metallic and with procedural grain (`grain.gd`: normal map of noise at runtime — arid look, anti \"plastic balloon\")\n- [ ] Shed ambient sound\n- [ ] Point-specific sound effects (conveyor, guillotines, transition)",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Objetivos**:\n- [ ] Sistema de linhas de simultaneidade (sprites pixel art)\n- [x] Modo câmera lenta (Botão X) — `Engine.time_scale = 0.25`, desacelera inclusive o offset das guilhotinas (útil no replay do Ato 3)\n- [x] Guilhotinas com offset temporal em `Frame.BOB` — direita desce primeiro, esquerda após `Δt' = γ·L₀·v/c²` (convertido pela escala visual)\n- [x] Detecção e visual de corte — lâmina cruza o plano da tora, corte geométrico, tora se separa em duas metades animadas; indicador na HUD\n- [x] Mira do corte precisa — corte calculado no instante em que a lâmina cruza o topo da tora, com queda quase instantânea (~0.06s, no limite da percepção): a tora anda < 0.1u entre o gatilho e o cruzamento. Lâmina com gume em cunha (PrismMesh); retração e pausa embaixo também rápidas\n- [x] Reset da cena (Botão B) — `reset_session()` + reload\n- [x] Cena do paradoxo funcionando completa em ambos os frames\n- [x] Avatares Bob e Alice (`avatar.gd`) — Bob viaja na correia atrás da tora (contrai com ela em ALICE); Alice no posto ao lado da esteira (contrai com o mundo em BOB)\n- [x] Modelos KayKit animados nos avatares — Bob = Barbarian com machado de uma lâmina no `handslot.r` (lenhador a 0.9c), Alice = Rogue sem capa, idle do Rig_Medium (`general/Idle_A`); fallback low-poly procedural se o GLB faltar; `tools/Sawing` e `Working_A/B/C` disponíveis pra cenografia futura\n- [x] Encarnação em primeira pessoa — o operador É a Alice em ALICE e o Bob em BOB: corpo visível olhando pra baixo (tronco, braços, pernas; cabeça oculta pra câmera), animações de andar/parar, machado na mão do Bob; no meio da transição o player teleporta pro posto do referencial novo e o NPC encarnado some\n- [x] Soft-cap de velocidade em BOB (β ≤ 0.9) — a 0.99c o offset de simultaneidade excederia a duração da passada; 0.99c fica reservado ao Ato 1 em ALICE\n- [x] Correia física — sarrafos transladam com o mesmo passo da tora (`belt_beta × VISUAL_C × delta`) com wrap nas pontas e rolos girando (ω = v/r); substituiu o UV scroll, que dependia de fator de ajuste e não casava com a tora. Esteira inteira no MovingWorld (contrai e acompanha o galpão em BOB); em BOB os sarrafos andam a v·γ em coordenada local, ficando em repouso com a tora no espaço do mundo\n- [x] Bob completa o ciclo da madeira — segue até o fim da correia, mergulha no poço atrás da tora e cai da calha junto com a tora nova\n- [x] Iluminação estilizada (ref. Zelda Link's Awakening Remake) — WorldEnvironment com ambiente difuso quente + tonemap Filmic, ajustes de saturação (1.2) e brilho (0.95), sol moderado com penumbra macia (`light_angular_distance` + `shadow_blur`), materiais foscos sem metallic e com granulado procedural (`grain.gd`: normal map de ruído em runtime — aspecto árido, anti \"balão de plástico\")\n- [ ] Som ambiente do galpão\n- [ ] Efeitos sonoros pontuais (esteira, guilhotinas, transição)",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "87caa890b3": {
+   "en": "**Function**: Visualize the paradox of superluminal scissors.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Função**: Visualizar o paradoxo das tesouras superluminais.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "88727efc18": {
+   "en": "> Each action also has an equivalent keyboard shortcut (WASD to move, Q to switch reference frame, E/Z for speed, Space for action, O for overlay, P for slow motion, R for reset, V for view, N for next scene) for development. The keyboard is not used during the presentation.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "> Cada ação também possui atalho de teclado equivalente (WASD para mover, Q trocar referencial, E/Z velocidade, Espaço ação, O overlay, P câmera lenta, R reset, V vista, N próxima cena) para desenvolvimento. O teclado não é usado durante a apresentação.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "88cac36d44": {
+   "en": "- Comment on **why**, not **what**  \n- Document public functions with a comment above  \n- Relativistic equations must have a reference to the article (e.g., `# Eq. 13 of the Alencar et al. article`)",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "- Comentar **por que**, não **o quê**\n- Documentar funções públicas com comentário de uma linha acima\n- Equações relativísticas devem ter referência ao artigo (ex: `# Eq. 13 do artigo de Alencar et al.`)",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "8abc7243b7": {
+   "en": "#### **Act 0 — Presentation of the Galilean World** (2 min)",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "#### **Ato 0 — Apresentação do Mundo Galileano** (2 min)",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "8c89ba98f0": {
+   "en": "ParadoxoRelatividade/\n├── README.md                       # This file\n├── .gitignore                      # Git ignore for Godot 4\n├── project.godot                   # Main Godot file\n├── setup-xbox-linux.sh             # Installs xone driver (Xbox dongle on Linux)\n│\n├── scenes/\n│   ├── main.tscn                   # Root scene, game entry point\n│   ├── world/\n│   │   ├── galpao.tscn             # Sawmill scene (Acts 0-3)\n│   │   ├── esteira.tscn            # Conveyor belt (physical belt, instances tora.tscn)\n│   │   └── tora.tscn               # Reusable log (procedural CylinderMesh, L₀=4u)\n│   └── player/\n│       └── player.tscn             # First-person camera + movement\n│   # observatorio.tscn (Act 4) — pending, Week 5\n│\n├── scripts/\n│   ├── input_manager.gd            # Autoload InputBus: input abstraction\n│   ├── game_state.gd               # Autoload GameState: global state\n│   ├── player.gd                   # Movement, camera, and first-person embodiment\n│   ├── frame_controller.gd         # Reference frame switching logic\n│   ├── lorentz_transform.gd        # Relativistic calculations (γ, contraction, time offset)\n│   ├── esteira.gd                  # Conveyor belt: physical belt (rollers + pulleys), instances tora.tscn\n│   ├── conveyor_belt.gd            # Legacy — replaced by esteira.gd/esteira.tscn (to be removed in Week 5)\n│   ├── tora.gd                     # Log: @export L₀, diameter; set_lorentz_scale(); cut into two halves\n│   ├── guillotine.gd               # Guillotine behavior\n│   ├── galpao.gd                   # Scene: HDRI skydome, WorldEnvironment, stylized lighting\n│   ├── avatar.gd                   # Avatars Bob (Barbarian) and Alice (Rogue) — animated KayKit\n│   ├── grain.gd                    # Procedural grain (runtime noise normal map)\n│   └── hud.gd                      # HUD: speedometer, γ and reference frame (Labels; sprite pending)\n│   # simultaneity_lines.gd (overlay) — pending, Week 4\n│   # scissors.gd (scissors, Act 4) — pending, Week 5\n│\n├── assets/\n│   ├── models/                     # .glb generated in Hyper3D + KayKit characters\n│   │   ├── galpao_estrutura.glb    # ✅ integrated with trimesh collision (+ PBR textures)\n│   │   ├── tora.glb                # present; tora uses procedural scene (tora.tscn)\n│   │   ├── esteira.glb             # pending\n│   │   ├── guilhotina.glb          # pending\n│   │   ├── observatorio.glb        # pending (Act 4)\n│   │   └── characters/             # KayKit (CC0): Barbarian.glb, Rogue.glb, axe_1handed, anims/\n│   ├── packages/                   # Original KayKit zips — out of version control (see .gitignore)\n│   ├── textures/                   # Auxiliary textures\n│   │   └── hdri_galpao.hdr         # Equirectangular HDRI for sawmill skydome\n│   ├── sprites/                    # Pixel art (PixelLab) — pending\n│   └── audio/                      # pending\n│       ├── music/\n│       └── sfx/\n│\n├── shaders/                        # Reserved for Phase 3+ (empty)\n│\n└── docs/\n    ├── referencia_principal.pdf    # Article by Alencar et al. (2023)\n    └── referencia_principal.txt    # Extracted text from the article (quick reference)",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "ParadoxoRelatividade/\n├── README.md                       # Este arquivo\n├── .gitignore                      # Git ignore para Godot 4\n├── project.godot                   # Arquivo principal do Godot\n├── setup-xbox-linux.sh             # Instala o driver xone (dongle Xbox no Linux)\n│\n├── scenes/\n│   ├── main.tscn                   # Cena raiz, entrada do jogo\n│   ├── world/\n│   │   ├── galpao.tscn             # Cenário da madeireira (Atos 0-3)\n│   │   ├── esteira.tscn            # Esteira transportadora (correia física, instancia tora.tscn)\n│   │   └── tora.tscn               # Tora reutilizável (CylinderMesh procedural, L₀=4u)\n│   └── player/\n│       └── player.tscn             # Câmera primeira pessoa + movimento\n│   # observatorio.tscn (Ato 4) — pendente, Semana 5\n│\n├── scripts/\n│   ├── input_manager.gd            # Autoload InputBus: abstração de input\n│   ├── game_state.gd               # Autoload GameState: estado global\n│   ├── player.gd                   # Movimento, câmera e encarnação em 1ª pessoa\n│   ├── frame_controller.gd         # Lógica de troca de referencial\n│   ├── lorentz_transform.gd        # Cálculos relativísticos (γ, contração, offset temporal)\n│   ├── esteira.gd                  # Esteira: correia física (sarrafos + rolos), instancia tora.tscn\n│   ├── conveyor_belt.gd            # Legado — substituído por esteira.gd/esteira.tscn (a remover na Semana 5)\n│   ├── tora.gd                     # Tora: @export L₀, diâmetro; set_lorentz_scale(); corte em duas metades\n│   ├── guillotine.gd               # Comportamento das guilhotinas\n│   ├── galpao.gd                   # Cenário: skydome HDRI, WorldEnvironment, iluminação estilizada\n│   ├── avatar.gd                   # Avatares Bob (Barbarian) e Alice (Rogue) — KayKit animado\n│   ├── grain.gd                    # Granulado procedural (normal map de ruído em runtime)\n│   └── hud.gd                      # HUD: velocímetro, γ e referencial (Labels; sprite pendente)\n│   # simultaneity_lines.gd (overlay) — pendente, Semana 4\n│   # scissors.gd (tesouras, Ato 4) — pendente, Semana 5\n│\n├── assets/\n│   ├── models/                     # .glb gerados no Hyper3D + personagens KayKit\n│   │   ├── galpao_estrutura.glb    # ✅ integrado com colisão trimesh (+ texturas PBR)\n│   │   ├── tora.glb                # presente; tora usa cena procedural (tora.tscn)\n│   │   ├── esteira.glb             # pendente\n│   │   ├── guilhotina.glb          # pendente\n│   │   ├── observatorio.glb        # pendente (Ato 4)\n│   │   └── characters/             # KayKit (CC0): Barbarian.glb, Rogue.glb, axe_1handed, anims/\n│   ├── packages/                   # Zips KayKit originais — fora do versionamento (ver .gitignore)\n│   ├── textures/                   # Texturas auxiliares\n│   │   └── hdri_galpao.hdr         # HDRI equiretangular para skydome do galpão\n│   ├── sprites/                    # Pixel art (PixelLab) — pendente\n│   └── audio/                      # pendente\n│       ├── music/\n│       └── sfx/\n│\n├── shaders/                        # Reservado para Fase 3+ (vazio)\n│\n└── docs/\n    ├── referencia_principal.pdf    # Artigo de Alencar et al. (2023)\n    └── referencia_principal.txt    # Texto extraído do artigo (referência rápida)",
+   "qa": "ok",
+   "reparo": "cerca de fechamento devolvida pelo modelo, removida",
+   "tipo": "cerca"
+  },
+  "8e5b564b93": {
+   "en": "[1] **Alencar, G., Macedo, J., Maranhão, L., & Carneiro, P. (2023).** *Paradoxes of Relativity*. arXiv:2307.05503v1 [physics.pop-ph]. UFC.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "[1] **Alencar, G., Macedo, J., Maranhão, L., & Carneiro, P. (2023).** *Paradoxos da Relatividade*. arXiv:2307.05503v1 [physics.pop-ph]. UFC.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "90162a1a6b": {
+   "en": "### 7.5 Conveyor Belt and Guillotines System",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "### 7.5 Sistema de Esteira e Guilhotinas",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "905eb1fa96": {
+   "en": "### 8.1 Hybrid Visual Style",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "### 8.1 Estilo Visual Híbrido",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "9133e636a3": {
+   "en": "6. **The instructor is the only \"user.\"** There are no tutorials, no onboarding for the student. Everything must be designed for someone who knows how to operate the tool live.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "6. **O orientador é o único \"usuário\"**. Não há tutoriais, sem onboarding para o aluno. Tudo deve ser pensado para alguém que sabe usar a ferramenta operá-la ao vivo.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "91def66a6b": {
+   "en": "### 11.5 Comments",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "### 11.5 Comentários",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "921acc401e": {
+   "en": "**Responsibility**: Manage the active reference frame (ALICE or BOB) and trigger visual transitions when switching.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Responsabilidade**: Gerenciar o referencial ativo (ALICE ou BOB) e disparar transições visuais ao trocar.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "925ec53a55": {
+   "en": "**Modes**:  \n- **First-person**: default throughout the presentation  \n- **Isometric**: activated by View Button — shows the entire scene as a diorama, useful for geometric explanations",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Modos**:\n- **First-person**: padrão durante toda a apresentação\n- **Isométrico**: ativado por Botão View — mostra a cena toda como diorama, útil para explicações geométricas",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "92d6c8b66f": {
+   "en": "### Week 5 — Scissors and Polishing",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "### Semana 5 — Tesouras e Polimento",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "930a1daf2e": {
+   "en": "4. **Absolute focus on the change of reference frame as central mechanics**. Everything revolves around this moment. Other decisions can be modest.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "4. **Foco absoluto na troca de referencial como mecânica central**. Tudo gira em torno desse momento. Outras decisões podem ser modestas.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "94eb28adf8": {
+   "en": "## 9. Development Roadmap",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "## 9. Roadmap de Desenvolvimento",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "9596e14130": {
+   "en": "- **Theater over simulation**: when exact physics clashes with visual clarity, visual clarity wins  \n- **No heavy textual UI**: the instructor's voice replaces menus and tutorials  \n- **Single strong mechanic**: the *change of reference frame* is the heart of the experience  \n- **Controlled sandbox**: the instructor can pause, adjust, repeat, answer questions in real time  \n- **Visual coherence**: 3D low-poly + pixel art sprites with unified palette",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "- **Teatro sobre simulação**: quando física exata brigar com clareza visual, clareza visual ganha\n- **Sem UI textual pesada**: a voz do orientador substitui menus e tutoriais\n- **Mecânica única e forte**: a *troca de referencial* é o coração da experiência\n- **Sandbox controlado**: o orientador pode pausar, ajustar, repetir, responder perguntas em tempo real\n- **Coerência visual**: 3D low-poly + sprites pixel art com paleta unificada",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "95dcecd930": {
+   "en": "**Operations**:  \n- `toggle_frame()`: switches the current reference frame  \n- `get_gamma()`: returns Lorentz factor based on `belt_velocity_fraction`  \n- `is_transitioning`: blocks inputs during animated transition  \n- Signals: `frame_changed`, `velocity_changed`",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Operações**:\n- `toggle_frame()`: alterna referencial atual\n- `get_gamma()`: retorna fator de Lorentz baseado em `belt_velocity_fraction`\n- `is_transitioning`: bloqueia inputs durante transição animada\n- Sinais: `frame_changed`, `velocity_changed`",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "979fd97c2a": {
+   "en": "3. **Maintain the 20-minute constraint as a strict limit**. If something doesn't fit in the time, cut it. The Bar and Slit 2D Paradox was discarded for this reason.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "3. **Manter os 20 minutos como restrição rígida**. Se algo não couber no tempo, cortar. O paradoxo da Barra e Fenda 2D foi descartado por esse motivo.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "9814e78906": {
+   "en": "**Implementation**:\n- Two lines (blades) in a plane\n- One static (X axis), the other rotating around a pivot point\n- Intersection point calculated geometrically\n- Intersection point speedometer displayed in HUD\n- Light cone visualized when `v_ponto > c`",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Implementação**:\n- Duas linhas (lâminas) em um plano\n- Uma estática (eixo X), outra rotacionando em torno de um ponto pivô\n- Ponto de corte calculado geometricamente\n- Velocímetro do ponto de corte exibido em HUD\n- Cone de luz visualizado quando `v_ponto > c`",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "9ccb453731": {
+   "en": "| Component | License | File |\n|---|---|---|\n| Source code (`scripts/`, `scenes/`, `project.godot`) | [GNU GPL v3](https://www.gnu.org/licenses/gpl-3.0.html) | `LICENSE` |\n| Assets and documentation (`assets/`, `docs/`, `README.md`) | [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) | `LICENSE-ASSETS` |",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "| Componente | Licença | Arquivo |\n|---|---|---|\n| Código-fonte (`scripts/`, `scenes/`, `project.godot`) | [GNU GPL v3](https://www.gnu.org/licenses/gpl-3.0.html) | `LICENSE` |\n| Assets e documentação (`assets/`, `docs/`, `README.md`) | [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) | `LICENSE-ASSETS` |",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "9d38aa5a79": {
+   "en": "**Justification for the Division**:\n- 3D represents **physical phenomena** (things that exist in the world)\n- 2D represents **measurement abstractions** (observations, instruments, concepts)\n- This separation didactically reinforces the difference between reality and measurement",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Justificativa da divisão**:\n- 3D representa **fenômeno físico** (coisas que existem no mundo)\n- 2D representa **abstrações de medida** (observações, instrumentos, conceitos)\n- Essa separação reforça didaticamente a diferença entre realidade e medição",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "9e582e1be6": {
+   "en": "### 11.3 Required Type Hints",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "### 11.3 Type Hints Obrigatórios",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "9f36ab87c9": {
+   "en": "**Objectives**:\n- [x] Logic of `Frame.ALICE` vs `Frame.BOB` in `GameState`\n- [x] Lorentz contraction applied via anisotropic scaling — `frame_controller.gd` (scales `1/γ` in ALICE; group `MovingWorld` with guillotines+conveyor `1/γ` in BOB)\n- [x] 2s animated transition with easing (`TRANS_CUBIC`/`EASE_IN_OUT`)\n- [x] Indicator of γ in HUD updating dynamically\n- [x] Blocking inputs during transition (`is_transitioning` stores frame and speed)\n- [x] Subtle visual effect during transition (bluish tint in sinusoidal pulse)\n- [x] Coherent relative motion in BOB: tora at rest, world slides at -v (invisible fixed floor collider supports the player)",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Objetivos**:\n- [x] Lógica de `Frame.ALICE` vs `Frame.BOB` em `GameState`\n- [x] Contração de Lorentz aplicada via escala anisotrópica — `frame_controller.gd` (tora `1/γ` em ALICE; grupo `MovingWorld` com galpão+guilhotinas+esteira `1/γ` em BOB)\n- [x] Transição animada de 2s com easing (`TRANS_CUBIC`/`EASE_IN_OUT`)\n- [x] Indicador de γ na HUD atualizando dinamicamente\n- [x] Bloqueio de inputs durante transição (`is_transitioning` guarda frame e velocidade)\n- [x] Efeito visual sutil durante transição (tint azulado em pulso senoidal)\n- [x] Movimento relativo coerente em BOB: tora em repouso, mundo desliza a -v (chão colisor invisível fixo sustenta o player)",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "9fecab4d3e": {
+   "en": "**Function**: Apply visual contraction to objects based on reference frame and speed.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Função**: Aplicar contração visual nos objetos conforme referencial e velocidade.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "a0cba85c75": {
+   "en": "> **Physical and Bibliographic Deepening** — derivation of equations, complete Lorentz transformations, the concepts that the student should *feel*, the Galilean conceptions to abandon, the glossary, and the academic bibliography are in [`FUNDAMENTACAO-CIENTIFICA.md`](FUNDAMENTACAO-CIENTIFICA.md). Here, only the technical core necessary for the code is maintained.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "> **Aprofundamento físico e bibliográfico** — derivação das equações, transformações de Lorentz completas, os conceitos que o aluno deve *sentir*, as concepções galileanas a abandonar, o glossário e a bibliografia acadêmica estão em [`FUNDAMENTACAO-CIENTIFICA.md`](FUNDAMENTACAO-CIENTIFICA.md). Mantém-se aqui apenas o núcleo técnico necessário ao código.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "a4880b69eb": {
+   "en": "### 1.4 Pedagogical Objectives",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "### 1.4 Objetivos Pedagógicos",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "a4ce679252": {
+   "en": "## 14. License",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "## 14. Licença",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "a50eb2d01c": {
+   "en": "**Function**: Visualize the relativity of simultaneity in Act 3.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Função**: Visualizar a relatividade da simultaneidade no Ato 3.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "a7a40f4b48": {
+   "en": "## 8. Visual Guidelines",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "## 8. Diretrizes Visuais",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "a7a879bc75": {
+   "en": "## 11. Coding Conventions",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "## 11. Convenções de Código",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "a8c6eda25e": {
+   "en": "## 2. Scientific Foundation",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "## 2. Fundamentação Científica",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "a90aaaeb4d": {
+   "en": "**Rules that apply to the code:**  \n- **File paths**: use exclusively `res://`, `user://` and Godot APIs (`OS.get_user_data_dir()`, `ProjectSettings.globalize_path()`). Never use absolute file paths of the operating system.  \n- **Asset names**: only ASCII characters without accents or spaces — Windows systems are case-insensitive and have character restrictions that Linux does not have.  \n- **System calls** (`OS.execute`, `OS.shell_open`): only use if tested on both platforms.  \n- **Export templates**: upon reaching Week 5, generate templates for `Windows Desktop` (.exe) and `Linux/X11` (.x86_64) from the same project.  \n- **Xbox Gamepad**: works natively via XInput (Windows). On Linux, the **wired** controller works via SDL/xpad without configuration; the **wireless USB receiver (dongle)** requires the `xone` driver (DKMS) — install with `sudo bash setup-xbox-linux.sh` (AlmaLinux 9 / RHEL). No platform-specific code in Godot.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Regras que se aplicam ao código:**\n- **Caminhos de arquivo**: usar exclusivamente `res://`, `user://` e APIs do Godot (`OS.get_user_data_dir()`, `ProjectSettings.globalize_path()`). Nunca caminhos absolutos do sistema operacional.\n- **Nomes de asset**: apenas caracteres ASCII sem acentos ou espaços — sistemas Windows são case-insensitive e têm restrições de caracteres que o Linux não tem.\n- **Chamadas de sistema** (`OS.execute`, `OS.shell_open`): só usar se testado nas duas plataformas.\n- **Export templates**: ao chegar na Semana 5, gerar templates para `Windows Desktop` (.exe) e `Linux/X11` (.x86_64) a partir do mesmo projeto.\n- **Gamepad Xbox**: funciona nativamente via XInput (Windows). No Linux, controle **com fio** funciona via SDL/xpad sem configuração; receptor **USB sem fio (dongle)** requer o driver `xone` (DKMS) — instalar com `sudo bash setup-xbox-linux.sh` (AlmaLinux 9 / RHEL). Sem código condicional de plataforma no Godot.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "aa0b847a9b": {
+   "en": "The conceptual content derives from a single reference article:",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "O conteúdo conceitual deriva de um artigo de referência único:",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "aa1ec43234": {
+   "en": "**Launcher**: `~/Desktop/Lab Relatividade.desktop` — opens Godot → waits for LSP (port 6005) → VS Code → terminal with Claude Code, all in the project directory. If the terminal with Claude is already open, focus the existing window instead of opening a new one.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Launcher**: `~/Área de trabalho/Lab Relatividade.desktop` — abre Godot → aguarda LSP (porta 6005) → VS Code → terminal com Claude Code, tudo no diretório do projeto. Se o terminal com Claude já estiver aberto, foca a janela existente em vez de abrir uma nova.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "ac8fbcfb2a": {
+   "en": "### How to Handle This Project",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "### Como Tratar Este Projeto",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "acb09547be": {
+   "en": "**Scenario 2 — Cosmic Observatory (Act 4):**  \n- Space: deep blue/black (<span class=\"color\">#0A0E27</span>, <span class=\"color\">#1B2845</span>)  \n- Blades: bright white with glow (<span class=\"color\">#FFFFFF</span> + bloom)  \n- Light cone: translucent cyan blue (<span class=\"color\">#00D9FF</span>)  \n- Stars: pale yellow (<span class=\"color\">#FFF8DC</span>)",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Cenário 2 — Observatório Cósmico (Ato 4)**:\n- Espaço: azul profundo / negro (#0A0E27, #1B2845)\n- Lâminas: branco luminoso com brilho (#FFFFFF + bloom)\n- Cone de luz: azul ciano translúcido (#00D9FF)\n- Estrelas: amarelo pálido (#FFF8DC)",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "af141bf263": {
+   "en": "**Checkpoint**: Switch reference frames and see the \"wow effect.\"",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Marco**: Trocar de referencial e ver o \"efeito wow\".",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "af2ac5cd51": {
+   "en": "> *Relativity is not difficult because of the math — it is difficult because it forces you to switch world models. This tool does not deduce the result on a blackboard: it makes the student **switch reference frames with their own body** and see the world reconfigure in front of them.*",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "> *A relatividade não é difícil pela matemática — é difícil porque obriga a trocar de modelo de mundo. Este instrumento não deduz o resultado numa lousa: ele faz o aluno **trocar de referencial com o próprio corpo** e ver o mundo se reconfigurar à sua frente.*",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "b0a622b9ad": {
+   "en": "**3D Low-Poly Flat Shaded for**:  \n- Scenario (warehouse, conveyor, walls, beams)  \n- Physical objects (torus, guillotines, blades)  \n- First-person character (only hands visible, optional)",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**3D Low-Poly Flat Shaded para**:\n- Cenário (galpão, esteira, paredes, vigas)\n- Objetos físicos (tora, guilhotinas, lâminas)\n- Personagem em primeira pessoa (apenas mãos visíveis, opcional)",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "b20a9c3e41": {
+   "en": "**Default Style Modifier** (attach to all prompts):  \n> `\"low poly, flat shaded, no textures, warm earth tones, simple geometry, game-ready, clean topology, 18k quads max\"`",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Modificador de estilo padrão** (anexar a todos os prompts):\n> `\"low poly, flat shaded, no textures, warm earth tones, simple geometry, game-ready, clean topology, 18k quads max\"`",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "b35d82edb8": {
+   "en": "### 5.4 Development Environment",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "### 5.4 Ambiente de Desenvolvimento",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "b4905ef1f8": {
+   "en": "A stick figure walking in the warehouse is more valuable than a perfect physics system without visuals. Visuals validate early.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Um boneco de palito andando no galpão é mais valioso que um sistema de física perfeito sem visual. Visual valida cedo.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "b4c00398d5": {
+   "en": "### 4.2 Xbox Control Mapping",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "### 4.2 Mapeamento de Controle Xbox",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "b4fcd571c3": {
+   "en": "**Globals**:  \n- SSAO enabled (visual weight in low-poly)  \n- Soft bloom (especially in Act 4)  \n- Directional shadows 4096px",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Globais**:\n- SSAO ativado (peso visual no low-poly)\n- Bloom suave (especialmente no Ato 4)\n- Sombras direcionais 4096px",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "bb75703c2e": {
+   "en": "**Implementation**:  \n- 2D pixel art sprites overlaid on the 3D world (via `Sprite3D` or `Decal`)  \n- Floating horizontal lines representing \"slices of time\"  \n- In Alice's reference frame: parallel lines, aligned events  \n- In Bob's reference frame: lines inclined in space-time",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Implementação**:\n- Sprites pixel art 2D sobrepostos ao mundo 3D (via `Sprite3D` ou `Decal`)\n- Linhas horizontais flutuantes representando \"fatias de tempo\"\n- No referencial de Alice: linhas paralelas, eventos alinhados\n- No referencial de Bob: linhas inclinadas no espaço-tempo",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "bc15858787": {
+   "en": "**Alencar, G., Macedo, J., Maranhão, L., & Carneiro, P. (2023).** *Paradoxes of Relativity*. arXiv:2307.05503v1 [physics.pop-ph]. UFC.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Alencar, G., Macedo, J., Maranhão, L., & Carneiro, P. (2023).** *Paradoxos da Relatividade*. arXiv:2307.05503v1 [physics.pop-ph]. UFC.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "bc8689cedf": {
+   "en": "2. **Prioritize visual clarity over numerical accuracy**. This is not a scientific simulator — it is a theatrical teaching instrument.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "2. **Priorizar clareza visual sobre exatidão numérica**. Este não é um simulador científico — é um instrumento didático teatral.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "bd44900902": {
+   "en": "- **A Slower Speed of Light** (MIT Game Lab, 2012) — first-person with relativistic visual effects  \n- **Velocity Raptor** (TestTubeGames) — 2D platformer with Lorentz contraction  \n- **Universe Sandbox** — \"stage instrument\" model for physical phenomena  \n- **Manifold Garden** — puzzle as conceptual exploration of non-Euclidean geometry  \n- **Bret Victor — Stop Drawing Dead Fish** — reference on interactive instruments for demonstration",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "- **A Slower Speed of Light** (MIT Game Lab, 2012) — primeira pessoa com efeitos visuais relativísticos\n- **Velocity Raptor** (TestTubeGames) — plataforma 2D com contração de Lorentz\n- **Universe Sandbox** — modelo de \"instrumento de palco\" para fenômenos físicos\n- **Manifold Garden** — puzzle como exploração conceitual de geometria não-euclidiana\n- **Bret Victor — Stop Drawing Dead Fish** — referência sobre instrumentos interativos para demonstração",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "bdc0aa5c13": {
+   "en": "### 3.1 Main — The Relativistic Lumberyard",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "### 3.1 Principal — A Madeireira Relativística",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "bf0634c26e": {
+   "en": "# scripts/example.gd  \nextends Node3D\n\n# 1. Constants  \nconst MAX_SPEED: float = 10.0\n\n# 2. Exported (configurable in the editor)  \n@export var some_value: float = 1.0\n\n# 3. Signals  \nsignal something_happened\n\n# 4. Public variables  \nvar current_state: int = 0\n\n# 5. Private variables (prefix _)  \nvar _internal_counter: int = 0\n\n# 6. Onready (node references)  \n@onready var some_node: Node = $SomeNode\n\n# 7. Built-in functions (life cycle order)  \nfunc _ready() -> void: pass  \nfunc _process(delta: float) -> void: pass  \nfunc _physics_process(delta: float) -> void: pass  \nfunc _input(event: InputEvent) -> void: pass\n\n# 8. Public functions  \nfunc do_something() -> void: pass\n\n# 9. Private functions  \nfunc _internal_helper() -> void: pass",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "# scripts/exemplo.gd\nextends Node3D\n\n# 1. Constantes\nconst MAX_SPEED: float = 10.0\n\n# 2. Exportadas (configuráveis no editor)\n@export var some_value: float = 1.0\n\n# 3. Sinais\nsignal something_happened\n\n# 4. Variáveis públicas\nvar current_state: int = 0\n\n# 5. Variáveis privadas (prefixo _)\nvar _internal_counter: int = 0\n\n# 6. Onready (referências de nodes)\n@onready var some_node: Node = $SomeNode\n\n# 7. Funções built-in (ordem do ciclo de vida)\nfunc _ready() -> void: pass\nfunc _process(delta: float) -> void: pass\nfunc _physics_process(delta: float) -> void: pass\nfunc _input(event: InputEvent) -> void: pass\n\n# 8. Funções públicas\nfunc do_something() -> void: pass\n\n# 9. Funções privadas\nfunc _internal_helper() -> void: pass",
+   "qa": "ok",
+   "tipo": "cerca"
+  },
+  "c01d7c6242": {
+   "en": "| Term | Definition |\n|---|---|\n| **Frame (in code)** | Inertial reference frame; values: `ALICE` or `BOB` |\n| **β (beta)** | Speed as a fraction of c (β = v/c, 0 to 1) — `belt_beta` in `GameState` |\n| **γ (gamma)** | Lorentz factor, 1/√(1−β²), always ≥ 1 — `get_gamma()` |\n| **L₀** | Proper length (torus = 4 u; distance between guillotines = 4 u) |\n| **MovingWorld** | Group of nodes (warehouse + conveyor + guillotines) that contracts/slides in `BOB` |",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "| Termo | Definição |\n|---|---|\n| **Frame (no código)** | Referencial inercial; valores: `ALICE` ou `BOB` |\n| **β (beta)** | Velocidade em frações de c (β = v/c, 0 a 1) — `belt_beta` no `GameState` |\n| **γ (gamma)** | Fator de Lorentz, 1/√(1−β²), sempre ≥ 1 — `get_gamma()` |\n| **L₀** | Comprimento próprio (tora = 4 u; distância entre guilhotinas = 4 u) |\n| **MovingWorld** | Grupo de nós (galpão + esteira + guilhotinas) que contrai/desliza em `BOB` |",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "c21390f801": {
+   "en": "**Status**: ⬜ not implemented — `scissors.gd` and `observatorio.tscn` planned for Week 5. The action `next_scene` (Menu Button) is already mapped to the transition.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Status**: ⬜ não implementado — `scissors.gd` e `observatorio.tscn` previstos para a Semana 5. A ação `next_scene` (Botão Menu) já está mapeada para a transição.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "c25aec4363": {
+   "en": "### 3.2 Climax — Superluminal Scissors",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "### 3.2 Clímax — Tesouras Superluminais",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "c2b659670c": {
+   "en": "Torus (proper length `L₀`) slides over the conveyor at `v`; two guillotines separated by `L₀` descend. In **Alice**, the torus is contracted (`L₀/γ`) and passes through; in **Bob**, it has its proper size and \"wouldn't fit\" — resolved because, in Bob, the guillotines are not simultaneous (`Δt' = γ·L₀·v/c²`).",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Tora (comprimento próprio `L₀`) desliza sobre a esteira a `v`; duas guilhotinas separadas por `L₀` descem. Em **Alice**, a tora está contraída (`L₀/γ`) e passa; em **Bob**, tem tamanho próprio e \"não caberia\" — resolvido porque, em Bob, as guilhotinas não são simultâneas (`Δt' = γ·L₀·v/c²`).",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "c3224edd22": {
+   "en": "- **Engine**: Godot 4.x\n- **Language**: GDScript\n- **Target Platforms**: Windows and Linux (standalone executable on both)\n- **Development Environment**: AlmaLinux 9.8 (GNOME X11) — primary development\n- **Control**: Xbox Gamepad (natively tested in Godot 4)\n- **Versioning**: Git\n- **3D Asset Generation**: Hyper3D.ai (Rodin) — export in GLB\n- **Characters and Animations**: KayKit (Kay Lousberg, kaylousberg.com) — CC0; Adventurers 2.0 FREE + Character Animations 1.1 (Rig_Medium), extracted in `assets/models/characters/` (original zips in `assets/packages/`, out of versioning)\n- **2D Asset Generation**: PixelLab.ai — pixel art for sprites\n- **Audio Pipeline**: to be defined (Freesound, own generation)",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "- **Engine**: Godot 4.x\n- **Linguagem**: GDScript\n- **Plataformas-alvo**: Windows e Linux (executável standalone nas duas)\n- **Ambiente de desenvolvimento**: AlmaLinux 9.8 (GNOME X11) — desenvolvimento primário\n- **Controle**: Gamepad Xbox (testado nativamente no Godot 4)\n- **Versionamento**: Git\n- **Geração de assets 3D**: Hyper3D.ai (Rodin) — exportação em GLB\n- **Personagens e animações**: KayKit (Kay Lousberg, kaylousberg.com) — CC0; Adventurers 2.0 FREE + Character Animations 1.1 (Rig_Medium), extraídos em `assets/models/characters/` (zips originais em `assets/packages/`, fora do versionamento)\n- **Geração de assets 2D**: PixelLab.ai — pixel art para sprites\n- **Pipeline de áudio**: a definir (Freesound, geração própria)",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "c398a0ec57": {
+   "en": "### 10.6 Focus on the \"wow\" moment",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "### 10.6 Foco no momento \"wow\"",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "c724a6d0a5": {
+   "en": "### 5.1 Confirmed Technologies",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "### 5.1 Tecnologias Confirmadas",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "c8884a1267": {
+   "en": "**Transition Between Frames**:  \n- Duration: 1.5 to 2.0 seconds  \n- Easing: `Tween.EASE_IN_OUT`, `Tween.TRANS_CUBIC`  \n- Blocks other inputs during transition",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Transição entre frames**:\n- Duração: 1.5 a 2.0 segundos\n- Easing: `Tween.EASE_IN_OUT`, `Tween.TRANS_CUBIC`\n- Bloqueia outros inputs durante transição",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "cb5e982855": {
+   "en": "### 5.3 Cross-Platform Compatibility (Strict Constraint)",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "### 5.3 Compatibilidade Cross-Platform (Restrição Rígida)",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "cc81983bce": {
+   "en": "**In `Frame.BOB`**:  \n- Tora at normal scale: `tora.scale.x = 1.0`  \n- Galpão and guilhotinas contracted: `scale.x = 1.0 / gamma`  \n- Guilhotinas descend with temporal offset `Δt' = γ·L₀·v/c²`",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Em `Frame.BOB`**:\n- Tora em escala normal: `tora.scale.x = 1.0`\n- Galpão e guilhotinas contraídos: `scale.x = 1.0 / gamma`\n- Guilhotinas descem com offset temporal `Δt' = γ·L₀·v/c²`",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "cce96c32dc": {
+   "en": "**Contextual**:  \n- Subtle motion blur at high speed (v > 0.7c)  \n- Slight chromatic distortion during reference frame transition  \n- Subtle vignette in slow-motion mode",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Contextual**:\n- Motion blur sutil em alta velocidade (v > 0.7c)\n- Distorção cromática leve durante transição de referencial\n- Vinheta sutil no modo câmera lenta",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "cd0001ce9c": {
+   "en": "Prefer signals over direct references between independent systems. The autoload `InputBus` is the central example of this pattern.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Preferir sinais em vez de referências diretas entre sistemas independentes. O autoload `InputBus` é o exemplo central desse padrão.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "cde3da4f26": {
+   "en": "**Objectives**:  \n- [x] Import Hyper3D assets (partial: `galpao_estrutura.glb` integrated with trimesh collision; `esteira.glb`, `guilhotina.glb` pending)  \n- [x] Animated conveyor belt with adjustable speed (D-Pad ↑↓) — `esteira.gd` + `esteira.tscn` (UV scroll; replaces `conveyor_belt.gd`)  \n- [x] Torus moving along the conveyor belt — instantiated via `esteira.gd`  \n- [x] `tora.tscn` created as a reusable scene — `tora.gd` (procedural CylinderMesh, L₀=4u, diameter=0.5; `set_lorentz_scale()` prepared for Week 3)  \n- [x] Skydome with HDRI added to the warehouse — `galpao.gd`  \n- [x] Two guillotines descending on RT press — `guillotine.gd`  \n- [x] Trivial Galilean case (low v) working  \n- [x] Basic HUD: text speedometer (β, γ, bar, reference frame) — `hud.gd`; pixel art sprite pending  \n- [x] Bugfix: `lorentz_transform.gd` — type inference in `clamp()` treated as error (`var b: float`)",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Objetivos**:\n- [x] Importar assets do Hyper3D (parcial: `galpao_estrutura.glb` integrado com colisão trimesh; `esteira.glb`, `guilhotina.glb` pendentes)\n- [x] Esteira animada com velocidade ajustável (D-Pad ↑↓) — `esteira.gd` + `esteira.tscn` (UV scroll; substitui `conveyor_belt.gd`)\n- [x] Tora se movendo ao longo da esteira — instanciada via `esteira.gd`\n- [x] `tora.tscn` criada como cena reutilizável — `tora.gd` (CylinderMesh procedural, L₀=4u, diâmetro=0.5; `set_lorentz_scale()` preparado para Semana 3)\n- [x] Skydome com HDRI adicionado ao galpão — `galpao.gd`\n- [x] Duas guilhotinas descendo ao apertar RT — `guillotine.gd`\n- [x] Caso galileano trivial (v baixa) funcionando\n- [x] HUD básica: velocímetro texto (β, γ, barra, referencial) — `hud.gd`; sprite pixel art pendente\n- [x] Bugfix: `lorentz_transform.gd` — inferência de tipo em `clamp()` tratada como erro (`var b: float`)",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "cde5f32ed2": {
+   "en": "- **Godot Engine 4.x** — https://godotengine.org  \n- **Hyper3D.ai (Rodin)** — 3D model generation via AI — https://hyper3d.ai  \n- **PixelLab.ai** — Pixel art generation via AI — https://pixellab.ai",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "- **Godot Engine 4.x** — https://godotengine.org\n- **Hyper3D.ai (Rodin)** — Geração de modelos 3D via IA — https://hyper3d.ai\n- **PixelLab.ai** — Geração de pixel art via IA — https://pixellab.ai",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "ceba4b0cb6": {
+   "en": "## 10. Execution Principles",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "## 10. Princípios de Execução",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "cf0ffa6ab6": {
+   "en": "- \"What if I got on the treadmill?\"  \n- **Frame of Reference Change** (Left Bumper — LB)  \n- Animated transition of ~2 seconds  \n- World reconfigures: log returns to L₀, shed and guillotines contract  \n- The log **does not fit** between the guillotines  \n- Cliffhanger: \"it should be cut — but you saw it pass\"",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "- \"E se eu subisse na esteira?\"\n- **Troca de referencial** (Bumper Esquerdo — LB)\n- Transição animada de ~2 segundos\n- Mundo se reconfigura: tora volta a L₀, galpão e guilhotinas contraem\n- A tora **não cabe** entre as guilhotinas\n- Cliffhanger: \"ela deveria ser cortada — mas vocês viram passar\"",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "d026aa6533": {
+   "en": "#### **Act 4 — Cosmic Climax (Scissors)** (3 min)",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "#### **Ato 4 — Clímax Cósmico (Tesouras)** (3 min)",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "d329a966ac": {
+   "en": "### 10.4 Theater > simulation",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "### 10.4 Teatro > simulação",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "d64fa55cc6": {
+   "en": "**In summary:** you can use, study, and modify this project for educational and non-commercial purposes, as long as you maintain attribution to the original author and distribute derivatives under the same licenses.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Em resumo:** você pode usar, estudar e modificar este projeto para fins educacionais e não-comerciais, desde que mantenha a atribuição ao autor original e distribua derivados sob as mesmas licenças.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "d86f10b8c0": {
+   "en": "**Status**: 🟡 planned — the action `toggle_overlay` (Button Y) is mapped, but `simultaneity_lines.gd` has not yet been implemented (Week 4 backlog). In Act 3, simultaneity is demonstrated by the temporal offset of the guillotines + slow motion; the overlay is the complementary visual layer.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Status**: 🟡 planejado — a ação `toggle_overlay` (Botão Y) está mapeada, mas `simultaneity_lines.gd` ainda não foi implementado (pendência da Semana 4). No Ato 3, a simultaneidade já é demonstrada pelo offset temporal das guilhotinas + câmera lenta; o overlay é a camada visual complementar.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "d8b0e5f863": {
+   "en": "# Relativity Paradox — Interactive Teaching Instrument",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "# Paradoxo da Relatividade — Instrumento Interativo de Ensino",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "dc47cc290f": {
+   "en": "## Final Notes for Claude Code",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "## Notas Finais para Claude Code",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "dc557934be": {
+   "en": "## 5. Technical Stack",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "## 5. Stack Técnica",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "dd48ff002e": {
+   "en": "### 4.1 Narrative Structure (20 minutes)",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "### 4.1 Estrutura Narrativa (20 minutos)",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "de69b7ec06": {
+   "en": "5. **The audience is high school students**. Visual language and narrative should reflect this — without unnecessary technical jargon, with clear moments of visual impact.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "5. **A audiência são adolescentes do ensino médio**. Linguagem visual e narrativa devem refletir isso — sem jargão técnico desnecessário, com momentos de impacto visual claros.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "de8f84aa77": {
+   "en": "### 7.3 Simultaneity System (Overlay)",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "### 7.3 Sistema de Simultaneidade (Overlay)",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "df0e8a7faa": {
+   "en": "*Last update: June 24, 2026*  \n*Project developed as a teaching instrument for Special Relativity for Brazilian high school.*",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "*Última atualização: 24 de junho de 2026*\n*Projeto desenvolvido como instrumento de ensino de Relatividade Especial para o ensino médio brasileiro.*",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "e29de34b10": {
+   "en": "The final executable should run on **Windows and Linux** without modifications. Presentations take place in schools (typically Windows); development occurs on AlmaLinux 9.8.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "O executável final deve rodar em **Windows e Linux** sem modificações. Apresentações acontecem em escolas (tipicamente Windows); desenvolvimento ocorre em AlmaLinux 9.8.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "e5e7eccad3": {
+   "en": "If the barrier is changing the world model, the most effective instrument is the one that makes the student *inhabit* a frame of reference at a time — not the one that compares two diagrams from the outside. Everything below follows from this:",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Se a barreira é trocar de modelo de mundo, o instrumento mais eficaz é o que faz o aluno *habitar* um referencial de cada vez — não o que compara dois diagramas de fora. Disso decorre tudo abaixo:",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "e717df8b81": {
+   "en": "### 11.2 Script Structure",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "### 11.2 Estrutura de Scripts",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "e7daf82a63": {
+   "en": "**2D Pixel Art for**:  \n- HUD: speedometer, γ slider, reference indicator  \n- Lines of simultaneity (overlaid on 3D world)  \n- Minkowski diagram (corner of screen, optional)  \n- Sparks, particles, impact effects  \n- Point text (\"γ = 4.2\", \"RT to release\")",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Pixel Art 2D para**:\n- HUD: velocímetro, slider de γ, indicador de referencial\n- Linhas de simultaneidade (sobrepostas ao mundo 3D)\n- Diagrama de Minkowski (canto da tela, opcional)\n- Faíscas, partículas, efeitos de impacto\n- Texto pontual (\"γ = 4.2\", \"RT para soltar\")",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "e863affe05": {
+   "en": "### 13.2 Visual and Game Design Inspirations",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "### 13.2 Referências de Inspiração Visual e de Game Design",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "e8c6436e20": {
+   "en": "- Guide increases conveyor belt speed (D-Pad Up)  \n- v = 0.3c → 0.5c → 0.7c  \n- Lorentz contraction becomes visible  \n- v = 0.9c: beam passes through guillotines with clear margin  \n- Audience accepts: \"ok, it passed\"",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "- Orientador aumenta velocidade da esteira (D-Pad Up)\n- v = 0.3c → 0.5c → 0.7c\n- Contração de Lorentz começa a ser visível\n- v = 0.9c: tora passa pelas guilhotinas com folga clara\n- Audiência aceita: \"ok, ela passou\"",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "e97aa4d417": {
+   "en": "> An interactive first-person experience designed for live presentation, intended to teach high school students about the paradoxes of Special Relativity through a theatrical demonstration led by a guide.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "> Uma experiência interativa em primeira pessoa para apresentação ao vivo, projetada para ensinar paradoxos da Relatividade Restrita a estudantes do ensino médio através de demonstração teatral conduzida por um orientador.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "ea1200396c": {
+   "en": "9. **Windows ↔ Linux compatibility is a strict constraint** (see Section 5.3). Never use absolute paths, accented filenames in assets, or system calls without cross-platform testing. Development occurs on AlmaLinux 9.8; presentations on Windows.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "9. **Compatibilidade Windows ↔ Linux é restrição rígida** (ver Seção 5.3). Nunca usar caminhos absolutos, nomes de arquivo com acentos nos assets, ou chamadas de sistema sem teste cross-platform. Desenvolvimento ocorre em AlmaLinux 9.8; apresentações em Windows.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "eb08a7fcb3": {
+   "en": "### Current Project Status",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "### Estado Atual do Projeto",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "ec05387869": {
+   "en": "### 10.3 Hardcode first, generalize later",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "### 10.3 Hardcode primeiro, generalize depois",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "ec096b45f0": {
+   "en": "## 1. Project Overview",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "## 1. Visão Geral do Projeto",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "ed24e2464a": {
+   "en": "## 7. Core Systems",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "## 7. Sistemas Centrais",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "ed78a0857e": {
+   "en": "- Activation of **overlay mode** (Button Y)  \n- Lines of simultaneity appear as pixel art sprites  \n- Slow-motion replay (Button X)  \n- In Bob's reference frame, guillotines descend at different times  \n- Right guillotine first → beam follows → left guillotine later (beam already out)  \n- Return to Alice's reference frame: everything is simultaneous  \n- Message: \"what changes is not what happens. It's what 'at the same time' means.\"",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "- Ativação do **modo overlay** (Botão Y)\n- Linhas de simultaneidade aparecem como sprites pixel art\n- Replay em câmera lenta (Botão X)\n- No referencial de Bob, guilhotinas descem em momentos diferentes\n- Guilhotina direita primeiro → tora segue → guilhotina esquerda depois (tora já saiu)\n- Retorno ao referencial de Alice: tudo simultâneo\n- Mensagem: \"o que muda não é o que acontece. É o que significa 'ao mesmo tempo'.\"",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "ed97116c50": {
+   "en": "### 10.2 Assets before elegant code",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "### 10.2 Assets antes de código bonito",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "f0a78a23af": {
+   "en": "**Milestone**: Complete 20-minute show running.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Marco**: Show completo de 20 minutos rodando.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "f1e273843d": {
+   "en": "### 7.6 Scissors System (Act 4)",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "### 7.6 Sistema de Tesouras (Ato 4)",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "f2cdd340cc": {
+   "en": "8. **In case of doubt about architecture, choose the simplest option that works**. Refactoring is easy once something is running.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "8. **Em caso de dúvida sobre arquitetura, escolher a opção mais simples que funciona**. Refatorar é fácil depois que algo está rodando.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "f3c4c3e6e8": {
+   "en": "- **Duration**: 20 minutes  \n- **Audience**: High school students (~14-17 years old)  \n- **Operator**: A single teacher/guide conducting  \n- **Control**: Xbox gamepad (not keyboard/mouse during presentation)  \n- **Screen**: Projector or large TV  \n- **No internet dependency**: standalone executable",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "- **Duração**: 20 minutos\n- **Audiência**: Estudantes do ensino médio (~14-17 anos)\n- **Operador**: Um único professor/orientador conduzindo\n- **Controle**: Gamepad Xbox (não teclado/mouse durante apresentação)\n- **Tela**: Projetor ou TV grande\n- **Sem dependência de internet**: executável standalone",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "f5811dd6b0": {
+   "en": "### 1.1 Nature of the Project",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "### 1.1 Natureza do Projeto",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "f6ebfcc554": {
+   "en": "When exact physics clashes with visual clarity, **visual clarity wins**. This is a stage instrument, not a simulator.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Quando física exata brigar com clareza visual, **clareza visual ganha**. Este é um instrumento de palco, não um simulador.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "f7dbade658": {
+   "en": "**Possible states**:  \n- `Frame.ALICE`: rest frame of the conveyor (stationary warehouse)  \n- `Frame.BOB`: rest frame of the log (apparent motion of the conveyor)",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Estados possíveis**:\n- `Frame.ALICE`: referencial de repouso da esteira (galpão estacionário)\n- `Frame.BOB`: referencial de repouso da tora (esteira em movimento aparente)",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "f830ddbf4f": {
+   "en": "### Week 3 — Heart: Frame of Reference Change ✅ Completed",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "### Semana 3 — Coração: Troca de Referencial ✅ Concluída",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "fa2b7b4ebd": {
+   "en": "**Guillotines (`guillotine.gd`)**:  \n- Two instances: left and right  \n- State: `READY`, `FALLING`, `DOWN`, `RETRACTING`  \n- In `Frame.ALICE`: fall simultaneously when RT is pressed  \n- In `Frame.BOB`: fall with calculated temporal offset",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Guilhotinas (`guillotine.gd`)**:\n- Duas instâncias: esquerda e direita\n- Estado: `READY`, `FALLING`, `DOWN`, `RETRACTING`\n- Em `Frame.ALICE`: descem simultaneamente quando RT é apertado\n- Em `Frame.BOB`: descem com offset temporal calculado",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "fc7d510e9e": {
+   "en": "## Summary",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "## Sumário",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "fcf8cb5264": {
+   "en": "**Known limitation**: mouse via AnyDesk does not move the camera — AnyDesk injects synthetic events (XTest) that do not pass through the pointer grab of Godot in `MOUSE_MODE_CAPTURED`. Touchpad and USB physical mouse work normally.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Limitação conhecida**: mouse via AnyDesk não movimenta a câmera — o AnyDesk injeta eventos sintéticos (XTest) que não passam pelo pointer grab do Godot em `MOUSE_MODE_CAPTURED`. Touchpad e mouse USB físicos funcionam normalmente.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "ff666e0b0c": {
+   "en": "Always type arguments and function returns:",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Sempre tipar argumentos e retornos de funções:",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "ffdc2f9a7a": {
+   "en": "### 8.2 Color Palette",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "### 8.2 Paleta de Cores",
+   "qa": "ok",
+   "tipo": "md"
+  }
+ },
+ "fatia": "README",
+ "idioma": "en-US"
+}

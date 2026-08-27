@@ -1,3 +1,6 @@
+<!-- idioma: linha gerada por i18n.py -->
+*[Read this in English](FUNDAMENTACAO-CIENTIFICA.en.md)*
+
 # Fundamentação Científica — Paradoxo da Relatividade
 
 > Aprofundamento conceitual, físico e bibliográfico do instrumento. O [`README.md`](README.md)

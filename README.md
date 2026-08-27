@@ -1,3 +1,6 @@
+<!-- idioma: linha gerada por i18n.py -->
+*[Read this in English](README.en.md)*
+
 # Paradoxo da Relatividade — Instrumento Interativo de Ensino
 
 > *A relatividade não é difícil pela matemática — é difícil porque obriga a trocar de modelo de mundo. Este instrumento não deduz o resultado numa lousa: ele faz o aluno **trocar de referencial com o próprio corpo** e ver o mundo se reconfigurar à sua frente.*

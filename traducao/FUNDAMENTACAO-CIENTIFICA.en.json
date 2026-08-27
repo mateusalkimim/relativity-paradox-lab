@@ -1,0 +1,461 @@
+{
+ "atualizado_em": "2026-08-27 14:36:09",
+ "blocos": {
+  "04fb808e42": {
+   "en": "# Scientific Foundation — Relativity Paradox",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "# Fundamentação Científica — Paradoxo da Relatividade",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "051842923f": {
+   "en": "Bar and Slit Variation in which the bar falls under gravity while crossing the slit: the resolution combines Lorentz contraction with the relativistic tilt of the bar in the slit's reference frame. Richer than IV.A, yet with the same conceptual setup costs — stays in line behind the superluminal scissors (Block C), natural candidate for a thesis version.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Variação do Barra e Fenda em que a barra cai sob gravidade enquanto cruza a fenda: a resolução combina contração de Lorentz com a inclinação relativística da barra no referencial da fenda. Mais rico que o IV.A, porém com os mesmos custos de setup conceitual — fica na fila atrás das tesouras superluminais (Bloco C), candidato natural a versão de TCC.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "076d1487dd": {
+   "en": "[3] Alencar, G. (2023). *Alice no País da Relatividade: teoria da relatividade para o ensino médio* [Alice in the Land of Relativity: relativity for high school]. Editora Livraria da Física: São Paulo. ISBN: 978-65-5563-322-1.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "preservado": "entrada bibliografica: titulo da obra, sobrenome e nome da instituicao ficam no original. A obra citada nao tem edicao em ingles -- titulo traduzido torna a fonte impossivel de achar. A glosa entre colchetes e a pratica academica. Decisao humana, registrada: a razao de identidade nao distingue citacao preservada de eco do modelo.",
+   "pt": "[3] Alencar, G. (2023). *Alice no País da Relatividade: teoria da relatividade para o ensino médio*. Editora Livraria da Física: São Paulo. ISBN: 978-65-5563-322-1.",
+   "qa": "ok",
+   "reparo": "titulo de obra e nome de instituicao devolvidos ao original: a obra citada nao tem edicao em ingles, e titulo traduzido torna a fonte impossivel de achar. A glosa entre colchetes e a pratica academica.",
+   "tipo": "md"
+  },
+  "0e9e9ad361": {
+   "en": "- **In Alice's reference frame (S)**: the bar is contracted to L₀/γ, fits between the guillotines, and passes without being cut.  \n- **In the bar's reference frame (Bob/S')**: the bar has length L₀, but the distance between the guillotines is L₀/γ. The bar would not fit.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "- **No referencial de Alice (S)**: a tora está contraída para L₀/γ, cabe entre as guilhotinas, e passa sem ser cortada.\n- **No referencial da tora (Bob/S')**: a tora tem comprimento L₀, mas a distância entre as guilhotinas é L₀/γ. A tora não caberia.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "14f20d636b": {
+   "en": "> Conceptual, physical, and bibliographic deepening of the instrument. The [`README.md`](README.md)  \n> covers the technical architecture of the software; this document covers the **physics and pedagogy**  \n> that justify it.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "> Aprofundamento conceitual, físico e bibliográfico do instrumento. O [`README.md`](README.md)\n> cobre a arquitetura técnica do software; este documento cobre a **física e a pedagogia** que\n> a justificam.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "1561cfeaf6": {
+   "en": "[24] Rothman, M. A. (1960). *Scientific American*, 203, 142-153. [Scissors Paradox]",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "[24] Rothman, M. A. (1960). *Scientific American*, 203, 142-153. [Paradoxo das Tesouras]",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "161cbd38bb": {
+   "en": "**Reference in the article**: Section III.A, p. 5-6.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Referência no artigo**: Seção III.A, p. 5-6.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "220133168f": {
+   "en": "## 7. References",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "## 7. Referências",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "27fbf94440": {
+   "en": "**Lorentz Factor:**  \n```\nγ = 1 / √(1 - v²/c²)\n```",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Fator de Lorentz:**\n```\nγ = 1 / √(1 - v²/c²)\n```",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "28705bda8d": {
+   "en": "**Description**: Two blades (or a pair of lines) intersect. As the angle between them decreases, the intersection point moves along the axis with a velocity that can exceed c.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Descrição**: Duas lâminas (ou um par de retas) se cruzam. À medida que o ângulo entre elas diminui, o ponto de cruzamento move-se ao longo do eixo com velocidade que pode exceder c.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "28ed3b00c8": {
+   "en": "### 7.1 Primary Reference",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "### 7.1 Referência Principal",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "2f06fcc0bd": {
+   "en": "**Geometric Relation:**  \n```\nv_ponto_corte = ω · L · csc²(θ)\n```  \nwhere ω is the constant angular velocity, L the distance from the hinge, and θ the angle between the blades.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Relação geométrica**:\n```\nv_ponto_corte = ω · L · csc²(θ)\n```\nonde ω é a velocidade angular constante, L a distância da dobradiça, e θ o ângulo entre as lâminas.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "2fc94cef1c": {
+   "en": "**Reference in the article**: Section IV.A, p. 7-9.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Referência no artigo**: Seção IV.A, p. 7-9.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "38d271fd97": {
+   "en": "This article is the **surgical reference** of the project. Every pedagogical decision should refer back to it.  \nText extracted for quick consultation in [`docs/referencia_principal.txt`](docs/referencia_principal.txt)  \n(PDF in `docs/referencia_principal.pdf`).",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Este artigo é a **referência cirúrgica** do projeto. Toda decisão pedagógica deve voltar a ele.\nTexto extraído para consulta rápida em [`docs/referencia_principal.txt`](docs/referencia_principal.txt)\n(PDF em `docs/referencia_principal.pdf`).",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "3aa79b98f7": {
+   "en": "**Reference in the article**: Section IV.B.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Referência no artigo**: Seção IV.B.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "3fc702c595": {
+   "en": "[5] Rindler, W. (1961). *American Journal of Physics*, 29, 365-366. [Slit-and-Gravitational-Field Paradox]",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "[5] Rindler, W. (1961). *American Journal of Physics*, 29, 365-366. [Paradoxo da Barra e Fenda com Gravidade]",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "41f3322e4d": {
+   "en": "[2] Rindler, W. (2006). *Relativity: Special, General, and Cosmological* (2nd ed.). Oxford University Press.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "[2] Rindler, W. (2006). *Relativity: Special, General, and Cosmological* (2ª ed.). Oxford University Press.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "454bbe9256": {
+   "en": "## 2. Fundamental Equations Used",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "## 2. Equações Fundamentais Utilizadas",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "518268b993": {
+   "en": "## 5. The Paradoxes in Detail",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "## 5. Os Paradoxos em Detalhe",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "6990924a9b": {
+   "en": "As per the article by Alencar et al. (2023), three ingrained Galilean concepts need to be undone:",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Conforme o artigo de Alencar et al. (2023), três conceitos galileanos arraigados precisam ser desfeitos:",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "6a02513e8e": {
+   "en": "### 5.4 FUTURE EXPANSION — Slit-and-Gravitational-Field",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "### 5.4 EXPANSÃO FUTURA — Barra e Fenda com Gravidade",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "6b802479dc": {
+   "en": "[7] Dewan, E. M. (1963). *American Journal of Physics*, 31, 383-386. [Barn-and-Bar Paradox]",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "[7] Dewan, E. M. (1963). *American Journal of Physics*, 31, 383-386. [Paradoxo do Celeiro e Barra]",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "7d40af1141": {
+   "en": "### 5.2 CLIMAX PARADOX — Superluminal Scissors",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "### 5.2 PARADOXO CLÍMAX — Tesouras Superluminais",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "7e2abbfe51": {
+   "en": "## 6. Technical Glossary",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "## 6. Glossário Técnico",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "8101ed5bfe": {
+   "en": "## 3. Key Concepts That Should Be Understood by the Student",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "## 3. Conceitos-Chave Que Devem Ser Sentidos Pelo Aluno",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "853fd20107": {
+   "en": "[26] Kaushal, N., & Nemiroff, R. J. (2019). *Physics Education*, 54(6), 065008. [Modern analysis of scissors]",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "[26] Kaushal, N., & Nemiroff, R. J. (2019). *Physics Education*, 54(6), 065008. [Análise moderna das tesouras]",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "85f9220013": {
+   "en": "> Implementation: `scripts/lorentz_transform.gd` (`gamma()`, `contracted_length()`,  \n> `simultaneity_offset()`).",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "> Implementação: `scripts/lorentz_transform.gd` (`gamma()`, `contracted_length()`,\n> `simultaneity_offset()`).",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "864dd656dd": {
+   "en": "**Why this is the climax**:  \n- Instant hook question (\"Can something go faster than light?\")  \n- Trivial implementation (purely geometric)  \n- Connection with real astronomy (apparent relativistic jets)  \n- Deep philosophical insight into causality",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Por que este é o clímax**:\n- Pergunta de gancho instantâneo (\"algo pode ir mais rápido que a luz?\")\n- Implementação trivial (puramente geométrica)\n- Conexão com astronomia real (jatos relativísticos aparentes)\n- Insight filosófico profundo sobre causalidade",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "95a74634de": {
+   "en": "- **Absolute simultaneity** (same \"now\" in all reference frames)  \n- **Rigidity of extended bodies** (bodies respond instantaneously to forces)  \n- **Instant propagation of signals** (causality without speed limit)",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "- **Simultaneidade absoluta** (mesmo \"agora\" em todos os referenciais)\n- **Rigidez dos corpos extensos** (corpos respondem instantaneamente a forças)\n- **Propagação instantânea de sinais** (causalidade sem limite de velocidade)",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "963a5c4847": {
+   "en": "**Reference in the article**: Section VI, p. 11-12.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Referência no artigo**: Seção VI, p. 11-12.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "977e0ebf1a": {
+   "en": "Of the seven paradoxes discussed in the article by Alencar et al. (2023), three were selected after analysis of pedagogical potential, technical feasibility, and visual impact. Only two will be included in the final 20-minute presentation.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Dos sete paradoxos discutidos no artigo de Alencar et al. (2023), três foram selecionados após\nanálise de potencial pedagógico, viabilidade técnica e impacto visual. Apenas dois entrarão na\napresentação final de 20 minutos.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "9e8a8f8ac4": {
+   "en": "## 1. Primary Reference Article",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "## 1. Artigo de Referência Principal",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "a1ea80d46f": {
+   "en": "**Time Dilation:**  \n```\nΔt = γ·Δτ\n```\n(where Δτ is the proper time)",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Dilatação do tempo:**\n```\nΔt = γ·Δτ\n```\n(onde Δτ é o tempo próprio)",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "aa2e93df48": {
+   "en": "| Term | Definition |\n|---|---|\n| **Inertial Frame** | A coordinate system in uniform rectilinear motion |\n| **Proper Length (L₀)** | Length measured in the object's rest frame |\n| **Proper Time (τ)** | Time measured by a clock at rest at the same point |\n| **Lorentz Factor (γ)** | γ = 1/√(1-v²/c²), always ≥ 1 |\n| **Lorentz Contraction** | L = L₀/γ, contraction in the direction of motion |\n| **Time Dilation** | Δt = γ·Δτ, time dilated for an external observer |\n| **Relative Simultaneity** | Events simultaneous in one frame may not be in another |\n| **Light Cone** | Causal structure in Minkowski spacetime |\n| **Worldline** | Trajectory of an object in spacetime |\n| **Frame (in code)** | Synonym for inertial frame; values: ALICE or BOB |\n| **β (beta)** | Speed in fractions of c (β = v/c, varies from 0 to 1) |",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "| Termo | Definição |\n|---|---|\n| **Referencial inercial** | Sistema de coordenadas em movimento retilíneo uniforme |\n| **Comprimento próprio (L₀)** | Comprimento medido no referencial de repouso do objeto |\n| **Tempo próprio (τ)** | Tempo medido por um relógio em repouso no mesmo ponto |\n| **Fator de Lorentz (γ)** | γ = 1/√(1-v²/c²), sempre ≥ 1 |\n| **Contração de Lorentz** | L = L₀/γ, contração na direção do movimento |\n| **Dilatação do tempo** | Δt = γ·Δτ, tempo dilatado para observador externo |\n| **Simultaneidade relativa** | Eventos simultâneos em um referencial podem não ser em outro |\n| **Cone de luz** | Estrutura causal no espaço-tempo de Minkowski |\n| **Linha de mundo** | Trajetória de um objeto no espaço-tempo |\n| **Frame (no código)** | Sinônimo de referencial inercial; valores: ALICE ou BOB |\n| **β (beta)** | Velocidade em frações de c (β = v/c, varia de 0 a 1) |",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "aa67e9eeef": {
+   "en": "[11] Taylor, E. F., & Wheeler, J. A. (1992). *Spacetime Physics: Introduction to Special Relativity*. W. H. Freeman.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "[11] Taylor, E. F., & Wheeler, J. A. (1992). *Spacetime Physics: Introduction to Special Relativity*. W. H. Freeman.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "af6388dd9e": {
+   "en": "[6] Shaw, R. (1962). *American Journal of Physics*, 30, 72. [Twin Paradox without Gravity]",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "[6] Shaw, R. (1962). *American Journal of Physics*, 30, 72. [Paradoxo da Barra e Fenda sem Gravidade]",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "b9c5e5e42b": {
+   "en": "**Resolution**: The cut point **is not a material object**. It does not carry information, mass, or energy. Each crossing point is a local independent event. There is no causal link between successive \"point\" events, so there is no violation of causality.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Resolução**: O ponto de corte **não é um objeto material**. Não carrega informação, massa ou energia. Cada ponto de cruzamento é um evento local independente. Não há ligação causal entre eventos sucessivos do \"ponto\", então não há violação de causalidade.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "c0cc2ca396": {
+   "en": "*Companion to [`README.md`](README.md) (technical reference). The visual/game design inspirations and tools used remain in `README.md`.*",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "*Companheiro do [`README.md`](README.md) (referência técnica). As referências de inspiração\nvisual/game design e as ferramentas utilizadas permanecem no `README.md`.*\n",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "c2592f9d5a": {
+   "en": "### 5.1 PARADOX — The Relativistic Sawmill",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "### 5.1 PARADOXO PRINCIPAL — A Madeireira Relativística",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "c3bef0d9ba": {
+   "en": "**Inverse Transformations:**  \n```\nΔx = γ(Δx' + vΔt')\nΔt = γ(Δt' + vΔx'/c²)\n```",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Transformações inversas:**\n```\nΔx = γ(Δx' + vΔt')\nΔt = γ(Δt' + vΔx'/c²)\n```",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "c3eab7a0e9": {
+   "en": "**Resolution**: In Bob's reference frame, the saws **do not descend simultaneously**. The time difference is Δt' = γL₀v/c². The right saw descends first, the log continues moving, and the left saw descends later — when the log has already passed.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Resolução**: No referencial de Bob, as guilhotinas **não descem simultaneamente**. A diferença temporal é Δt' = γL₀v/c². A guilhotina da direita desce primeiro, a tora continua se movendo, e a da esquerda desce depois — quando a tora já passou.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "cb31bdf81f": {
+   "en": "**Lorentz Transformations (differences):**  \n```\nΔx' = γ(Δx - vΔt)\nΔt' = γ(Δt - vΔx/c²)\nΔy' = Δy\nΔz' = Δz\n```",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Transformações de Lorentz (diferenças):**\n```\nΔx' = γ(Δx - vΔt)\nΔt' = γ(Δt - vΔx/c²)\nΔy' = Δy\nΔz' = Δz\n```",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "cc953aa40b": {
+   "en": "**Time in Presentation**: ~3 minutes (Act 4)",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Tempo na apresentação**: ~3 minutos (Ato 4)",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "d1f7ba6c8f": {
+   "en": "### 7.2 Secondary References (Cited in the Main Article)",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "### 7.2 Referências Secundárias (Citadas no Artigo Principal)",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "ddc357b4ca": {
+   "en": "[14] Pierce, E. (2007). *American Journal of Physics*, 75, 610. [Key and Lock Paradox]",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "[14] Pierce, E. (2007). *American Journal of Physics*, 75, 610. [Paradoxo da Chave e Fechadura]",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "e2e02d10b8": {
+   "en": "**Time in Presentation**: ~14 minutes (Acts 0-3)",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Tempo na apresentação**: ~14 minutos (Atos 0-3)",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "e52a11094e": {
+   "en": "[4] Langevin, P. (1911). Scientia, 10, 31-54.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "[4] Langevin, P. (1911). Scientia, 10, 31-54.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "eada0e3804": {
+   "en": "1. **Relative Simultaneity**: Δt' = γ(Δt - vΔx/c²) — events simultaneous in S are not in S'  \n2. **Anisotropic Contraction**: contracts only in the direction of motion  \n3. **Speed Limit of Information**: nothing material/informational exceeds c  \n4. **Distinction between Material Point vs Geometric Point**: the latter can \"move\" faster than c",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "1. **Simultaneidade relativa**: Δt' = γ(Δt - vΔx/c²) — eventos simultâneos em S não são em S'\n2. **Contração anisotrópica**: contrai apenas na direção do movimento\n3. **Velocidade limite da informação**: nada material/informacional supera c\n4. **Distinção ponto material vs ponto geométrico**: o segundo pode \"se mover\" mais rápido que c",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "ed237045ff": {
+   "en": "## 4. Galilean Conceptions to Be Abandoned",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "## 4. Concepções Galileanas a Serem Abandonadas",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "ede871df29": {
+   "en": "**Description**: A log of wood of proper length L₀ slides over a conveyor belt at speed v. Two guillotines, with proper distance L₀ between them, descend simultaneously in the conveyor belt's reference frame (Alice).",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Descrição**: Uma tora de madeira de comprimento próprio L₀ desliza sobre uma esteira a velocidade v. Duas guilhotinas, com distância própria L₀ entre si, descem simultaneamente no referencial da esteira (Alice).",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "f134c8a7ff": {
+   "en": "**Alencar, G., Macedo, J., Maranhão, L., & Carneiro, P. (2023).** *Paradoxos da Relatividade* [Paradoxes of Relativity].\narXiv:2307.05503v1 [physics.pop-ph]. Departamento de Física, Universidade Federal do Ceará.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "preservado": "entrada bibliografica: titulo da obra, sobrenome e nome da instituicao ficam no original. A obra citada nao tem edicao em ingles -- titulo traduzido torna a fonte impossivel de achar. A glosa entre colchetes e a pratica academica. Decisao humana, registrada: a razao de identidade nao distingue citacao preservada de eco do modelo.",
+   "pt": "**Alencar, G., Macedo, J., Maranhão, L., & Carneiro, P. (2023).** *Paradoxos da Relatividade*.\narXiv:2307.05503v1 [physics.pop-ph]. Departamento de Física, Universidade Federal do Ceará.",
+   "qa": "ok",
+   "reparo": "titulo de obra e nome de instituicao devolvidos ao original: a obra citada nao tem edicao em ingles, e titulo traduzido torna a fonte impossivel de achar. A glosa entre colchetes e a pratica academica.",
+   "tipo": "md"
+  },
+  "f5cbc28e48": {
+   "en": "### 5.3 PARADOX DISCARDED (but documented) — Bar and Slit 2D",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "### 5.3 PARADOXO DESCARTADO (mas documentado) — Barra e Fenda 2D",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "f67cd20b1a": {
+   "en": "Visually spectacular (relativistic rotation), but requires conceptual setup time incompatible with 20 minutes. **Documented for possible future expansion or thesis version**.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Visualmente espetacular (rotação relativística), mas exige tempo de setup conceitual incompatível com 20 minutos. **Documentado para possível expansão futura ou versão de TCC**.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "faba106320": {
+   "en": "**Lorentz Contraction:**  \n```\nL = L₀ / γ\n```  \n(where L₀ is the proper length, measured in the object's rest frame)",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Contração de Lorentz:**\n```\nL = L₀ / γ\n```\n(onde L₀ é o comprimento próprio, medido no referencial de repouso do objeto)",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "fcb369a218": {
+   "en": "**Why this is the central paradox of the project**:  \n- One-dimensional: geometrically trivial  \n- Binary and visceral result (torus cut or not)  \n- Forces reference frame change as mechanics  \n- Teaches three central concepts (contraction, simultaneity, consistency between reference frames)  \n- Simplest MVP to implement",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**Por que este é o paradoxo central do projeto**:\n- Unidimensional: geometricamente trivial\n- Resultado binário e visceral (tora cortada ou não)\n- Força a troca de referencial como mecânica\n- Ensina três conceitos centrais (contração, simultaneidade, consistência entre referenciais)\n- MVP mais simples de implementar",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "fd3320623d": {
+   "en": "[1] **Alencar, G., Macedo, J., Maranhão, L., & Carneiro, P. (2023).** *Paradoxos da Relatividade* [Paradoxes of Relativity]. arXiv:2307.05503v1 [physics.pop-ph]. Departamento de Física, Universidade Federal do Ceará.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "preservado": "entrada bibliografica: titulo da obra, sobrenome e nome da instituicao ficam no original. A obra citada nao tem edicao em ingles -- titulo traduzido torna a fonte impossivel de achar. A glosa entre colchetes e a pratica academica. Decisao humana, registrada: a razao de identidade nao distingue citacao preservada de eco do modelo.",
+   "pt": "[1] **Alencar, G., Macedo, J., Maranhão, L., & Carneiro, P. (2023).** *Paradoxos da Relatividade*. arXiv:2307.05503v1 [physics.pop-ph]. Departamento de Física, Universidade Federal do Ceará.",
+   "qa": "ok",
+   "reparo": "titulo de obra e nome de instituicao devolvidos ao original: a obra citada nao tem edicao em ingles, e titulo traduzido torna a fonte impossivel de achar. A glosa entre colchetes e a pratica academica.",
+   "tipo": "md"
+  }
+ },
+ "fatia": "FUNDAMENTACAO-CIENTIFICA",
+ "idioma": "en-US"
+}
