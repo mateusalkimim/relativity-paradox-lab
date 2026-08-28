@@ -717,7 +717,7 @@ Glossário físico completo (referencial inercial, tempo próprio, cone de luz, 
 **Ambiente de desenvolvimento**: AlmaLinux 9.8 + Godot 4.6.3 + VS Code 1.122.0 (ambos via Flatpak) — configurado e funcional.
 **Concluído (Atos 0-3 rodam de ponta a ponta)**:
 - Troca de referencial ALICE↔BOB com contração de Lorentz animada (Tween cúbico, bloqueio de input na transição)
-- Correia física (sarrafos + rolos) substituindo o UV scroll; tora se move e é cortada na mira do operador
+- Correia física (sarrafos + rolos) substituindo o UV scroll; tora se move e é cortada na mira do autor
 - Guilhotinas com offset temporal de simultaneidade em BOB + modo câmera lenta (Botão X) e reset (Botão B)
 - Avatares KayKit (Bob/Alice) com encarnação em 1ª pessoa e iluminação estilizada
 **Pendências da Semana 4**:
