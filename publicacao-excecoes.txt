@@ -10,3 +10,7 @@
 #
 # Exemplo de excecao legitima (operador MATEMATICO, nao papel de pessoa):
 # 1a2b3c4d5e | "the operator" aqui e o produto interno, nao uma pessoa
+
+# --- varredura de 2026-08-28 ---
+174a84f811 | operador matemático ou papel do domínio da peça, não papel da casa (traducao/README.pt-BR.en.json)
+b2c3b94295 | operador matemático ou papel do domínio da peça, não papel da casa (README.md)
