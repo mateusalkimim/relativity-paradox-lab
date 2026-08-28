@@ -40,3 +40,6 @@ __pycache__/
 # Pacotes de asset originais (zips re-baixáveis; o que o jogo usa está
 # extraído em assets/models/characters/)
 assets/packages/
+
+# texto retirado por decisao de registro — auditavel, nao publicado
+.purgado/

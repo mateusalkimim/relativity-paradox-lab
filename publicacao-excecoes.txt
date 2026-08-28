@@ -14,3 +14,7 @@
 # --- varredura de 2026-08-28 ---
 174a84f811 | operador matemático ou papel do domínio da peça, não papel da casa (traducao/README.pt-BR.en.json)
 b2c3b94295 | operador matemático ou papel do domínio da peça, não papel da casa (README.md)
+
+# --- redeclaradas em 2026-08-28, depois da limpeza ---
+6c157f0c44 | "the operator" e quem opera a serraria da cena, papel do dominio (README.md)
+25e45be8ac | o mesmo trecho na tabela de traducao (traducao/README.pt-BR.en.json)
